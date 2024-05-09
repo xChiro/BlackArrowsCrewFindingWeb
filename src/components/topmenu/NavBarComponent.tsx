@@ -20,8 +20,8 @@ const StyledNavbar = styled.nav`
     box-sizing: border-box;
 
     @media (max-width: 600px){
-        flex-direction: column;
-        height: auto;
+        flex-direction: row;
+        height: 3rem;
     }
 `;
 

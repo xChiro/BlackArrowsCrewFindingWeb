@@ -10,6 +10,8 @@ const CrewCardGridComponent = styled.div`
     gap: 3rem;
     padding: 1rem;
     width: 90%;
+    display: flex;
+    justify-content: center;
 `;
 
 const CrewCardContainer: React.FC = () => {

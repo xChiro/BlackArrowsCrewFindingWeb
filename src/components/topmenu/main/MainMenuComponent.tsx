@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBars} from "@fortawesome/free-solid-svg-icons";
 import {MainMenuItem} from "./MainMenuItem.tsx";
 import {MainSubMenuComponent} from "./MainSubMenuComponent.tsx";
+import {StyledNavBarIcon} from "../StyledNavBarIcon.tsx";
 
 interface MenuProps {
     items: MainMenuItem[];
@@ -21,7 +21,7 @@ export const MainMenu: React.FC<MenuProps> = ({items}) => {
 
     return (
         <div>
-            <FontAwesomeIcon icon={faBars} size="2x" onClick={handleIconClick}/>
+            <StyledNavBarIcon icon={faBars} onClick={handleIconClick}/>
             {isOpen && (
                 items.map((item, index) => (
                     <MainSubMenuComponent key={index} item={item} handleMouseLeave={handleMouseLeave}/>
