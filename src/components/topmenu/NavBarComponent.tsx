@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {NavUserComponent} from "./NavUserComponent.tsx";
 import {NavLogoComponent} from "./NavLogoComponent.tsx";
 import {MainMenu} from "./main/MainMenuComponent.tsx";
-import {colors} from "../themes/Colors.ts";
+import {colors} from "../../themes/Colors.ts";
 
 const StyledNavbar = styled.nav`
     position: fixed;

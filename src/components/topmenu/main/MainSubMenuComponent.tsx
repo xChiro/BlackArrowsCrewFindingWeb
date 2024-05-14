@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {MainMenuItem} from "./MainMenuItem.tsx";
-import {colors} from "../../themes/Colors.ts";
+import {colors} from "../../../themes/Colors.ts";
 
 const StyledSubMenu = styled.div`
     position: absolute;
