@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {colors} from "../../themes/Colors.tsx";
+import {colors} from "../../themes/Colors.ts";
 
 export const StyledCard = styled.div`
     display: flex;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {colors} from "../../themes/Colors.tsx";
+import {colors} from "../../themes/Colors.ts";
 
 const StyledCardButton = styled.button<{ backgroundColor: string }>`
     flex: 0 0 10%;
