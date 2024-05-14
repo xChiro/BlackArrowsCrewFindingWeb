@@ -5,13 +5,13 @@ export const StyledCardInfo = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    line-height: 0rem;
+    line-height: 0;
 
     h1, h5 {
         margin-bottom: .2rem;
         align-self: center;
     }
-    
+
     h2 {
         margin-top: 2rem;
         margin-bottom: 2.5rem;
