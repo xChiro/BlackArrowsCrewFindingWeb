@@ -1,10 +1,9 @@
-import styled from 'styled-components';
-import {colors} from "../../themes/Colors.tsx";
 import {StyledCard} from "./StyledCard.tsx";
 import {StyledCardImageHeader} from "./StyledCardImageHeader.tsx";
 import {StyledBody} from "./StyledBody.tsx";
 import {StyledCardInfo} from "./StyledCardInfo.tsx";
 import {StyledCardDescription} from "./StyledCardDescription.tsx";
+import JoinButton from "./JoinButton.tsx";
 
 export interface CrewCardComponentProps {
     id: string;
@@ -16,16 +15,13 @@ export interface CrewCardComponentProps {
     location: string;
 }
 
-const StyledCardButton = styled.button`
-    flex: 0 0 10%;
-    background-color: green;
-    color: ${colors.fontColor};
-    border: none;
-    border-radius: 0 0 1rem 1rem;
-    cursor: pointer;
-    width: 100%;
-    font-size: 1.9rem;
-`;
+const freeSlots = (maxAllowedMembers: number, totalCurrentMembers: number) => {
+    return maxAllowedMembers - totalCurrentMembers;
+}
+
+const isFull = (maxAllowedMembers: number, totalCurrentMembers: number) => {
+    return totalCurrentMembers === maxAllowedMembers;
+}
 
 const CrewCardComponent = (props: CrewCardComponentProps) => {
     return (
@@ -34,17 +30,17 @@ const CrewCardComponent = (props: CrewCardComponentProps) => {
             </StyledCardImageHeader>
             <StyledBody>
                 <StyledCardInfo>
-                    <h3>{props.crewName} - ({props.totalCurrentMembers}/{props.maxAllowedMembers})</h3>
-                    <h6>{props.location}</h6>
-                    <p>
-                        {props.activity}
-                    </p>
+                    <h1>{props.crewName}</h1>
+                    <h5>{props.location}</h5>
+                    <h2>{freeSlots(props.maxAllowedMembers, props.totalCurrentMembers)} slots available</h2>
+                    <span>Activity {props.activity} </span>
                 </StyledCardInfo>
                 <StyledCardDescription>{props.description}</StyledCardDescription>
             </StyledBody>
-            <StyledCardButton>Join</StyledCardButton>
+            <JoinButton isFull={isFull(props.maxAllowedMembers, props.totalCurrentMembers)} />
         </StyledCard>
     );
 }
 
 export default CrewCardComponent;
+

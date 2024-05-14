@@ -7,11 +7,18 @@ export const StyledCardInfo = styled.div`
     justify-content: center;
     line-height: 0rem;
 
-    h3, p {
-        margin-bottom: .5rem;
+    h1, h5 {
+        margin-bottom: .2rem;
+        align-self: center;
+    }
+    
+    h2 {
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
     }
 
-    h6 {
-        margin-bottom: .9rem;
+    span {
+        margin-bottom: 1rem;
+        align-self: flex-start;
     }
 `;

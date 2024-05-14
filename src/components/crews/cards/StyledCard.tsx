@@ -7,7 +7,7 @@ export const StyledCard = styled.div`
     background-color: ${colors.primary};
     border-radius: 1rem;
     width: 100%;
-    max-width: 15rem;
-    min-height: 20rem;
-    max-height: 35rem;
+    max-width: 20rem;
+    min-height: 28rem;
+    max-height: 45rem;
 `;
