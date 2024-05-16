@@ -1,6 +1,6 @@
 import {RecentCrewsResponse} from "./models/RecentCrewsResponse.ts";
 
-export class CrewService {
+export default class CrewService {
     private readonly baseUrl: string;
 
     constructor(baseUrl: string) {

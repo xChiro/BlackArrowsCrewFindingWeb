@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import CrewCardComponent, {CrewCardComponentProps} from "./CrewCardComponent";
-import {CrewService} from "../../../services/CrewService.ts";
-import {RecentCrew} from "../../../services/models/RecentCrew.ts";
+import useRecentCrewData from "../../../hooks/useRecentCrewData.tsx";
+import CrewCardComponent from "./CrewCardComponent.tsx";
 
 const CrewCardGridComponent = styled.div`
     display: grid;
@@ -15,28 +14,7 @@ const CrewCardGridComponent = styled.div`
 `;
 
 const CrewCardContainer: React.FC = () => {
-    const [crewData, setCrewData] = useState<CrewCardComponentProps[]>([]);
-    const crewService = new CrewService("http://localhost:7071/api");
-
-    const extractCrew = (crew: RecentCrew): CrewCardComponentProps => {
-        return {
-            id: crew.Id,
-            crewName: crew.Name,
-            activity: crew.Activity,
-            description: crew.Description,
-            maxAllowedMembers: crew.MaxPlayers,
-            totalCurrentMembers: crew.CurrentPlayers,
-            location: crew.ReunionPoint.System + " - " + crew.ReunionPoint.PlanetarySystem + " - " + crew.ReunionPoint.PlanetMoon + " - " + crew.ReunionPoint.Place,
-        };
-    }
-
-    useEffect(() => {
-        crewService.getRecentCrews()
-            .then(crews => {
-                const crewData = crews.Crews.map(crew => extractCrew(crew));
-                setCrewData(crewData);
-            });
-    }, []);
+    const crewData = useRecentCrewData();
 
     return (
         <CrewCardGridComponent>
