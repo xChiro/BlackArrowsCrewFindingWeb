@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import {NavUserComponent} from "./NavUserComponent.tsx";
 import {NavLogoComponent} from "./NavLogoComponent.tsx";
@@ -25,7 +24,7 @@ const StyledNavbar = styled.nav`
     }
 `;
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
     const menuItems = [
         {
             name: 'Item 1',

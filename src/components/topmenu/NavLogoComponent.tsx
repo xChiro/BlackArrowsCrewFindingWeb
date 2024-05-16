@@ -1,7 +1,4 @@
-// src/components/Navbar/Logo.tsx
-import React from 'react';
-
-export const NavLogoComponent: React.FC = () => {
+export const NavLogoComponent = () => {
     return (
         <div>
             Crew Finding

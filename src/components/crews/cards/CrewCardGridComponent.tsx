@@ -1,6 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
-import useRecentCrewData from "../../../hooks/useRecentCrewData.tsx";
+import useRecentCrewData from "../../../hooks/UseRecentCrewData.tsx";
 import CrewCardComponent from "./CrewCardComponent.tsx";
 
 const CrewCardGridComponent = styled.div`
@@ -13,7 +12,7 @@ const CrewCardGridComponent = styled.div`
     justify-content: center;
 `;
 
-const CrewCardContainer: React.FC = () => {
+const CrewCardContainer = () => {
     const crewData = useRecentCrewData();
 
     return (

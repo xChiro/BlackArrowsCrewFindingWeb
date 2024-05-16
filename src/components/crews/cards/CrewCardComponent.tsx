@@ -1,8 +1,8 @@
-import {StyledCard} from "./StyledCard.tsx";
-import {StyledCardImageHeader} from "./StyledCardImageHeader.tsx";
-import {StyledBody} from "./StyledBody.tsx";
-import {StyledCardInfo} from "./StyledCardInfo.tsx";
-import {StyledCardDescription} from "./StyledCardDescription.tsx";
+import {StyledCard} from "../../utilities/cards/StyledCard.tsx";
+import {StyledCardImageHeader} from "../../utilities/cards/StyledCardImageHeader.tsx";
+import {StyledBodyCard} from "../../utilities/cards/StyledBodyCard.tsx";
+import {StyledCardInfo} from "../../utilities/cards/StyledCardInfo.tsx";
+import {StyledCardDescription} from "../../utilities/cards/StyledCardDescription.tsx";
 import JoinButton from "./JoinButton.tsx";
 
 export interface CrewCardComponentProps {
@@ -28,15 +28,15 @@ const CrewCardComponent = (props: CrewCardComponentProps) => {
         <StyledCard>
             <StyledCardImageHeader>
             </StyledCardImageHeader>
-            <StyledBody>
+            <StyledBodyCard>
                 <StyledCardInfo>
                     <h1>{props.crewName}</h1>
                     <h5>{props.location}</h5>
                     <h2>{freeSlots(props.maxAllowedMembers, props.totalCurrentMembers)} slots available</h2>
-                    <span>Activity {props.activity} </span>
+                    <span>Activity: <b>{props.activity}</b></span>
                 </StyledCardInfo>
                 <StyledCardDescription>{props.description}</StyledCardDescription>
-            </StyledBody>
+            </StyledBodyCard>
             <JoinButton isFull={isFull(props.maxAllowedMembers, props.totalCurrentMembers)} />
         </StyledCard>
     );
