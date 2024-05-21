@@ -3,8 +3,8 @@ import {RecentCrewsResponse} from "./models/crews/RecentCrewsResponse.ts";
 export default class CrewService {
     private readonly baseUrl: string;
 
-    constructor(baseUrl: string) {
-        this.baseUrl = baseUrl;
+    constructor() {
+        this.baseUrl = process.env.REACT_APP_BASE_URL!.toString();
     }
 
     public async getRecentCrews(): Promise<RecentCrewsResponse> {

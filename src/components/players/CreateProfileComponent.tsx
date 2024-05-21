@@ -2,22 +2,11 @@ import {StyledCard} from "../utilities/cards/StyledCard.tsx";
 import {StyledCardButton} from "../utilities/cards/StyledCardButton.tsx";
 import {StyledBodyCard} from "../utilities/cards/StyledBodyCard.tsx";
 import styled from "styled-components";
-
-const StyledForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-`;
+import {StyledForm} from "../utilities/forms/StyledForm.tsx";
+import {StyledInput} from "../utilities/forms/StyledInput.tsx";
 
 const StyledLabel = styled.h2`
     margin-bottom: 0.5rem;
-`;
-
-const StyledInput = styled.input`
-    height: 1.5rem;
-    width: 100%;
-    border-radius: 0.5rem;
-    font-size: 1.1rem;
 `;
 
 const CreateProfile = () => {
