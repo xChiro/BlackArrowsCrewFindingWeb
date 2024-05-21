@@ -11,7 +11,7 @@ const App = () => {
     useEffect(() => {
         if(!isAuthenticated) return;
 
-        const playerServices = new PlayerService(process.env.REACT_APP_BASE_URL!.toString())
+        const playerServices = new PlayerService()
 
         playerServices.getCurrenProfile().then((profile) => {
             if(profile === null) {

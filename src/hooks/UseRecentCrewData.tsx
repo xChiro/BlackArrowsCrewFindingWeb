@@ -19,7 +19,7 @@ const useRecentCrewData = () => {
     const [crewData, setCrewData] = useState<CrewCardComponentProps[]>([]);
 
     useEffect(() => {
-        const crewService = new CrewService("http://localhost:7071/api");
+        const crewService = new CrewService();
         crewService.getRecentCrews()
             .then(crews => {
                 const crewData = crews.Crews.map(crew => extractCrew(crew));

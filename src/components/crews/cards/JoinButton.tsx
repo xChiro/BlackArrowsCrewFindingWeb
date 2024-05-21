@@ -5,7 +5,7 @@ export interface CardButtonProps {
 }
 
 const JoinButton = (props: CardButtonProps) => (
-    <StyledCardButton backgroundColor={props.isFull ? "red" : "green"} canJoin={props.isFull}>
+    <StyledCardButton backgroundColor={props.isFull ? "red" : "green"} canClick={props.isFull}>
         {props.isFull ? "Full" : "Join"}
     </StyledCardButton>
 );
