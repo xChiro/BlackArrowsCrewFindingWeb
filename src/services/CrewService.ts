@@ -1,4 +1,4 @@
-import {RecentCrewsResponse} from "./models/RecentCrewsResponse.ts";
+import {RecentCrewsResponse} from "./models/crews/RecentCrewsResponse.ts";
 
 export default class CrewService {
     private readonly baseUrl: string;
