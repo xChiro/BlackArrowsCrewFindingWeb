@@ -32,7 +32,7 @@ const CreateProfile = () => {
                         <StyledInput type="text" name="handlerName"/>
                     </StyledForm>
                 </StyledBodyCard>
-                <StyledCardButton backgroundColor={"green"}>
+                <StyledCardButton backgroundColor={"green"} canClick={true}>
                     Save
                 </StyledCardButton>
             </StyledCard>

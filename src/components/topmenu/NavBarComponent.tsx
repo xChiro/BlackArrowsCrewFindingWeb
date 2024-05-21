@@ -3,6 +3,7 @@ import {NavUserComponent} from "./NavUserComponent.tsx";
 import {NavLogoComponent} from "./NavLogoComponent.tsx";
 import {MainMenu} from "./main/MainMenuComponent.tsx";
 import {colors} from "../../themes/Colors.ts";
+import {MenuItem} from "./main/MenuItem.tsx";
 
 const StyledNavbar = styled.nav`
     position: fixed;
@@ -15,7 +16,7 @@ const StyledNavbar = styled.nav`
     align-items: center;
     background-color: ${colors.primary};
     margin: 0;
-    padding: 0 1rem;
+    padding: 0 15rem;
     box-sizing: border-box;
 
     @media (max-width: 600px){
@@ -25,14 +26,14 @@ const StyledNavbar = styled.nav`
 `;
 
 const Navbar = () => {
-    const menuItems = [
+    const menuItems: MenuItem[] = [
         {
             name: 'Item 1',
-            subItems: ['SubItem 1', 'SubItem 2'],
+            onClick: () => console.log('Item 1 clicked'),
         },
         {
             name: 'Item 2',
-            subItems: ['SubItem 3', 'SubItem 4'],
+            onClick: () => console.log('Item 2 clicked'),
         },
     ];
 

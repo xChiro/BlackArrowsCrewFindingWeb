@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {faBars} from "@fortawesome/free-solid-svg-icons";
-import {MainMenuItem} from "./MainMenuItem.tsx";
-import {MainSubMenuComponent} from "./MainSubMenuComponent.tsx";
+import {MenuItem} from "./MenuItem.tsx";
+import {ContextualMenuComponent} from "./ContextualMenuComponent.tsx";
 import {StyledNavBarIcon} from "../StyledNavBarIcon.tsx";
 
 interface MenuProps {
-    items: MainMenuItem[];
+    items: MenuItem[];
 }
 
-export const MainMenu: React.FC<MenuProps> = ({items}) => {
+export const MainMenu = (props: MenuProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleIconClick = () => {
@@ -22,11 +22,9 @@ export const MainMenu: React.FC<MenuProps> = ({items}) => {
     return (
         <div>
             <StyledNavBarIcon icon={faBars} onClick={handleIconClick}/>
-            {isOpen && (
-                items.map((item, index) => (
-                    <MainSubMenuComponent key={index} item={item} handleMouseLeave={handleMouseLeave}/>
-                ))
-            )}
+            {isOpen &&
+                <ContextualMenuComponent items={props.items} handleMouseLeave={handleMouseLeave}/>
+            }
         </div>
     );
 };

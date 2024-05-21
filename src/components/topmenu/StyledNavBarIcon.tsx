@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export const StyledNavBarIcon = styled(FontAwesomeIcon)`
     font-size: 2.3em;
+    cursor: pointer;
 
     @media (max-width: 600px) {
         font-size: 1.8em;
