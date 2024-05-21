@@ -4,9 +4,11 @@ import {Outlet} from "react-router-dom";
 import {useEffect} from "react";
 import PlayerService from './services/PlayerService.ts';
 import {useAuth0} from "@auth0/auth0-react";
+import {useNavigate} from "react-router-dom";
 
 const App = () => {
     const { isAuthenticated } = useAuth0();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if(!isAuthenticated) return;
@@ -14,8 +16,8 @@ const App = () => {
         const playerServices = new PlayerService()
 
         playerServices.getCurrenProfile().then((profile) => {
-            if(profile === null) {
-                window.location.href = "/profile/create"
+            if(!profile) {
+                navigate('/profile/create');
             }
         });
     }, [isAuthenticated])
