@@ -11,6 +11,12 @@ const StyledSubMenu = styled.div<{ margin?: string }>`
     padding: 1rem;
     cursor: pointer;
     box-shadow: 0 0 10px 0 ${colors.primary};
+
+    ul {
+        list-style-type: none; 
+        margin: 0;          
+        padding: 0;  
+    }
 `;
 
 interface MainSubMenuProps {
@@ -22,11 +28,13 @@ interface MainSubMenuProps {
 export const ContextMenuComponent = (props: MainSubMenuProps) => {
     return (
         <StyledSubMenu margin={props.margin} onMouseLeave={props.handleMouseLeave}>
-            {props.items.map((subItem, subIndex) => (
-                <div key={subIndex} onClick={subItem.onClick}>
-                    {subItem.name}
-                </div>
-            ))}
+            <ul>
+                {props.items.map((subItem, subIndex) => (
+                    <li key={subIndex} onClick={() => subItem.onClick()}>
+                        {subItem.name}
+                    </li>
+                ))}
+            </ul>
         </StyledSubMenu>
     );
 };

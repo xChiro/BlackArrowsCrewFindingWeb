@@ -4,6 +4,7 @@ import {useAuth0} from "@auth0/auth0-react";
 import styled from 'styled-components';
 import {ContextMenuComponent} from "./main/ContextMenuComponent.tsx";
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const StyledLoginButton = styled.button`
     background-color: darkcyan;
@@ -24,6 +25,7 @@ const StyledLoginButton = styled.button`
 export const NavUserComponent = () => {
     const [isOpen, setIsOpen] = useState(false);
     const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
+    const navigate = useNavigate();
 
     const onUserIconClick = () => {
         setIsOpen(!isOpen);
@@ -33,8 +35,10 @@ export const NavUserComponent = () => {
         setIsOpen(false);
     }
 
-    const handleLogout = () => {
-        logout();
+    const handleLogout = () =>{
+        logout().then(() => {
+            navigate('/');
+        });
     }
 
     return (
@@ -43,7 +47,7 @@ export const NavUserComponent = () => {
                 <div>
                     <StyledNavBarIcon icon={faUser} onClick={onUserIconClick}/>
                     {isOpen && (
-                        <ContextMenuComponent margin={"0 0 0 -45px"} items={[{name: 'Logout', onClick: () => handleLogout}]}
+                        <ContextMenuComponent margin={"0 0 0 -45px"} items={[{name: 'Logout', onClick: handleLogout}]}
                                               handleMouseLeave={handleMouseLeave}/>
                     )}
                 </div>
