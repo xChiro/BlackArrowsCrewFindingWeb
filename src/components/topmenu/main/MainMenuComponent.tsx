@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {faBars} from "@fortawesome/free-solid-svg-icons";
 import {MenuItem} from "./MenuItem.tsx";
-import {ContextualMenuComponent} from "./ContextualMenuComponent.tsx";
+import {ContextMenuComponent} from "./ContextMenuComponent.tsx";
 import {StyledNavBarIcon} from "../StyledNavBarIcon.tsx";
 
 interface MenuProps {
@@ -23,7 +23,7 @@ export const MainMenu = (props: MenuProps) => {
         <div>
             <StyledNavBarIcon icon={faBars} onClick={handleIconClick}/>
             {isOpen &&
-                <ContextualMenuComponent items={props.items} handleMouseLeave={handleMouseLeave}/>
+                <ContextMenuComponent items={props.items} handleMouseLeave={handleMouseLeave}/>
             }
         </div>
     );

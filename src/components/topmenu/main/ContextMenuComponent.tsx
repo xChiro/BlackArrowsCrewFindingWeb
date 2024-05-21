@@ -2,12 +2,11 @@ import styled from "styled-components";
 import {MenuItem} from "./MenuItem.tsx";
 import {colors} from "../../../themes/Colors.ts";
 
-const StyledSubMenu = styled.div<{ left?: number, right?: number }>`
+const StyledSubMenu = styled.div<{ margin?: string }>`
     position: absolute;
     top: 100%;
     background-color: ${colors.primary};
-    left: ${props => props.left !== null ? `${props.left}px` : 'auto'};
-    right: ${props => props.right !== null ? `${props.right}px` : 'auto'};
+    margin: ${props => props.margin ? props.margin : '0'};
     z-index: 1;
     padding: 1rem;
     cursor: pointer;
@@ -17,13 +16,12 @@ const StyledSubMenu = styled.div<{ left?: number, right?: number }>`
 interface MainSubMenuProps {
     items: MenuItem[];
     handleMouseLeave: () => void;
-    left?: number;
-    right?: number;
+    margin?: string;
 }
 
-export const ContextualMenuComponent = (props: MainSubMenuProps) => {
+export const ContextMenuComponent = (props: MainSubMenuProps) => {
     return (
-        <StyledSubMenu left={props.left} right={props.right} onMouseLeave={props.handleMouseLeave}>
+        <StyledSubMenu margin={props.margin} onMouseLeave={props.handleMouseLeave}>
             {props.items.map((subItem, subIndex) => (
                 <div key={subIndex} onClick={subItem.onClick}>
                     {subItem.name}

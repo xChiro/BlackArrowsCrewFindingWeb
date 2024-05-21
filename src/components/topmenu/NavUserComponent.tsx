@@ -2,7 +2,7 @@ import {faUser} from "@fortawesome/free-solid-svg-icons";
 import {StyledNavBarIcon} from "./StyledNavBarIcon.tsx";
 import {useAuth0} from "@auth0/auth0-react";
 import styled from 'styled-components';
-import {ContextualMenuComponent} from "./main/ContextualMenuComponent.tsx";
+import {ContextMenuComponent} from "./main/ContextMenuComponent.tsx";
 import {useState} from "react";
 
 const StyledLoginButton = styled.button`
@@ -18,6 +18,7 @@ const StyledLoginButton = styled.button`
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    position: relative;
 `;
 
 export const NavUserComponent = () => {
@@ -42,8 +43,8 @@ export const NavUserComponent = () => {
                 <div>
                     <StyledNavBarIcon icon={faUser} onClick={onUserIconClick}/>
                     {isOpen && (
-                        <ContextualMenuComponent items={[{name: 'Logout', onClick: () => handleLogout}]}
-                                                 handleMouseLeave={handleMouseLeave} right={75}/>
+                        <ContextMenuComponent margin={"0 0 0 -45px"} items={[{name: 'Logout', onClick: () => handleLogout}]}
+                                              handleMouseLeave={handleMouseLeave}/>
                     )}
                 </div>
             ) : (

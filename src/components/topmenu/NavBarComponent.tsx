@@ -16,7 +16,7 @@ const StyledNavbar = styled.nav`
     align-items: center;
     background-color: ${colors.primary};
     margin: 0;
-    padding: 0 15rem;
+    padding: 0 10%;
     box-sizing: border-box;
 
     @media (max-width: 600px){
