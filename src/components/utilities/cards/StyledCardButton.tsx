@@ -10,4 +10,5 @@ export const StyledCardButton = styled.button<{ backgroundColor: string; canClic
     cursor: ${props => props.canClick ? 'pointer' : 'not-allowed'};
     width: 100%;
     font-size: 1.9rem;
+    margin-top: auto;
 `;
