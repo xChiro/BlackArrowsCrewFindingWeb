@@ -9,7 +9,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         domain="dev-wy8zvh844hvwj3zv.us.auth0.com"
         clientId="WgieeVjL8bkx4PfydRnQAcMlHizUUfRW"
         authorizationParams={{
-            redirect_uri: window.location.origin
+            redirect_uri: window.location.origin,
+            audience: "https://bka-api.com"
         }}
     >
         <React.StrictMode>

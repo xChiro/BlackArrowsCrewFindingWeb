@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { CrewCardComponentProps } from '../components/crews/cards/CrewCardComponent';
-import { RecentCrew } from '../services/models/crews/RecentCrew.ts';
+import {useState, useEffect} from 'react';
+import {CrewCardComponentProps} from '../components/crews/cards/CrewCardComponent';
+import {RecentCrew} from '../services/models/crews/RecentCrew.ts';
 import CrewService from '../services/CrewService';
 
 const extractCrew = (crew: RecentCrew): CrewCardComponentProps => {
@@ -24,7 +24,9 @@ const useRecentCrewData = () => {
             .then(crews => {
                 const crewData = crews.Crews.map(crew => extractCrew(crew));
                 setCrewData(crewData);
-            });
+            }).catch(error => {
+            console.error(error);
+        })
     }, []);
 
     return crewData;

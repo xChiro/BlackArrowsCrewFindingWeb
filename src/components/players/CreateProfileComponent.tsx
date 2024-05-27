@@ -2,12 +2,12 @@ import {StyledCard} from "../utilities/cards/StyledCard.tsx";
 import {StyledCardButton} from "../utilities/cards/StyledCardButton.tsx";
 import styled from "styled-components";
 import {StyledForm} from "../utilities/forms/StyledForm.tsx";
-import {StyledInput} from "../utilities/forms/StyledInput.tsx";
 import {StyledBodyCard} from "../utilities/cards/StyledBodyCard.tsx";
 import PlayerService from "../../services/PlayerService.ts";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAuthToken} from "../../hooks/UseAuthToken.tsx";
+import TextInputField from "../utilities/forms/TextInputField.tsx";
 
 const StyledLabel = styled.h2`
     margin-bottom: 0.5rem;
@@ -26,12 +26,10 @@ const CreateProfile = () => {
     const onSaveClick = async () => {
         const playerService = new PlayerService(await getToken());
 
-        playerService.createProfile({UserName: citizenName}).then((response) => {
-            if (response?.statusCode === 201) {
-                navigate('/');
-            } else {
-                setErrorMessage(response!.message);
-            }
+        playerService.createProfile({UserName: citizenName}).then(() => {
+            navigate("/");
+        }).catch(error => {
+            setErrorMessage(error.message);
         });
     }
 
@@ -43,11 +41,15 @@ const CreateProfile = () => {
                         <StyledLabel>
                             What is your citizen handler name?
                         </StyledLabel>
-                        <StyledInput type="text" name="handlerName" required={true} value={citizenName}
-                                     minLength={3}
-                                     maxLength={30}
-                                     onChange={(e) => setCitizenName(e.target.value)}/>
-                        {errorMessage && <div>{errorMessage}</div>}
+                        <TextInputField
+                            value={citizenName}
+                            onChange={setCitizenName}
+                            errorMessage={errorMessage}
+                            minLength={3}
+                            maxLength={30}
+                            inputName="handlerName"
+                            required={true}
+                        />
                     </StyledBodyCard>
                     <StyledCardButton backgroundColor={"green"} canClick={true}>
                         Save

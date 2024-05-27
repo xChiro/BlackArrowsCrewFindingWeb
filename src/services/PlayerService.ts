@@ -15,7 +15,7 @@ export default class CrewService {
         this.token = token;
     }
 
-    public async getCurrenProfile(): Promise<PlayerProfile | null> {
+    public async getCurrenProfile(): Promise<PlayerProfile> {
         const response = await fetch(`${this.baseUrl}/Players/Current/Profile`, {
             method: 'GET',
             headers: {
@@ -24,14 +24,16 @@ export default class CrewService {
             }
         });
 
-        if (response.status === 404) {
-            return null;
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message);
         }
 
-        return await response.json();
+        return data;
     }
 
-    public async createProfile(profile: PlayerCreationRequest): Promise<ErrorMessageResponse | null> {
+    public async createProfile(profile: PlayerCreationRequest): Promise<void> {
         const response = await fetch(`${this.baseUrl}/Players`, {
             method: 'POST',
             headers: {
@@ -41,12 +43,11 @@ export default class CrewService {
             body: JSON.stringify(profile)
         });
 
-        if (response.status === 200) {
-            return null;
+        if (response.ok) {
+            return;
         }
 
-        const message = await response.text();
-
-        return {message: message, statusCode: response.status};
+        const data = await response.json();
+        throw new Error(data.message);
     }
 }

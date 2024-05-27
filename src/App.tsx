@@ -12,15 +12,14 @@ const App = () => {
     const navigate = useNavigate();
     const authToken = useAuthToken();
 
-    useEffect(() => {
+    useEffect( () => {
         if (!isAuthenticated) return;
-        authToken().then((token) => {
+
+        authToken().then((token: string) => {
             const playerServices = new PlayerService(token)
 
-            playerServices.getCurrenProfile().then((profile) => {
-                if (!profile) {
-                    navigate('/profile/create');
-                }
+            playerServices.getCurrenProfile().catch(() => {
+                navigate('/profile/create');
             });
         });
     }, [isAuthenticated])
