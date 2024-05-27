@@ -21,7 +21,7 @@ const getButtonInfo = (isFull: boolean, isInCrew: boolean): ButtonInfo => {
     }
 };
 
-const JoinButton = (props: CardButtonProps): JSX.Element => {
+const JoinCrewButton = (props: CardButtonProps) => {
     const profile = useSelector((state: { playerProfile: PlayerProfile }) => state.playerProfile);
     const isInCrew = profile.ActiveCrewId !== '';
     const buttonInfo = getButtonInfo(props.isFull, isInCrew);
@@ -35,4 +35,4 @@ const JoinButton = (props: CardButtonProps): JSX.Element => {
     );
 };
 
-export default JoinButton;
+export default JoinCrewButton;

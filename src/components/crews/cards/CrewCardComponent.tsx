@@ -3,7 +3,7 @@ import {StyledCardImageHeader} from "../../utilities/cards/StyledCardImageHeader
 import {StyledBodyCard} from "../../utilities/cards/StyledBodyCard.tsx";
 import {StyledCardInfo} from "../../utilities/cards/StyledCardInfo.tsx";
 import {StyledCardDescription} from "../../utilities/cards/StyledCardDescription.tsx";
-import JoinButton from "./JoinButton.tsx";
+import JoinCrewButton from "./JoinCrewButton.tsx";
 
 export interface CrewCardComponentProps {
     id: string;
@@ -37,7 +37,7 @@ const CrewCardComponent = (props: CrewCardComponentProps) => {
                 </StyledCardInfo>
                 <StyledCardDescription>{props.description}</StyledCardDescription>
             </StyledBodyCard>
-            <JoinButton isFull={isFull(props.maxAllowedMembers, props.totalCurrentMembers)} />
+            <JoinCrewButton isFull={isFull(props.maxAllowedMembers, props.totalCurrentMembers)} />
         </StyledCard>
     );
 }
