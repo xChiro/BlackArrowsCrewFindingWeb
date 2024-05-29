@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import styled from 'styled-components';
 
 const StyledLink = styled(Link)`
@@ -6,6 +6,8 @@ const StyledLink = styled(Link)`
     color: #f0f0f0;
     text-decoration: none;
     cursor: pointer;
+    text-align: center;
+    display: inline-block;
 
     &:hover {
         color: #f0f0f0;
@@ -14,8 +16,6 @@ const StyledLink = styled(Link)`
 
 export const NavLogoComponent = () => {
     return (
-        <div>
-            <StyledLink to="/">Crew Finding</StyledLink>
-        </div>
+        <StyledLink to="/">Crew Finding</StyledLink>
     );
 };

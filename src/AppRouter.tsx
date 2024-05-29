@@ -1,25 +1,25 @@
 import {createBrowserRouter} from "react-router-dom";
 import App from "./App.tsx";
-import RecentCrews from "./components/crews/cards/RecentCrewsComponent.tsx";
 import CreateProfile from "./components/players/CreateProfileComponent.tsx";
 import CreateCrewComponent from "./components/crews/create/CreateCrewComponent.tsx";
+import RecentCrewCardContainer from "./components/crews/cards/CrewCardGridComponent.tsx";
 
 export const AppRouter = createBrowserRouter([
     {
         path: "/",
-        element:  <App />,
+        element: <App/>,
         children: [
             {
                 index: true,
-                element:  <RecentCrews />,
+                element: <RecentCrewCardContainer/>,
             },
             {
                 path: "/profile/create",
-                element: <CreateProfile />,
+                element: <CreateProfile/>,
             },
             {
-                path: "/Crew/Create",
-                element: <CreateCrewComponent />,
+                path: "/crews/create",
+                element: <CreateCrewComponent/>,
             }
         ]
     }

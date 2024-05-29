@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux';
-import { PlayerProfile } from '../../../stores/PlayerProfileSlice.ts';
 import {StyledCardButton} from "../../utilities/cards/StyledCardButton.tsx";
+import {usePlayer} from "../../../hooks/UsePlayerProfile.tsx";
+import {colors} from "../../../themes/Colors.ts";
 
 export interface CardButtonProps {
     isFull: boolean;
@@ -13,22 +13,22 @@ interface ButtonInfo {
 
 const getButtonInfo = (isFull: boolean, isInCrew: boolean): ButtonInfo => {
     if (isFull) {
-        return { color: "red", text: "Full" };
+        return {color: colors.redAlertColor, text: "Full"};
     } else if (isInCrew) {
-        return { color: "gray", text: "Already in a Crew" };
+        return {color: colors.inactiveColor, text: "Already in a Crew"};
     } else {
-        return { color: "green", text: "Join" };
+        return {color: colors.greenColor, text: "Join"};
     }
 };
 
 const JoinCrewButton = (props: CardButtonProps) => {
-    const profile = useSelector((state: { playerProfile: PlayerProfile }) => state.playerProfile);
-    const isInCrew = profile.ActiveCrewId !== '';
-    const buttonInfo = getButtonInfo(props.isFull, isInCrew);
+    const {isInCrew} = usePlayer();
+    const buttonInfo = getButtonInfo(props.isFull, isInCrew());
+
     return (
         <StyledCardButton
             backgroundColor={buttonInfo.color}
-            canClick={!props.isFull && !isInCrew}
+            canClick={!props.isFull && !isInCrew()}
         >
             {buttonInfo.text}
         </StyledCardButton>

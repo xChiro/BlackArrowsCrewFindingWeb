@@ -56,52 +56,50 @@ const CreateCrewComponent = () => {
     }
 
     return (
-        <div style={{display: 'flex', justifyContent: 'center', marginTop: '4rem'}}>
-            <StyledCard maxWidth="30rem" minHeight="9rem" maxHeight="15rem">
-                <StyledForm onSubmit={onCreateCrewClick}>
-                    <StyledCardImageHeader/>
+        <StyledCard maxWidth="30rem" minHeight="9rem" maxHeight="15rem">
+            <StyledForm onSubmit={onCreateCrewClick}>
+                <StyledCardImageHeader/>
 
-                    <StyledBodyCard>
-                        <StyledLabel>Crew Activity:</StyledLabel>
-                        <ComboBoxField inputName="activityName" value={crew.activityName} options={ACTIVITY_OPTIONS}
-                                       onChange={(value) => updateCrew("activityName", value)}/>
+                <StyledBodyCard>
+                    <StyledLabel>Crew Activity:</StyledLabel>
+                    <ComboBoxField inputName="activityName" value={crew.activityName} options={ACTIVITY_OPTIONS}
+                                   onChange={(value) => updateCrew("activityName", value)}/>
 
-                        <StyledLabel>Description:</StyledLabel>
-                        <TextAreaField inputName="description" value={crew.description}
-                                       onChange={(value) => updateCrew("description", value)} minLength={50}
-                                       maxLength={155} height="8rem" width="100%"/>
+                    <StyledLabel>Description:</StyledLabel>
+                    <TextAreaField inputName="description" value={crew.description}
+                                   onChange={(value) => updateCrew("description", value)} minLength={50}
+                                   maxLength={155} height="8rem" width="100%"/>
 
-                        <StyledLabel>Members Size:</StyledLabel>
-                        <ComboBoxField inputName="crewSize" value={crew.crewSize.toString()} options={CREW_SIZE_OPTIONS}
-                                       onChange={(value) => updateCrew("crewSize", Number(value))}/>
+                    <StyledLabel>Members Size:</StyledLabel>
+                    <ComboBoxField inputName="crewSize" value={crew.crewSize.toString()} options={CREW_SIZE_OPTIONS}
+                                   onChange={(value) => updateCrew("crewSize", Number(value))}/>
 
-                        <StyledLabel>System:</StyledLabel>
-                        <ComboBoxField inputName="system" value={crew.system} options={SYSTEM_OPTIONS}
-                                       onChange={(value) => updateCrew("system", value)}/>
+                    <StyledLabel>System:</StyledLabel>
+                    <ComboBoxField inputName="system" value={crew.system} options={SYSTEM_OPTIONS}
+                                   onChange={(value) => updateCrew("system", value)}/>
 
-                        <StyledLabel>Planetary System:</StyledLabel>
-                        <ComboBoxField inputName="planetarySystem" value={crew.planetarySystem}
-                                       options={PLANETARY_SYSTEM_OPTIONS}
-                                       onChange={(value) => updateCrew("planetarySystem", value)}/>
+                    <StyledLabel>Planetary System:</StyledLabel>
+                    <ComboBoxField inputName="planetarySystem" value={crew.planetarySystem}
+                                   options={PLANETARY_SYSTEM_OPTIONS}
+                                   onChange={(value) => updateCrew("planetarySystem", value)}/>
 
-                        <StyledLabel>Planet/Moon:</StyledLabel>
-                        <ComboBoxField inputName="planetMoon" value={crew.planetMoon} options={PLANET_MOON_OPTIONS}
-                                       onChange={(value) => updateCrew("planetMoon", value)}/>
+                    <StyledLabel>Planet/Moon:</StyledLabel>
+                    <ComboBoxField inputName="planetMoon" value={crew.planetMoon} options={PLANET_MOON_OPTIONS}
+                                   onChange={(value) => updateCrew("planetMoon", value)}/>
 
-                        <StyledLabel>Place:</StyledLabel>
-                        <ComboBoxField inputName="place" value={crew.place} options={PLACE_OPTIONS}
-                                       onChange={(value) => updateCrew("place", value)}/>
+                    <StyledLabel>Place:</StyledLabel>
+                    <ComboBoxField inputName="place" value={crew.place} options={PLACE_OPTIONS}
+                                   onChange={(value) => updateCrew("place", value)}/>
 
-                        <StyledLabel>Languages:</StyledLabel>
-                        <MultiComboBoxField inputName="languagesAbbrevs" value={crew.languagesAbbrevs}
-                                            options={LANGUAGES_OPTIONS}
-                                            onChange={(value) => updateCrew("languagesAbbrevs", value)}/>
-                    </StyledBodyCard>
+                    <StyledLabel>Languages:</StyledLabel>
+                    <MultiComboBoxField inputName="languagesAbbrevs" value={crew.languagesAbbrevs}
+                                        options={LANGUAGES_OPTIONS}
+                                        onChange={(value) => updateCrew("languagesAbbrevs", value)}/>
+                </StyledBodyCard>
 
-                    <StyledCardButton backgroundColor={"green"} canClick={true}>Create</StyledCardButton>
-                </StyledForm>
-            </StyledCard>
-        </div>
+                <StyledCardButton backgroundColor={"green"} canClick={true}>Create</StyledCardButton>
+            </StyledForm>
+        </StyledCard>
     );
 };
 

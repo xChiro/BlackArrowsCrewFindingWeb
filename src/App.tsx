@@ -8,6 +8,14 @@ import {useNavigate} from "react-router-dom";
 import {useAuthToken} from "./hooks/UseAuthToken.tsx";
 import {useDispatch} from "react-redux";
 import {createProfile} from "./stores/PlayerProfileSlice.ts";
+import styled from "styled-components";
+
+const StyledContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+`;
 
 const App = () => {
     const {isAuthenticated, isLoading} = useAuth0();
@@ -36,7 +44,9 @@ const App = () => {
     return (
         <>
             <Navbar/>
+            <StyledContainer>
             <Outlet/>
+            </StyledContainer>
         </>
     )
 }

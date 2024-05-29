@@ -12,7 +12,7 @@ const CrewCardGridComponent = styled.div`
     justify-content: center;
 `;
 
-const CrewCardContainer = () => {
+const RecentCrewCardContainer = () => {
     const crewData = useRecentCrewData();
 
     return (
@@ -24,4 +24,4 @@ const CrewCardContainer = () => {
     );
 };
 
-export default CrewCardContainer;
+export default RecentCrewCardContainer;
