@@ -26,7 +26,7 @@ export default class CrewService {
         return data;
     }
 
-    public async createCrew(crew: CrewCreation): Promise<void> {
+    public async createCrew(crew: CrewCreation): Promise<string> {
         const response = await fetch(`${this.baseUrl}/crews`, {
             method: "POST",
             headers: {
@@ -34,6 +34,24 @@ export default class CrewService {
                 "Authorization": `Bearer ${this.token}`
             },
             body: JSON.stringify(crew)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message);
+        }
+
+        return data.crewId;
+    }
+
+    public async joinCrew(crewId: string): Promise<void> {
+        const response = await fetch(`${this.baseUrl}/crews/${crewId}/members`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            }
         });
 
         if (!response.ok) {

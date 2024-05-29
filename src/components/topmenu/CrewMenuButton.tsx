@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {usePlayer} from "../../hooks/UsePlayerProfile.tsx";
+import {usePlayer} from "../../hooks/usePlayerProfile.tsx";
 import {colors} from "../../themes/Colors.ts";
 import {useNavigate} from "react-router-dom";
 import {useAuth0} from "@auth0/auth0-react";

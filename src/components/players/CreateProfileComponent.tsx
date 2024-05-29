@@ -6,7 +6,7 @@ import {StyledBodyCard} from "../utilities/cards/StyledBodyCard.tsx";
 import PlayerService from "../../services/PlayerService.ts";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useAuthToken} from "../../hooks/UseAuthToken.tsx";
+import {useAuthToken} from "../../hooks/useAuthToken.tsx";
 import TextInputField from "../utilities/forms/TextInputField.tsx";
 
 const StyledLabel = styled.h2`

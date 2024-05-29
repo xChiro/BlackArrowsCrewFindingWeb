@@ -1,30 +1,39 @@
-import {faUser} from "@fortawesome/free-solid-svg-icons";
-import {StyledNavBarIcon} from "./StyledNavBarIcon.tsx";
-import {useAuth0} from "@auth0/auth0-react";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { StyledNavBarIcon } from "./StyledNavBarIcon.tsx";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { StyledLoginButton } from "./StyledLoginButton.tsx";
 import styled from 'styled-components';
-import {ContextMenuComponent} from "./main/ContextMenuComponent.tsx";
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {colors} from "../../themes/Colors.ts";
 
-const StyledLoginButton = styled.button`
-    background-color: darkcyan;
-    height: 80%;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+const NavUserContainer = styled.div`
     position: relative;
+    display: inline-block;
+`;
+
+const ContextMenu = styled.div`
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: ${colors.primary};
+    padding: 10px;
+    z-index: 1000;
+    min-width: 150px;
+`;
+
+const ContextMenuItem = styled.div`
+    padding: 8px;
+    cursor: pointer;
+
+    &:hover {
+        background: ${colors.secondary};
+    }
 `;
 
 export const NavUserComponent = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
+    const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
     const navigate = useNavigate();
 
     const onUserIconClick = () => {
@@ -35,7 +44,7 @@ export const NavUserComponent = () => {
         setIsOpen(false);
     }
 
-    const handleLogout = () =>{
+    const handleLogout = () => {
         logout().then(() => {
             navigate('/');
         });
@@ -44,13 +53,14 @@ export const NavUserComponent = () => {
     return (
         <>
             {isAuthenticated ? (
-                <div>
-                    <StyledNavBarIcon icon={faUser} onClick={onUserIconClick}/>
+                <NavUserContainer>
+                    <StyledNavBarIcon icon={faUser} onClick={onUserIconClick} />
                     {isOpen && (
-                        <ContextMenuComponent margin={"0 0 0 -45px"} items={[{name: 'Logout', onClick: handleLogout}]}
-                                              handleMouseLeave={handleMouseLeave}/>
+                        <ContextMenu onMouseLeave={handleMouseLeave}>
+                            <ContextMenuItem onClick={handleLogout}>Logout</ContextMenuItem>
+                        </ContextMenu>
                     )}
-                </div>
+                </NavUserContainer>
             ) : (
                 <div>
                     <StyledLoginButton onClick={() => loginWithRedirect()}>

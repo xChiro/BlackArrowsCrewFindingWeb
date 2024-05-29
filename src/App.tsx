@@ -5,7 +5,7 @@ import {useEffect} from "react";
 import PlayerService from './services/PlayerService.ts';
 import {useAuth0} from "@auth0/auth0-react";
 import {useNavigate} from "react-router-dom";
-import {useAuthToken} from "./hooks/UseAuthToken.tsx";
+import {useAuthToken} from "./hooks/useAuthToken.tsx";
 import {useDispatch} from "react-redux";
 import {createProfile} from "./stores/PlayerProfileSlice.ts";
 import styled from "styled-components";
