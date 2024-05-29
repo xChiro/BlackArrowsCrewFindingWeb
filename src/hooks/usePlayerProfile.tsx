@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from 'react-redux';
-import {addCrew} from "../stores/PlayerProfileSlice.ts";
+import {addCrew, removeCrew} from "../stores/PlayerProfileSlice.ts";
 
 export interface PlayerProfile {
     Id: string;
@@ -11,7 +11,6 @@ export interface PlayerProfile {
 export const usePlayer = () => {
     const profile = useSelector((state: { playerProfile: PlayerProfile }) => state.playerProfile);
     const dispatch = useDispatch();
-
 
     const isInCrew = (): boolean => {
         return profile.ActiveCrewId !== '';
@@ -25,5 +24,9 @@ export const usePlayer = () => {
         dispatch(addCrew(crewId));
     }
 
-    return {profile, isInCrew, isProfileLoaded, joinCrew};
+    const leaveCrew = () => {
+        dispatch(removeCrew());
+    }
+
+    return {profile, isInCrew, isProfileLoaded, joinCrew, leaveCrew};
 };

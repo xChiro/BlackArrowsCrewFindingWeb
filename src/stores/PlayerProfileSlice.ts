@@ -23,10 +23,13 @@ const playerProfileSlice = createSlice({
         },
         addCrew: (state, action: PayloadAction<string>) => {
             state.ActiveCrewId = action.payload;
+        },
+        removeCrew: (state) => {
+            state.ActiveCrewId = '';
         }
     }
 });
 
-export const { createProfile, addCrew } = playerProfileSlice.actions;
+export const { createProfile, addCrew, removeCrew } = playerProfileSlice.actions;
 
 export default playerProfileSlice.reducer;

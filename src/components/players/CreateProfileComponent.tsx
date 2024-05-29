@@ -8,6 +8,7 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAuthToken} from "../../hooks/useAuthToken.tsx";
 import TextInputField from "../utilities/forms/TextInputField.tsx";
+import {colors} from "../../themes/Colors.ts";
 
 const StyledLabel = styled.h2`
     margin-bottom: 0.5rem;
@@ -51,7 +52,7 @@ const CreateProfile = () => {
                             required={true}
                         />
                     </StyledBodyCard>
-                    <StyledCardButton backgroundColor={"green"} canClick={true}>
+                    <StyledCardButton $buttonBackgroundColor={colors.greenColor} $canClick={true}>
                         Save
                     </StyledCardButton>
                 </StyledForm>

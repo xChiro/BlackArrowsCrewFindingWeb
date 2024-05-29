@@ -4,8 +4,8 @@ import {colors} from "../../themes/Colors.ts";
 import {useNavigate} from "react-router-dom";
 import {useAuth0} from "@auth0/auth0-react";
 
-const StyledButton = styled.button<{ backgroundColor: string; canClick: boolean; }>`
-    background-color: ${props => props.backgroundColor ?? colors.primary};
+const StyledButton = styled.button<{ $buttonBackgroundColor: string; $canClick: boolean; }>`
+    background-color: ${({ $buttonBackgroundColor = colors.primary }) => $buttonBackgroundColor};
     border: none;
     color: white;
     padding: 0.625rem;
@@ -14,7 +14,7 @@ const StyledButton = styled.button<{ backgroundColor: string; canClick: boolean;
     font-size: 1em;
     border-radius: 10px;
     height: 80%;
-    cursor: ${props => props.canClick ? 'pointer' : 'not-allowed'};
+    cursor: ${({ $canClick }) => $canClick ? 'pointer' : 'not-allowed'};
 `;
 
 export const CrewMenuButton = () => {
@@ -36,13 +36,13 @@ export const CrewMenuButton = () => {
 
     if (isInCrew()) {
         return (
-            <StyledButton canClick={true} backgroundColor={colors.lightBlueColor} onClick={openCrewClick}>
+            <StyledButton $canClick={true} $buttonBackgroundColor={colors.lightBlueColor} onClick={openCrewClick}>
                 View My Crew
             </StyledButton>
         );
     } else {
         return (
-            <StyledButton canClick={true} backgroundColor={colors.greenColor} onClick={createCrewClick}>
+            <StyledButton $canClick={true} $buttonBackgroundColor={colors.greenColor} onClick={createCrewClick}>
                 Create Crew
             </StyledButton>
         );

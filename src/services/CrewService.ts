@@ -59,4 +59,19 @@ export default class CrewService {
             throw new Error(data.message);
         }
     }
+
+    public async leaveCrew(crewId: string): Promise<void> {
+        const response = await fetch(`${this.baseUrl}/crews/${crewId}/members/leave`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            }
+        });
+
+        if (!response.ok) {
+            const data = await response.json();
+            throw new Error(data.message);
+        }
+    }
 }

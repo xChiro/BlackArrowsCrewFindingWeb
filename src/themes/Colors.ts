@@ -5,5 +5,5 @@ export const colors = {
     lightBlueColor: 'dodgerblue',
     inactiveColor: 'grey',
     greenColor: 'green',
-    redAlertColor: 'green',
+    redAlertColor: 'red',
 }

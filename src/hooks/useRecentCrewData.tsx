@@ -5,7 +5,7 @@ import CrewService from '../services/CrewService';
 
 const extractCrew = (crew: RecentCrew): CrewCardComponentProps => {
     return {
-        id: crew.Id,
+        crewId: crew.Id,
         crewName: crew.Name,
         activity: crew.Activity,
         description: crew.Description,
