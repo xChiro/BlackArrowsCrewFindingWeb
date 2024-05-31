@@ -2,7 +2,7 @@ import {createBrowserRouter} from "react-router-dom";
 import App from "./App.tsx";
 import CreateProfile from "./components/players/CreateProfileComponent.tsx";
 import CreateCrewComponent from "./components/crews/create/CreateCrewComponent.tsx";
-import RecentCrewCardContainer from "./components/crews/cards/CrewCardGridComponent.tsx";
+import RecentCrewCardContainer from "./components/crews/cards/RecentCrewCardContainer.tsx";
 
 export const AppRouter = createBrowserRouter([
     {

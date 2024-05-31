@@ -2,11 +2,12 @@ import {StyledCardButton} from "../../utilities/cards/StyledCardButton.tsx";
 import {usePlayer} from "../../../hooks/usePlayerProfile.tsx";
 import {colors} from "../../../themes/Colors.ts";
 import {useNavigate} from "react-router-dom";
-import useLeaveCrew from "../../../hooks/crews/useLeaveCrew.tsx";
+import useDisbandCrew from "../../../hooks/crews/useDisbandCrew.tsx";
 
 export interface CardButtonProps {
     isFull: boolean;
     crewId: string;
+    captainCrewId: string;
 }
 
 interface ButtonInfo {
@@ -14,24 +15,24 @@ interface ButtonInfo {
     text: string;
 }
 
-const getButtonInfo = (isInCurrentCrew: boolean): ButtonInfo => {
-    if (!isInCurrentCrew) {
+const getButtonInfo = (isCaptain: boolean): ButtonInfo => {
+    if (!isCaptain) {
         return {color: colors.inactiveColor, text: "Not in a Crew"};
     }
     else {
-        return {color: colors.redAlertColor, text: "Leave"};
+        return {color: colors.redAlertColor, text: "Disband"};
     }
 };
 
-const CrewCardLeaveButton = (props: CardButtonProps) => {
-    const { isInCrew, profile } = usePlayer();
-    const leaveCrew = useLeaveCrew();
-    const buttonInfo = getButtonInfo(profile.ActiveCrewId == props.crewId);
+const CrewCardDisbandButton = (props: CardButtonProps) => {
+    const { isInCrew, isCaptain, profile } = usePlayer();
+    const disbandCrew = useDisbandCrew();
+    const buttonInfo = getButtonInfo(isCaptain(props.crewId, props.captainCrewId));
     const navigate = useNavigate();
 
     const onClick = async () => {
         try {
-            await leaveCrew();
+            await disbandCrew();
             navigate('/');
         }
         catch (e) {
@@ -50,4 +51,4 @@ const CrewCardLeaveButton = (props: CardButtonProps) => {
     );
 };
 
-export default CrewCardLeaveButton;
+export default CrewCardDisbandButton;

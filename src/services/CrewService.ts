@@ -42,7 +42,7 @@ export default class CrewService {
             throw new Error(data.message);
         }
 
-        return data.crewId;
+        return data.CrewId;
     }
 
     public async joinCrew(crewId: string): Promise<void> {
@@ -56,12 +56,12 @@ export default class CrewService {
 
         if (!response.ok) {
             const data = await response.json();
-            throw new Error(data.message);
+            throw new Error(data.Message);
         }
     }
 
-    public async leaveCrew(crewId: string): Promise<void> {
-        const response = await fetch(`${this.baseUrl}/crews/${crewId}/members/leave`, {
+    public async leaveCrew(): Promise<void> {
+        const response = await fetch(`${this.baseUrl}/crews/leave`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -71,7 +71,22 @@ export default class CrewService {
 
         if (!response.ok) {
             const data = await response.json();
-            throw new Error(data.message);
+            throw new Error(data.Message);
+        }
+    }
+
+    public async disbandCrew(): Promise<void> {
+        const response = await fetch(`${this.baseUrl}/crews/disband`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            }
+        });
+
+        if (!response.ok) {
+            const data = await response.json();
+            throw new Error(data.Message);
         }
     }
 }

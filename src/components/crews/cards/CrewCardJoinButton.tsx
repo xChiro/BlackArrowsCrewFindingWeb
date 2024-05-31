@@ -2,7 +2,7 @@ import {StyledCardButton} from "../../utilities/cards/StyledCardButton.tsx";
 import {usePlayer} from "../../../hooks/usePlayerProfile.tsx";
 import {colors} from "../../../themes/Colors.ts";
 import {useNavigate} from "react-router-dom";
-import useJoinCrew from "../../../hooks/useJoinCrew.tsx";
+import useJoinCrew from "../../../hooks/crews/useJoinCrew.tsx";
 
 export interface CardButtonProps {
     isFull: boolean;

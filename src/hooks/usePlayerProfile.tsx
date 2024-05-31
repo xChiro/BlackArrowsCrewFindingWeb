@@ -28,5 +28,9 @@ export const usePlayer = () => {
         dispatch(removeCrew());
     }
 
-    return {profile, isInCrew, isProfileLoaded, joinCrew, leaveCrew};
+    const isCaptain = (crewId: string, crewCaptainId: string): boolean => {
+        return profile.ActiveCrewId == crewId && profile.Id == crewCaptainId;
+    }
+
+    return {profile, isInCrew, isProfileLoaded, joinCrew, leaveCrew, isCaptain};
 };

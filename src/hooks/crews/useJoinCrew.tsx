@@ -1,6 +1,6 @@
-import {useAuthToken} from "./useAuthToken.tsx";
-import {usePlayer} from "./usePlayerProfile.tsx";
-import CrewService from "../services/CrewService.ts";
+import {useAuthToken} from "../useAuthToken.tsx";
+import {usePlayer} from "../usePlayerProfile.tsx";
+import CrewService from "../../services/CrewService.ts";
 
 const useJoinCrew = (crewId: string) => {
     const authToken = useAuthToken();

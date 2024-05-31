@@ -9,7 +9,7 @@ import {StyledCardImageHeader} from "../../utilities/cards/StyledCardImageHeader
 import styled from "styled-components";
 import TextAreaField from "../../utilities/forms/TextAreaField.tsx";
 import MultiComboBoxField from "../../utilities/forms/MultiComboBoxField.tsx";
-import {useCreateCrew} from "../../../hooks/useCreateCrew.tsx";
+import {useCreateCrew} from "../../../hooks/crews/useCreateCrew.tsx";
 
 const StyledLabel = styled.label`
     font-size: 1.4rem;
@@ -40,8 +40,8 @@ const CreateCrewComponent = () => {
 
     const {crew, setCrew, createCrew} = useCreateCrew(initialCrew);
 
-    const updateCrew = (Attr: keyof CrewCreation, value: any) => {
-        setCrew((prevCrew: CrewCreation) => ({...prevCrew, [Attr]: value}));
+    const updateCrew = (Attr: keyof CrewCreation, value: string | number | string[]) => {
+        setCrew({...crew, [Attr]: value});
     };
 
     const onCreateCrewClick = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -95,7 +95,7 @@ const CreateCrewComponent = () => {
                                         onChange={(value) => updateCrew("languagesAbbrevs", value)}/>
                 </StyledBodyCard>
 
-                <StyledCardButton blackgroundcolor={"green"} canClick={true}>Create</StyledCardButton>
+                <StyledCardButton $buttonBackgroundColor={"green"} $canClick={true}>Create</StyledCardButton>
             </StyledForm>
         </StyledCard>
     );

@@ -1,19 +1,19 @@
-import {CrewCreation} from "../services/models/crews/CrewCreation.ts";
-import {useAuthToken} from "./useAuthToken.tsx";
-import {useNavigate} from "react-router-dom";
+import {CrewCreation} from "../../services/models/crews/CrewCreation.ts";
+import {useAuthToken} from "../useAuthToken.tsx";
 import {useState} from "react";
-import CrewService from "../services/CrewService.ts";
-import {usePlayer} from "./usePlayerProfile.tsx";
+import CrewService from "../../services/CrewService.ts";
+import {usePlayer} from "../usePlayerProfile.tsx";
+import {useNavigate} from "react-router-dom";
 
 export const useCreateCrew = (initialCrew: CrewCreation): {
     crew: CrewCreation,
-    setCrew: Function,
-    createCrew: Function
+    setCrew: (crew: CrewCreation) => void,
+    createCrew: (crew: CrewCreation) => Promise<void>
 } => {
     const authToken = useAuthToken();
     const {joinCrew} = usePlayer();
-    const navigate = useNavigate();
     const [crew, setCrew] = useState<CrewCreation>(initialCrew);
+    const navigate = useNavigate();
 
     const createCrew = async (crew: CrewCreation) => {
         try {

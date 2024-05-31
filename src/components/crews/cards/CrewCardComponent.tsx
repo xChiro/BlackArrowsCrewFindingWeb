@@ -3,13 +3,12 @@ import {StyledCardImageHeader} from "../../utilities/cards/StyledCardImageHeader
 import {StyledBodyCard} from "../../utilities/cards/StyledBodyCard.tsx";
 import {StyledCardInfo} from "../../utilities/cards/StyledCardInfo.tsx";
 import {StyledCardDescription} from "../../utilities/cards/StyledCardDescription.tsx";
-import CrewCardJoinButton from "./CrewCardJoinButton.tsx";
-import {usePlayer} from "../../../hooks/usePlayerProfile.tsx";
-import CrewCardLeaveButton from "./CrewCardLeaveButton.tsx";
+import useCrewButton from "../../../hooks/crews/useCrewButton.tsx";
 
 export interface CrewCardComponentProps {
     crewId: string;
     crewName: string;
+    captainId: string;
     activity: string;
     description: string;
     maxAllowedMembers: number;
@@ -26,8 +25,8 @@ const isFull = (maxAllowedMembers: number, totalCurrentMembers: number) => {
 }
 
 const CrewCardComponent = (props: CrewCardComponentProps) => {
-    const {profile} = usePlayer();
-
+    const isCrewFull = isFull(props.maxAllowedMembers, props.totalCurrentMembers);
+    const CrewButton = useCrewButton(props.crewId, props.captainId, isCrewFull);
 
     return (
         <StyledCard>
@@ -42,12 +41,7 @@ const CrewCardComponent = (props: CrewCardComponentProps) => {
                 </StyledCardInfo>
                 <StyledCardDescription>{props.description}</StyledCardDescription>
             </StyledBodyCard>
-            {profile.ActiveCrewId !== props.crewId ?
-                <CrewCardJoinButton isFull={isFull(props.maxAllowedMembers, props.totalCurrentMembers)}
-                                    crewId={props.crewId}/> :
-                <CrewCardLeaveButton isFull={isFull(props.maxAllowedMembers, props.totalCurrentMembers)}
-                                     crewId={props.crewId}/>}
-
+            {CrewButton}
         </StyledCard>
     );
 }

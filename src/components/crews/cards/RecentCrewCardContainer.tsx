@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import useRecentCrewData from "../../../hooks/useRecentCrewData.tsx";
+import useRecentCrewData from "../../../hooks/crews/useRecentCrewData.tsx";
 import CrewCardComponent from "./CrewCardComponent.tsx";
 
-const CrewCardGridComponent = styled.div`
+const StyledRecentCrewCardContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     gap: 3rem;
@@ -16,11 +16,11 @@ const RecentCrewCardContainer = () => {
     const crewData = useRecentCrewData();
 
     return (
-        <CrewCardGridComponent>
+        <StyledRecentCrewCardContainer>
             {crewData.map((crew, index) => (
                 <CrewCardComponent key={index} {...crew} />
             ))}
-        </CrewCardGridComponent>
+        </StyledRecentCrewCardContainer>
     );
 };
 
