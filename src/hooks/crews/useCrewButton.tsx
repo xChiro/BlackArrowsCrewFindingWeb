@@ -17,7 +17,7 @@ const useCrewButton = (crewId: string, crewCaptainId: string, isCrewFull: boolea
         }
 
         return <CrewCardLeaveButton isFull={isCrewFull} crewId={crewId}/>;
-    }, [profile.ActiveCrewId]);
+    }, [crewId, crewCaptainId, isCrewFull, profile, isCaptain]);
 }
 
 export default useCrewButton;

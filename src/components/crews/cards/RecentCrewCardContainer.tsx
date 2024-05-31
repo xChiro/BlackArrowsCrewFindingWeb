@@ -3,7 +3,6 @@ import useRecentCrewData from "../../../hooks/crews/useRecentCrewData.tsx";
 import CrewCardComponent from "./CrewCardComponent.tsx";
 
 const StyledRecentCrewCardContainer = styled.div`
-    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     gap: 3rem;
     padding: 1rem;

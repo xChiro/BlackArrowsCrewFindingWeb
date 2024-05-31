@@ -6,14 +6,12 @@ const useJoinCrew = (crewId: string) => {
     const authToken = useAuthToken();
     const { joinCrew } = usePlayer();
 
-    const join = async () => {
+    return async () => {
         const token = await authToken();
         const crewService = new CrewService(token);
         await crewService.joinCrew(crewId);
         joinCrew(crewId);
     };
-
-    return join;
 };
 
 export default useJoinCrew;
