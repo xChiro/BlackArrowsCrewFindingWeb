@@ -6,4 +6,5 @@ export const StyledCardDescription = styled.p`
     overflow: hidden;
     text-overflow: ellipsis;
     margin-right: 1rem;
+    margin-top: .2rem;
 `;

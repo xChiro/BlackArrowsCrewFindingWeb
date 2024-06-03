@@ -1,10 +1,11 @@
 import {useState, useEffect} from 'react';
-import {CrewCardComponentProps} from '../../components/crews/cards/CrewCardComponent.tsx';
 import {RecentCrew} from '../../services/models/crews/RecentCrew.ts';
 import CrewService from '../../services/CrewService.ts';
 import {usePlayer} from "../usePlayerProfile.tsx";
+import {CrewViewProps} from "../../components/crews/cards/CrewViewComponent.tsx";
 
-const extractCrew = (crew: RecentCrew): CrewCardComponentProps => {
+
+const extractCrew = (crew: RecentCrew): CrewViewProps => {
     return {
         crewId: crew.Id,
         crewName: crew.Name,
@@ -18,7 +19,7 @@ const extractCrew = (crew: RecentCrew): CrewCardComponentProps => {
 }
 
 const useRecentCrewData = () => {
-    const [crewData, setCrewData] = useState<CrewCardComponentProps[]>([]);
+    const [crewData, setCrewData] = useState<CrewViewProps[]>([]);
     const {profile} = usePlayer();
 
     useEffect(() => {

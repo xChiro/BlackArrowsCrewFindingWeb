@@ -1,5 +1,6 @@
 import {RecentCrewsResponse} from "./models/crews/RecentCrewsResponse.ts";
 import {CrewCreation} from "./models/crews/CrewCreation.ts";
+import {Crew} from "./models/crews/Crew.ts";
 
 export default class CrewService {
     private readonly baseUrl: string;
@@ -11,7 +12,23 @@ export default class CrewService {
     }
 
     public async getRecentCrews(): Promise<RecentCrewsResponse> {
-        const response = await fetch(`${this.baseUrl}/crews/recent`, {
+        const response = await fetch(`${this.baseUrl}/Recent/Crews`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        const data = await response.json();
+
+        if (!response.ok)
+            throw new Error(data.message);
+
+        return data;
+    }
+
+    public async getCrew(id: string): Promise<Crew> {
+        const response = await fetch(`${this.baseUrl}/crews/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

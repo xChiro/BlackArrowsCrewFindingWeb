@@ -18,13 +18,13 @@ const StyledButton = styled.button<{ $buttonBackgroundColor: string; $canClick: 
 `;
 
 export const CrewMenuButton = () => {
-    const {isInCrew, isProfileLoaded} = usePlayer();
+    const {isInCrew, isProfileLoaded, profile} = usePlayer();
     const {loginWithRedirect} = useAuth0();
 
     const navigate = useNavigate();
 
     const openCrewClick = () => {
-        // Handle your click event here...
+        navigate('/crews/' + profile.ActiveCrewId);
     }
 
     const createCrewClick = async () => {

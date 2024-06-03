@@ -1,6 +1,6 @@
 import {ReunionPoint} from "./ReunionPoint.ts";
 
-export interface RecentCrew {
+export interface BaseCrew {
     Id: string;
     Name: string;
     CaptainId: string;
@@ -9,5 +9,8 @@ export interface RecentCrew {
     ReunionPoint: ReunionPoint;
     Languages: string[];
     MaxPlayers: number;
+}
+
+export interface RecentCrew extends BaseCrew {
     CurrentPlayers: number;
 }
