@@ -8,7 +8,7 @@ const StyledButton = styled.button<{ $buttonBackgroundColor: string; $canClick: 
     background-color: ${({ $buttonBackgroundColor = colors.primary }) => $buttonBackgroundColor};
     border: none;
     color: white;
-    padding: 0.625rem;
+    padding: 3px 10px;
     text-align: center;
     display: inline-block;
     font-size: 1em;

@@ -6,7 +6,7 @@ export const StyledLoginButton = styled.button`
     border: none;
     border-radius: 10px;
     color: white;
-    padding: 10px 20px;
+    padding: 3px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;

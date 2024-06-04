@@ -2,9 +2,9 @@ import styled from "styled-components";
 import {colors} from "../../../themes/Colors.ts";
 
 interface StyledCardProps {
-    maxWidth?: string;
-    minHeight?: string;
-    maxHeight?: string;
+    $maxWidth?: string;
+    $minHeight?: string;
+    $maxHeight?: string;
 }
 
 export const StyledCard = styled.div<StyledCardProps>`
@@ -13,6 +13,7 @@ export const StyledCard = styled.div<StyledCardProps>`
     background-color: ${colors.primary};
     border-radius: 1rem;
     width: 100%;
-    max-width: ${props => props.maxWidth || '25rem'};
-    min-height: ${props => props.minHeight || '30rem'};
+    max-width: ${props => props.$maxWidth || '25rem'};
+    min-height: ${props => props.$minHeight || '30rem'};
+    max-height: ${props => props.$maxHeight || '9rem'};
 `;

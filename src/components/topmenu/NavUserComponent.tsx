@@ -1,9 +1,9 @@
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { StyledNavBarIcon } from "./StyledNavBarIcon.tsx";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { StyledLoginButton } from "./StyledLoginButton.tsx";
+import {faUser} from "@fortawesome/free-solid-svg-icons";
+import {StyledNavBarIcon} from "./StyledNavBarIcon.tsx";
+import {useAuth0} from "@auth0/auth0-react";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {StyledLoginButton} from "./StyledLoginButton.tsx";
 import styled from 'styled-components';
 import {colors} from "../../themes/Colors.ts";
 
@@ -33,7 +33,7 @@ const ContextMenuItem = styled.div`
 
 export const NavUserComponent = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+    const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
     const navigate = useNavigate();
 
     const onUserIconClick = () => {
@@ -54,7 +54,7 @@ export const NavUserComponent = () => {
         <>
             {isAuthenticated ? (
                 <NavUserContainer>
-                    <StyledNavBarIcon icon={faUser} onClick={onUserIconClick} />
+                    <StyledNavBarIcon icon={faUser} onClick={onUserIconClick}/>
                     {isOpen && (
                         <ContextMenu onMouseLeave={handleMouseLeave}>
                             <ContextMenuItem onClick={handleLogout}>Logout</ContextMenuItem>
@@ -62,11 +62,9 @@ export const NavUserComponent = () => {
                     )}
                 </NavUserContainer>
             ) : (
-                <div>
-                    <StyledLoginButton onClick={() => loginWithRedirect()}>
-                        Login / Join
-                    </StyledLoginButton>
-                </div>
+                <StyledLoginButton onClick={() => loginWithRedirect()}>
+                    Login / Join
+                </StyledLoginButton>
             )}
         </>
     );

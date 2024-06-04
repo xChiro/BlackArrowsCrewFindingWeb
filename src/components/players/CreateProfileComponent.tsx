@@ -4,11 +4,12 @@ import styled from "styled-components";
 import {StyledForm} from "../utilities/forms/StyledForm.tsx";
 import {StyledBodyCard} from "../utilities/cards/StyledBodyCard.tsx";
 import PlayerService from "../../services/PlayerService.ts";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAuthToken} from "../../hooks/useAuthToken.tsx";
 import TextInputField from "../utilities/forms/TextInputField.tsx";
 import {colors} from "../../themes/Colors.ts";
+import {usePlayer} from "../../hooks/usePlayerProfile.tsx";
 
 const StyledLabel = styled.h2`
     margin-bottom: 0.5rem;
@@ -19,15 +20,23 @@ const CreateProfile = () => {
     const navigate = useNavigate();
     const authToken = useAuthToken();
     const [errorMessage, setErrorMessage] = useState("");
+    const {profile} = usePlayer();
 
     const getToken = async () => {
         return await authToken();
     }
 
+    useEffect(() => {
+        if (profile.CitizenName) {
+            navigate("/");
+        }
+    }, [profile.CitizenName, navigate]);
+
     const onSaveClick = async () => {
         const playerService = new PlayerService(await getToken());
 
         playerService.createProfile({UserName: citizenName}).then(() => {
+            profile.CitizenName = citizenName;
             navigate("/");
         }).catch(error => {
             setErrorMessage(error.message);
@@ -36,7 +45,7 @@ const CreateProfile = () => {
 
     return (
         <div style={{display: 'flex', justifyContent: 'center', marginTop: '4rem'}}>
-            <StyledCard maxWidth="30rem" minHeight="9rem" maxHeight="15rem">
+            <StyledCard $maxWidth="30rem" $minHeight="9rem" $maxHeight="15rem">
                 <StyledForm onSubmit={onSaveClick}>
                     <StyledBodyCard>
                         <StyledLabel>

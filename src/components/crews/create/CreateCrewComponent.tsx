@@ -54,7 +54,7 @@ const CreateCrewComponent = () => {
     };
 
     return (
-        <StyledCard maxWidth="30rem" minHeight="9rem" maxHeight="15rem">
+        <StyledCard $maxWidth="30rem" $minHeight="9rem" $maxHeight="90rem">
             <StyledForm onSubmit={onCreateCrewClick}>
                 <StyledCardImageHeader/>
 
