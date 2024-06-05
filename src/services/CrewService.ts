@@ -31,7 +31,8 @@ export default class CrewService {
         const response = await fetch(`${this.baseUrl}/crews/${id}`, {
             method: "GET",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${this.token}`
             }
         });
 
