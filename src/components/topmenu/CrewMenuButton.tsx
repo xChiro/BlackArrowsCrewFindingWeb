@@ -8,10 +8,10 @@ const StyledButton = styled.button<{ $buttonBackgroundColor: string; $canClick: 
     background-color: ${({ $buttonBackgroundColor = colors.primary }) => $buttonBackgroundColor};
     border: none;
     color: white;
-    padding: 3px 10px;
     text-align: center;
     display: inline-block;
-    font-size: 1em;
+    padding: 1px 5px;
+    font-size: 1rem;
     border-radius: 10px;
     height: 80%;
     cursor: ${({ $canClick }) => $canClick ? 'pointer' : 'not-allowed'};

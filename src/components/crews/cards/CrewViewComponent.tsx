@@ -45,8 +45,8 @@ const CrewViewComponent = (props: CrewViewProps) => {
             <StyledBodyCard>
                 <StyledCardInfo>
                     <h1>{props.crewName}</h1>
-                    <h5>{props.location}</h5>
-                    <h2>{freeSlots(props.maxAllowedMembers, props.totalCurrentMembers)} slots available</h2>
+                    <h6>{props.location}</h6>
+                    <h2 style={{marginTop: "1rem"}}>{freeSlots(props.maxAllowedMembers, props.totalCurrentMembers)} slots available</h2>
                     {props.captainName && <span>Captain: <b>{props.captainName}</b></span>}
                     <span>Activity: <b>{props.activity}</b></span>
                 </StyledCardInfo>

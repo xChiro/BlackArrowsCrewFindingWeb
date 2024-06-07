@@ -24,7 +24,6 @@ const App = () => {
 
     const dispatch = useDispatch();
 
-
     useEffect(() => {
         if (isLoading || !isAuthenticated) return;
 
