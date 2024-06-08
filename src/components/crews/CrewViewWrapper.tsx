@@ -1,13 +1,13 @@
-import {useParams} from "react-router-dom";
 import CrewViewComponent from "./cards/CrewViewComponent.tsx";
 import useGetCrew from "../../hooks/crews/useGetCrew.tsx";
+import {useParams} from "react-router-dom";
 
 const CrewViewWrapper = () => {
     const {crewId} = useParams();
     const {crew} = useGetCrew(crewId ?? "");
 
-
     return (
+
         <CrewViewComponent crewId={crewId ?? ""}
                            crewName={crew?.Name ?? ""}
                            captainId={crew?.CaptainId ?? ""}

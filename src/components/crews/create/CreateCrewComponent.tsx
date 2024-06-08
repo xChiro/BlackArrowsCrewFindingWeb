@@ -5,11 +5,11 @@ import {StyledForm} from "../../utilities/forms/StyledForm.tsx";
 import {CrewCreation} from "../../../services/models/crews/CrewCreation.ts";
 import React from "react";
 import ComboBoxField from "../../utilities/forms/ComboBoxField.tsx";
-import {StyledCardImageHeader} from "../../utilities/cards/StyledCardImageHeader.tsx";
 import styled from "styled-components";
 import TextAreaField from "../../utilities/forms/TextAreaField.tsx";
 import MultiComboBoxField from "../../utilities/forms/MultiComboBoxField.tsx";
 import {useCreateCrew} from "../../../hooks/crews/useCreateCrew.tsx";
+import ActivityCrewCardHeader from "../cards/ActivityCrewCardHeader.tsx";
 
 const StyledLabel = styled.label`
     font-size: 1.4rem;
@@ -56,7 +56,7 @@ const CreateCrewComponent = () => {
     return (
         <StyledCard $maxWidth="30rem" $minHeight="9rem" $maxHeight="90rem">
             <StyledForm onSubmit={onCreateCrewClick}>
-                <StyledCardImageHeader/>
+                <ActivityCrewCardHeader activity={crew.activityName}/>
 
                 <StyledBodyCard>
                     <StyledLabel>Crew Activity:</StyledLabel>
