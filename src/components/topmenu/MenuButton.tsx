@@ -10,7 +10,7 @@ const StyledButton = styled.button<{ $buttonBackgroundColor: string; $canClick: 
     padding: 1px 5px;
     font-size: 1rem;
     border-radius: 10px;
-    min-width: 7rem;
+    min-width: 6rem;
     height: 2.2rem;
     cursor: ${({ $canClick }) => $canClick ? 'pointer' : 'not-allowed'};
 `;
@@ -18,10 +18,11 @@ const StyledButton = styled.button<{ $buttonBackgroundColor: string; $canClick: 
 export interface MenuButtonProps {
     onClick: () => void;
     text: string;
+    backgroundColor: string;
 }
 
-export const MenuButton = ({onClick, text}: MenuButtonProps) => (
-    <StyledButton $canClick={true} $buttonBackgroundColor={colors.lightBlueColor} onClick={onClick}>
+export const MenuButton = ({onClick, text, backgroundColor}: MenuButtonProps) => (
+    <StyledButton $canClick={true} $buttonBackgroundColor={backgroundColor} onClick={onClick}>
         {text}
     </StyledButton>
 );

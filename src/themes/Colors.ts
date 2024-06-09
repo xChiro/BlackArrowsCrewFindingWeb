@@ -6,4 +6,5 @@ export const colors = {
     inactiveColor: 'grey',
     greenColor: 'green',
     redAlertColor: 'red',
+    lightRed: '#af3939',
 }

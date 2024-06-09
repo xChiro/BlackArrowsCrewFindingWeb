@@ -9,6 +9,7 @@ const StyledLink = styled(Link)`
     cursor: pointer;
     text-align: center;
     display: inline-block;
+    align-content: center;
 
     &:hover {
         color: #f0f0f0;

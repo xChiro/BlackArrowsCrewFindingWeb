@@ -14,5 +14,5 @@ export const StyledLoginButton = styled.button`
     margin: 4px 2px;
     cursor: pointer;
     position: relative;
-    min-width: 7rem;
+    min-width: 6rem;
 `;
