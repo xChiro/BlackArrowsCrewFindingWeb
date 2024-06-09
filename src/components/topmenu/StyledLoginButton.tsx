@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledLoginButton = styled.button`
     background-color: darkcyan;
-    height: 80%;
+    height: 2.2rem;
     border: none;
     border-radius: 10px;
     color: white;
@@ -14,4 +14,5 @@ export const StyledLoginButton = styled.button`
     margin: 4px 2px;
     cursor: pointer;
     position: relative;
+    min-width: 7rem;
 `;
