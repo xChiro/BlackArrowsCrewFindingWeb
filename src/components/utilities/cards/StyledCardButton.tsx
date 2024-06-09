@@ -12,4 +12,8 @@ export const StyledCardButton = styled.button<{ $buttonBackgroundColor: string; 
     min-height: 3rem;
     font-size: 1.9rem;
     margin-top: auto;
+    
+    @media (max-width: 400px) {
+        font-size: 1.5rem;
+    }
 `;

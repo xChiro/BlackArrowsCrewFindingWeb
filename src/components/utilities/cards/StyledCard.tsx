@@ -19,6 +19,5 @@ export const StyledCard = styled.div<StyledCardProps>`
 
     @media (max-width: 400px) {
         min-width: 4rem;
-        font-size: 0.8rem;
     }
 `;
