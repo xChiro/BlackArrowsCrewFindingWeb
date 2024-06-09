@@ -15,6 +15,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 redirect_uri: window.location.origin,
                 audience: "https://bka-api.com"
             }}
+            useRefreshTokens
+            cacheLocation="localstorage"
         >
             <React.StrictMode>
                 <RouterProvider router={AppRouter}/>

@@ -5,7 +5,7 @@ import CrewCardCreateButton from "./CrewCardCreateButton.tsx";
 const NotCrewsAvailable = () => {
 
     return (
-        <StyledCard $maxHeight={'10rem'} $minHeight={'10rem'}>
+        <StyledCard $maxHeight={'20rem'} $minHeight={'10rem'}>
             <StyledBodyCard>
                 <h1>No crews available</h1>
                 <span>There are no crews available to join at this time, however you can create your own crew.</span>
