@@ -13,7 +13,7 @@ export const CrewMenuButton = () => {
     const handleCreateCrewClick = async () => isProfileLoaded() ? navigate('/crews/create') : await loginWithRedirect();
     const handleBackClick = () => navigate('/');
 
-    if (location.pathname === '/crews/create') {
+    if (location.pathname.includes('/crews/')) {
         return <MenuButton text={"Go Back"} onClick={handleBackClick} />;
     }
 

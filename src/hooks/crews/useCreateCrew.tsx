@@ -21,7 +21,7 @@ export const useCreateCrew = (initialCrew: CrewCreation): {
             const crewService = new CrewService(token);
             const crewId = await crewService.createCrew(crew);
             joinCrew(crewId);
-            navigate('/');
+            navigate('/crews/' + crewId);
         } catch (e) {
             console.error(e);
         }
