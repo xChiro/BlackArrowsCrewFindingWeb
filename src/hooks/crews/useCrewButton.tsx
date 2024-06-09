@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import CrewCardDisbandButton from "../../components/crews/cards/CrewCardDisbandButton";
-import CrewCardJoinButton from "../../components/crews/cards/CrewCardJoinButton";
+import CrewJoinCardButton from "../../components/crews/cards/CrewJoinCardButton.tsx";
 import CrewCardLeaveButton from "../../components/crews/cards/CrewCardLeaveButton";
 import {usePlayer} from "../usePlayerProfile";
 
@@ -13,7 +13,7 @@ const useCrewButton = (crewId: string, crewCaptainId: string, isCrewFull: boolea
         }
 
         if (profile.ActiveCrewId !== crewId) {
-            return <CrewCardJoinButton isFull={isCrewFull} crewId={crewId}/>
+            return <CrewJoinCardButton isFull={isCrewFull} crewId={crewId}/>
         }
 
         return <CrewCardLeaveButton isFull={isCrewFull} crewId={crewId}/>;

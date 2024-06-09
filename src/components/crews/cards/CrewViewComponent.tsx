@@ -1,4 +1,4 @@
-import {StyledCardImageHeader} from "../../utilities/cards/StyledCardImageHeader.tsx";
+import ActivityCrewCardHeader from "./ActivityCrewCardHeader.tsx";
 import {StyledBodyCard} from "../../utilities/cards/StyledBodyCard.tsx";
 import {StyledCardInfo} from "../../utilities/cards/StyledCardInfo.tsx";
 import {StyledCardDescription} from "../../utilities/cards/StyledCardDescription.tsx";
@@ -40,8 +40,8 @@ const CrewViewComponent = (props: CrewViewProps) => {
 
     return (
         <StyledCard>
-            <StyledCardImageHeader>
-            </StyledCardImageHeader>
+            <ActivityCrewCardHeader activity={props.activity}>
+            </ActivityCrewCardHeader>
             <StyledBodyCard>
                 <StyledCardInfo>
                     <h1>{props.crewName}</h1>
