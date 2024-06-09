@@ -1,50 +1,23 @@
-import styled from 'styled-components';
 import {usePlayer} from "../../hooks/usePlayerProfile.tsx";
-import {colors} from "../../themes/Colors.ts";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useAuth0} from "@auth0/auth0-react";
-
-const StyledButton = styled.button<{ $buttonBackgroundColor: string; $canClick: boolean; }>`
-    background-color: ${({ $buttonBackgroundColor = colors.primary }) => $buttonBackgroundColor};
-    border: none;
-    color: white;
-    text-align: center;
-    display: inline-block;
-    padding: 1px 5px;
-    font-size: 1rem;
-    border-radius: 10px;
-    height: 80%;
-    cursor: ${({ $canClick }) => $canClick ? 'pointer' : 'not-allowed'};
-`;
+import {MenuButton} from "./MenuButton.tsx";
 
 export const CrewMenuButton = () => {
-    const {isInCrew, isProfileLoaded, profile} = usePlayer();
+    const {profile, isInCrew, isProfileLoaded} = usePlayer();
     const {loginWithRedirect} = useAuth0();
-
+    const location = useLocation();
     const navigate = useNavigate();
 
-    const openCrewClick = () => {
-        navigate('/crews/' + profile.ActiveCrewId);
+    const handleViewCrewClick = () => navigate('/crews/' + profile.ActiveCrewId);
+    const handleCreateCrewClick = async () => isProfileLoaded() ? navigate('/crews/create') : await loginWithRedirect();
+    const handleBackClick = () => navigate('/');
+
+    if (location.pathname === '/crews/create') {
+        return <MenuButton text={"Go Back"} onClick={handleBackClick} />;
     }
 
-    const createCrewClick = async () => {
-        if (isProfileLoaded())
-            navigate('/crews/create')
-        else
-            await loginWithRedirect();
-    }
-
-    if (isInCrew()) {
-        return (
-            <StyledButton $canClick={true} $buttonBackgroundColor={colors.lightBlueColor} onClick={openCrewClick}>
-                View My Crew
-            </StyledButton>
-        );
-    } else {
-        return (
-            <StyledButton $canClick={true} $buttonBackgroundColor={colors.greenColor} onClick={createCrewClick}>
-                Create Crew
-            </StyledButton>
-        );
-    }
+    return isInCrew()
+        ? <MenuButton text={"View My Crew"} onClick={handleViewCrewClick} />
+        : <MenuButton text={"Create Crew"} onClick={handleCreateCrewClick} />;
 };
