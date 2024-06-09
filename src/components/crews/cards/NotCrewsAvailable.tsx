@@ -8,7 +8,7 @@ const NotCrewsAvailable = () => {
         <StyledCard $maxHeight={'10rem'} $minHeight={'10rem'}>
             <StyledBodyCard>
                 <h1>No crews available</h1>
-                <span>There are no crews available to join at this time, you can create your own crew.</span>
+                <span>There are no crews available to join at this time, however you can create your own crew.</span>
             </StyledBodyCard>
             <CrewCardCreateButton />
         </StyledCard>
