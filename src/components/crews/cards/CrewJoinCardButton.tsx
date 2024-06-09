@@ -26,10 +26,10 @@ const getButtonInfo = (isFull: boolean, isInCrew: boolean): ButtonInfo => {
     }
 };
 
-const CrewCardJoinButton = (props: CardButtonProps) => {
+const CrewJoinCardButton = (props: CardButtonProps) => {
     const { isInCrew, isProfileLoaded } = usePlayer();
     const buttonInfo = getButtonInfo(props.isFull, isInCrew());
-    const joinCrew = useJoinCrew(props.crewId);
+    const joinCrew = useJoinCrew(props.crewId || '');
     const navigate = useNavigate();
     const {loginWithRedirect} = useAuth0();
 
@@ -57,4 +57,4 @@ const CrewCardJoinButton = (props: CardButtonProps) => {
     );
 };
 
-export default CrewCardJoinButton;
+export default CrewJoinCardButton;

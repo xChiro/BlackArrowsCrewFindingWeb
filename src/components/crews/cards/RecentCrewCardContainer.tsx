@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import useRecentCrewData from "../../../hooks/crews/useRecentCrewData.tsx";
 import CrewViewComponent from "./CrewViewComponent.tsx";
+import NotCrewsAvailable from "./NotCrewsAvailable.tsx";
 
 const StyledRecentCrewCardContainer = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
@@ -16,9 +17,12 @@ const RecentCrewCardContainer = () => {
 
     return (
         <StyledRecentCrewCardContainer>
-            {crewData.map((crew) => (
-                <CrewViewComponent key={crew.crewId} {...crew} />
-            ))}
+            {crewData.length === 0
+                ? <NotCrewsAvailable />
+                : crewData.map((crew) => (
+                    <CrewViewComponent key={crew.crewId} {...crew} />
+                ))
+            }
         </StyledRecentCrewCardContainer>
     );
 };

@@ -15,5 +15,5 @@ export const StyledCard = styled.div<StyledCardProps>`
     width: 100%;
     max-width: ${props => props.$maxWidth || '25rem'};
     min-height: ${props => props.$minHeight || '30rem'};
-    max-height: ${props => props.$maxHeight || '9rem'};
+    max-height: ${props => props.$maxHeight || '90rem'};
 `;

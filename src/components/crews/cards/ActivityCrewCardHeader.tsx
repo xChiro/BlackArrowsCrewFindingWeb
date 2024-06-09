@@ -1,10 +1,20 @@
 import styled from "styled-components";
 import mining from "../../../assets/activities/mining.jpg";
-import trading from "../../../assets/activities/trading.jpeg";
+import trading from "../../../assets/activities/trading.jpg";
+import exploration from "../../../assets/activities/exploration.jpg";
+import piracy from "../../../assets/activities/piracy.jpg";
+import salvaging from "../../../assets/activities/salvaging.jpg";
+import security from "../../../assets/activities/security.jpg";
+import transportation from "../../../assets/activities/transportation.jpg";
 
 const activityImages: { [key: string]: string } = {
     mining,
-    trading
+    trading,
+    exploration,
+    piracy,
+    salvaging,
+    security,
+    transportation
 };
 
 const StyledActivityCrewCardHeader = styled.div<{ activity: string }>`
