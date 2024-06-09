@@ -15,4 +15,9 @@ export const StyledLoginButton = styled.button`
     cursor: pointer;
     position: relative;
     min-width: 6rem;
+
+    @media (max-width: 400px) {
+        min-width: 4rem;
+        font-size: 0.8rem;
+    }
 `;
