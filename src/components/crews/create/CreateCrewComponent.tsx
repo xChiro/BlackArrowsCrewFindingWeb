@@ -18,7 +18,7 @@ const StyledLabel = styled.label`
     margin-top: 1rem;
 `;
 
-const ACTIVITY_OPTIONS = ["Mining", "Trading", "Exploration", "Transportation", "Security", "Medical", "Science", "Refueling", "Repairing", "Salvaging", "Racing", "Tourism", "Other"];
+const ACTIVITY_OPTIONS = ["Mining", "Trading", "Exploration", "Transportation", "Security", "Medical", "Salvaging", "Other"];
 const CREW_SIZE_OPTIONS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 const SYSTEM_OPTIONS = ["Stanton"];
 const PLANETARY_SYSTEM_OPTIONS = ["Microtech", "Hurston", "ArcCorp", "Crusader"];

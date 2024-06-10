@@ -6,6 +6,8 @@ import piracy from "../../../assets/activities/piracy.jpg";
 import salvaging from "../../../assets/activities/salvaging.jpg";
 import security from "../../../assets/activities/security.jpg";
 import transportation from "../../../assets/activities/transportation.jpg";
+import medical from "../../../assets/activities/medical.jpg";
+import other from "../../../assets/activities/other.jpg";
 
 const activityImages: { [key: string]: string } = {
     mining,
@@ -14,7 +16,9 @@ const activityImages: { [key: string]: string } = {
     piracy,
     salvaging,
     security,
-    transportation
+    transportation,
+    medical,
+    other
 };
 
 const StyledActivityCrewCardHeader = styled.div<{ activity: string }>`
