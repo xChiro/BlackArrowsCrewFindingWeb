@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import {useMemo} from 'react';
 import CrewCardDisbandButton from "../../components/crews/cards/CrewCardDisbandButton";
 import CrewJoinCardButton from "../../components/crews/cards/CrewJoinCardButton.tsx";
 import CrewCardLeaveButton from "../../components/crews/cards/CrewCardLeaveButton";
