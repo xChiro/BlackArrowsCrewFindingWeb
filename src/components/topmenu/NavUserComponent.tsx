@@ -28,7 +28,7 @@ export const NavUserComponent = () => {
                 </NavUserContainer>
             ) : (
                 <StyledLoginButton onClick={() => loginWithRedirect()}>
-                    Login / Join
+                    Sign In
                 </StyledLoginButton>
             )}
         </>
