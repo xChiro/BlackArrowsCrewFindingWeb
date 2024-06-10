@@ -1,17 +1,14 @@
 import {useAuth} from "../useAuth.tsx";
-import {usePlayer} from "../usePlayerProfile.tsx";
 import CrewMemberService from "../../services/CrewMemberService.ts";
 
-const useJoinCrew = (crewId: string) => {
+const useKickMember = () => {
     const {getToken} = useAuth();
-    const { joinCrew } = usePlayer();
 
-    return async () => {
+    return async (id: string) => {
         const token = await getToken();
         const memberService = new CrewMemberService(token);
-        await memberService.joinCrew(crewId);
-        joinCrew(crewId);
+        await memberService.kickMember(id);
     };
 };
 
-export default useJoinCrew;
+export default useKickMember;

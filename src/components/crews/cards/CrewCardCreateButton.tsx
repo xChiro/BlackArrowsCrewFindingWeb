@@ -14,8 +14,7 @@ const CrewCardCreateButton = () => {
             } else {
                 await login();
             }
-        } catch
-            (e) {
+        } catch (e) {
             console.error(e);
         }
     }

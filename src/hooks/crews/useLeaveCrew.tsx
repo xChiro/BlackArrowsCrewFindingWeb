@@ -1,6 +1,6 @@
 import {useAuth} from "../useAuth.tsx";
 import {usePlayer} from "../usePlayerProfile.tsx";
-import CrewService from "../../services/CrewService.ts";
+import CrewMemberService from "../../services/CrewMemberService.ts";
 
 const useLeaveCrew = () => {
     const {getToken} = useAuth();
@@ -8,8 +8,8 @@ const useLeaveCrew = () => {
 
     return async () => {
         const token = await getToken();
-        const crewService = new CrewService(token);
-        await crewService.leaveCrew();
+        const memberService = new CrewMemberService(token);
+        await memberService.leaveCrew();
         leaveCrew();
     };
 };
