@@ -1,6 +1,5 @@
 import {useAuth0} from "@auth0/auth0-react";
 import {useNavigate} from "react-router-dom";
-import {StyledLoginButton} from "./StyledLoginButton.tsx";
 import styled from 'styled-components';
 import {colors} from "../../themes/Colors.ts";
 import {MenuButton} from "./MenuButton.tsx";
@@ -27,9 +26,7 @@ export const NavUserComponent = () => {
                     <MenuButton text={"Log Out"} onClick={handleLogout} backgroundColor={colors.lightRed}/>
                 </NavUserContainer>
             ) : (
-                <StyledLoginButton onClick={() => loginWithRedirect()}>
-                    Sign In
-                </StyledLoginButton>
+                <MenuButton text={"Sign In"} onClick={loginWithRedirect} backgroundColor={colors.darkcyan}/>
             )}
         </>
     );
