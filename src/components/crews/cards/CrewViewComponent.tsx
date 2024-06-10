@@ -7,8 +7,9 @@ import styled from "styled-components";
 import {StyledCard} from "../../utilities/cards/StyledCard.tsx";
 import useCrewButton from "../../../hooks/crews/useCrewButton.tsx";
 import {colors} from "../../../themes/Colors.ts";
-import useKickMember from "../../../hooks/crews/useKickMember.tsx";
 import {useEffect, useState} from "react";
+import {usePlayer} from "../../../hooks/usePlayerProfile.tsx";
+import useKickMember from "../../../hooks/crews/useKickMember.tsx";
 
 export interface CrewViewProps {
     crewId: string,
@@ -49,6 +50,7 @@ const CrewViewComponent = (props: CrewViewProps) => {
     const freeSlots = useFreeSlots();
     const isFull = useIsFull();
     const kickMember = useKickMember();
+    const {isCaptain} = usePlayer();
     const [members, setMembers] = useState(props.Members);
     const [totalCurrentMembers, setTotalCurrentMembers] = useState(props.totalCurrentMembers);
     const CrewButton = useCrewButton(props.crewId, props.captainId, isFull(props.maxAllowedMembers, totalCurrentMembers));
@@ -92,8 +94,12 @@ const CrewViewComponent = (props: CrewViewProps) => {
                             {members.map((member, index) => (
                                 <StyledMemberItem key={index}>
                                     {member[1]}
-                                    <StyledKickMemberButton
-                                        onClick={() => onKickMember(member[0])}>Remove</StyledKickMemberButton>
+
+                                    {isCaptain(props.crewId, props.captainId) && (
+                                        <StyledKickMemberButton
+                                            onClick={() => onKickMember(member[0])}>Remove
+                                        </StyledKickMemberButton>
+                                    )}
                                 </StyledMemberItem>
                             ))}
                         </StyledMemberList>
