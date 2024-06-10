@@ -48,16 +48,15 @@ const CreateCrewComponent = () => {
         event.preventDefault();
         try {
             await createCrew(crew);
-        } catch(e) {
+        } catch (e) {
             console.error(e);
         }
     };
 
     return (
         <StyledCard $maxWidth="30rem" $minHeight="9rem" $maxHeight="90rem">
+            <ActivityCrewCardHeader activity={crew.activityName}/>
             <StyledForm onSubmit={onCreateCrewClick}>
-                <ActivityCrewCardHeader activity={crew.activityName}/>
-
                 <StyledBodyCard>
                     <StyledLabel>Crew Activity:</StyledLabel>
                     <ComboBoxField inputName="activityName" value={crew.activityName} options={ACTIVITY_OPTIONS}
