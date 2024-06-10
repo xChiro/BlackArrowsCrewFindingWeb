@@ -6,7 +6,7 @@ import {StyledBodyCard} from "../utilities/cards/StyledBodyCard.tsx";
 import PlayerService from "../../services/PlayerService.ts";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useAuthToken} from "../../hooks/useAuthToken.tsx";
+import {useAuth} from "../../hooks/useAuth.tsx";
 import TextInputField from "../utilities/forms/TextInputField.tsx";
 import {colors} from "../../themes/Colors.ts";
 import {usePlayer} from "../../hooks/usePlayerProfile.tsx";
@@ -18,13 +18,9 @@ const StyledLabel = styled.h2`
 const CreateProfile = () => {
     const [citizenName, setCitizenName] = useState("")
     const navigate = useNavigate();
-    const authToken = useAuthToken();
+    const {getToken} = useAuth();
     const [errorMessage, setErrorMessage] = useState("");
     const {profile} = usePlayer();
-
-    const getToken = async () => {
-        return await authToken();
-    }
 
     useEffect(() => {
         if (profile.CitizenName) {

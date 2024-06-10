@@ -5,7 +5,7 @@ import {useEffect} from "react";
 import PlayerService from './services/PlayerService.ts';
 import {useAuth0} from "@auth0/auth0-react";
 import {useNavigate} from "react-router-dom";
-import {useAuthToken} from "./hooks/useAuthToken.tsx";
+import {useAuth} from "./hooks/useAuth.tsx";
 import {useDispatch} from "react-redux";
 import {createProfile} from "./stores/PlayerProfileSlice.ts";
 import styled from "styled-components";
@@ -20,14 +20,14 @@ const StyledContainer = styled.div`
 const App = () => {
     const {isAuthenticated, isLoading} = useAuth0();
     const navigate = useNavigate();
-    const authToken = useAuthToken();
+    const {getToken} = useAuth();
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (isLoading || !isAuthenticated) return;
 
-        authToken().then((token: string) => {
+        getToken().then((token: string) => {
             const playerServices = new PlayerService(token)
 
             playerServices.getCurrenProfile()

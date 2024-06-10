@@ -3,7 +3,7 @@ import {usePlayer} from "../../../hooks/usePlayerProfile.tsx";
 import {colors} from "../../../themes/Colors.ts";
 import {useNavigate} from "react-router-dom";
 import useJoinCrew from "../../../hooks/crews/useJoinCrew.tsx";
-import {useAuth0} from "@auth0/auth0-react";
+import {useAuth} from "../../../hooks/useAuth.tsx";
 
 export interface CardButtonProps {
     isFull: boolean;
@@ -27,15 +27,15 @@ const getButtonInfo = (isFull: boolean, isInCrew: boolean): ButtonInfo => {
 };
 
 const CrewJoinCardButton = (props: CardButtonProps) => {
-    const { isInCrew, isProfileLoaded } = usePlayer();
+    const { isInCrew } = usePlayer();
     const buttonInfo = getButtonInfo(props.isFull, isInCrew());
     const joinCrew = useJoinCrew(props.crewId || '');
     const navigate = useNavigate();
-    const {loginWithRedirect} = useAuth0();
+    const {login, isLogged} = useAuth();
 
     const onClick = async () => {
-        if(!isProfileLoaded())
-            loginWithRedirect().catch(e => console.error(e));
+        if(!isLogged())
+            login().catch(e => console.error(e));
 
         try {
             await joinCrew();

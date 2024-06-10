@@ -16,10 +16,6 @@ export const usePlayer = () => {
         return profile.ActiveCrewId !== '';
     };
 
-    const isProfileLoaded = (): boolean => {
-        return profile.Id !== '';
-    }
-
     const joinCrew = (crewId: string) => {
         dispatch(addCrew(crewId));
     }
@@ -32,5 +28,5 @@ export const usePlayer = () => {
         return profile.ActiveCrewId == crewId && profile.Id == crewCaptainId;
     }
 
-    return {profile, isInCrew, isProfileLoaded, joinCrew, leaveCrew, isCaptain};
+    return {profile, isInCrew, joinCrew, leaveCrew, isCaptain};
 };
