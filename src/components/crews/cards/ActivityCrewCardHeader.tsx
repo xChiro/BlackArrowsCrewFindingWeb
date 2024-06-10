@@ -6,7 +6,7 @@ import piracy from "../../../assets/activities/piracy.jpg";
 import salvaging from "../../../assets/activities/salvaging.jpg";
 import security from "../../../assets/activities/security.jpg";
 import transportation from "../../../assets/activities/transportation.jpg";
-import medical from "../../../assets/activities/medical.jpg";
+import rescue from "../../../assets/activities/rescue.jpg";
 import other from "../../../assets/activities/other.jpg";
 
 const activityImages: { [key: string]: string } = {
@@ -17,12 +17,12 @@ const activityImages: { [key: string]: string } = {
     salvaging,
     security,
     transportation,
-    medical,
+    rescue,
     other
 };
 
 const StyledActivityCrewCardHeader = styled.div<{ activity: string }>`
-    height: 7rem;
+    height: 10rem;
     background-image:  url(${props => activityImages[props.activity] || mining});
     background-size: cover;
     background-position: center; 
