@@ -13,7 +13,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             clientId="WgieeVjL8bkx4PfydRnQAcMlHizUUfRW"
             authorizationParams={{
                 redirect_uri: window.location.origin,
-                audience: "https://bka-api.com"
+                audience: "https://bka-api.com",
+                scope: "openid profile email offline_access"
             }}
             useRefreshTokens
             cacheLocation="localstorage"
