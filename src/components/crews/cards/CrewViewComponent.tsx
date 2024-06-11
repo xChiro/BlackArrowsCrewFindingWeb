@@ -82,13 +82,13 @@ const CrewViewComponent = (props: CrewViewProps) => {
                     <h2 style={{marginTop: "1rem"}}>{freeSlots(props.maxAllowedMembers, totalCurrentMembers)} slots
                         available</h2>
                     {props.captainName &&
-                        <span>Captain:
-                            <b>
-                              <a href={`https://robertsspaceindustries.com/citizens/${props.captainName}`}
-                                 target="_blank"
-                                 rel="noreferrer noopener">
-                                {props.captainName}
-                              </a>
+                        <span>Captain: <b>
+                                 <a href={`https://robertsspaceindustries.com/citizens/${props.captainName}`}
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                    style={{color: 'white', textDecoration: 'none'}}>
+                                       {props.captainName}
+                                </a>
                             </b>
                         </span>}
                     <span>Activity: <b>{props.activity}</b></span>
@@ -102,7 +102,12 @@ const CrewViewComponent = (props: CrewViewProps) => {
                         <StyledMemberList>
                             {members.map((member, index) => (
                                 <StyledMemberItem key={index}>
-                                    {member[1]}
+                                    <a href={`https://robertsspaceindustries.com/citizens/${member[1]}`}
+                                       target="_blank"
+                                       rel="noreferrer noopener"
+                                       style={{color: 'white', textDecoration: 'none'}}>
+                                        {member[1]}
+                                    </a>
 
                                     {isCaptain(props.crewId, props.captainId) && (
                                         <StyledKickMemberButton
