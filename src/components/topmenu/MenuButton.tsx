@@ -10,7 +10,7 @@ const StyledButton = styled.button<{ $buttonBackgroundColor: string; $canClick: 
     padding: 1px 5px;
     font-size: ${({ $fontSize }) => $fontSize || '1rem'};
     border-radius: .5rem;
-    min-width: 6rem;
+    min-width: 7rem;
     height: 2.2rem;
     cursor: ${({ $canClick }) => $canClick ? 'pointer' : 'not-allowed'};
 

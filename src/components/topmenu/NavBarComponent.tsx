@@ -15,7 +15,7 @@ const StyledNavbar = styled.nav`
     align-items: center;
     background-color: ${colors.primary};
     margin: 0;
-    padding: 0 10%;
+    padding: 0 1rem;
     box-sizing: border-box;
 
     @media (max-width: 600px) {
@@ -24,18 +24,33 @@ const StyledNavbar = styled.nav`
     }
 `;
 
-const StyledDiv = styled.div`
-    width: 33%;
+const LeftAlignedDiv = styled.div`
+    width: 112px;
+    text-align: left;
+`;
+
+const CenterAlignedDiv = styled.div`
+    width: 50%;
     text-align: center;
 `;
 
-const Navbar = () => {
-    const components = [<CrewMenuButton/>, <NavLogoComponent/>, <NavUserComponent/>];
+const RightAlignedDiv = styled.div`
+    width: 112px;
+    text-align: right;
+`;
 
+const Navbar = () => {
     return (
         <StyledNavbar>
-            {components.map((Component, index) =>
-                <StyledDiv key={index}>{Component}</StyledDiv>)}
+            <LeftAlignedDiv>
+                <CrewMenuButton/>
+            </LeftAlignedDiv>
+            <CenterAlignedDiv>
+                <NavLogoComponent/>
+            </CenterAlignedDiv>
+            <RightAlignedDiv>
+                <NavUserComponent/>
+            </RightAlignedDiv>
         </StyledNavbar>
     );
 };
