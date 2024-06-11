@@ -15,42 +15,44 @@ interface ButtonInfo {
     text: string;
 }
 
-const getButtonInfo = (isFull: boolean, isInCrew: boolean): ButtonInfo => {
+const getButtonInfo = (isFull: boolean, isInCrew: boolean, isUserLoggedIn: boolean): ButtonInfo => {
     if (isFull) {
-        return {color: colors.inactiveColor , text: "Full"};
+        return {color: colors.inactiveColor, text: "Full"};
     } else if (isInCrew) {
         return {color: colors.inactiveColor, text: "Already in a Crew"};
-    }
-    else {
+    } else if (!isUserLoggedIn) {
+        return {color: colors.greenColor, text: "Sign In to Join"};
+    } else {
         return {color: colors.greenColor, text: "Join"};
     }
 };
 
 const CrewJoinCardButton = (props: CardButtonProps) => {
-    const { isInCrew } = usePlayer();
-    const buttonInfo = getButtonInfo(props.isFull, isInCrew());
+    const {isInCrew} = usePlayer();
+    const {login, isLogged} = useAuth();
+    const buttonInfo = getButtonInfo(props.isFull, isInCrew(), isLogged());
     const joinCrew = useJoinCrew(props.crewId || '');
     const navigate = useNavigate();
-    const {login, isLogged} = useAuth();
 
     const onClick = async () => {
-        if(!isLogged())
+        if (!isLogged())
             login().catch(e => console.error(e));
-
-        try {
-            await joinCrew();
-            navigate('/');
-        }
-        catch (e) {
-            console.error(e);
+        else {
+            try {
+                await joinCrew();
+                navigate('/');
+            } catch (e) {
+                console.error(e);
+            }
         }
     }
 
     return (
         <StyledCardButton
             $buttonBackgroundColor={buttonInfo.color}
-            $canClick={!props.isFull && !isInCrew()}
+            $canClick={!props.isFull && !isInCrew() && isLogged()}
             onClick={onClick}
+            $fontSize={isLogged() ? "1.9rem" : "1.4rem"}
         >
             {buttonInfo.text}
         </StyledCardButton>
