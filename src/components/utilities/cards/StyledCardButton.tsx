@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../../themes/Colors.ts";
 
-export const StyledCardButton = styled.button<{ $buttonBackgroundColor: string; $canClick: boolean; }>`
+export const StyledCardButton = styled.button<{ $buttonBackgroundColor: string; $canClick: boolean; $fontSize?: string }>`
     flex: 0 0 10%;
     background-color: ${({ $buttonBackgroundColor }) => $buttonBackgroundColor};
     color: ${colors.fontColor};
@@ -10,7 +10,7 @@ export const StyledCardButton = styled.button<{ $buttonBackgroundColor: string; 
     cursor: ${({ $canClick }) => $canClick ? 'pointer' : 'not-allowed'};
     width: 100%;
     min-height: 3rem;
-    font-size: 1.9rem;
+    font-size: ${({ $fontSize }) => $fontSize || '1.9rem'};
     margin-top: auto;
     
     @media (max-width: 400px) {

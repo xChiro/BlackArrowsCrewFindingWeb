@@ -81,7 +81,16 @@ const CrewViewComponent = (props: CrewViewProps) => {
                     <h6>{props.location}</h6>
                     <h2 style={{marginTop: "1rem"}}>{freeSlots(props.maxAllowedMembers, totalCurrentMembers)} slots
                         available</h2>
-                    {props.captainName && <span>Captain: <b>{props.captainName}</b></span>}
+                    {props.captainName &&
+                        <span>Captain:
+                            <b>
+                              <a href={`https://robertsspaceindustries.com/citizens/${props.captainName}`}
+                                 target="_blank"
+                                 rel="noreferrer noopener">
+                                {props.captainName}
+                              </a>
+                            </b>
+                        </span>}
                     <span>Activity: <b>{props.activity}</b></span>
                 </StyledCardInfo>
                 <span>Description:</span>

@@ -24,8 +24,9 @@ const CrewCardCreateButton = () => {
             $buttonBackgroundColor={colors.greenColor}
             $canClick={true}
             onClick={onClick}
+            $fontSize={isLogged() ? "1.9rem" : "1.4rem"}
         >
-            Create Crew
+            {isLogged() ? "Create Crew" : "Sing In to Create"}
         </StyledCardButton>
     );
 };

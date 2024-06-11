@@ -20,5 +20,5 @@ export const CrewMenuButton = () => {
 
     return isInCrew()
         ? <MenuButton backgroundColor={colors.lightBlueColor} text={"View My Crew"} onClick={handleViewCrewClick} />
-        : <MenuButton backgroundColor={colors.greenColor}  text={"Create Crew"} onClick={handleCreateCrewClick} />;
+        : <MenuButton backgroundColor={colors.greenColor} text={isLogged() ? "Create Crew" : "Sign In to Create"} fontSize={isLogged() ? "1rem" : ".8rem"} onClick={handleCreateCrewClick} />;
 };
