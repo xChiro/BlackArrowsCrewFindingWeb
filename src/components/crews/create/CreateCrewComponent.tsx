@@ -94,7 +94,7 @@ const CreateCrewComponent = () => {
                                         onChange={(value) => updateCrew("languagesAbbrevs", value)}/>
                 </StyledBodyCard>
 
-                <StyledCardButton $buttonBackgroundColor={"green"} $canClick={true}>Create</StyledCardButton>
+                <StyledCardButton type={"submit"} $buttonBackgroundColor={"green"} $canClick={true}>Create</StyledCardButton>
             </StyledForm>
         </StyledCard>
     );
