@@ -14,8 +14,8 @@ const authConfig: TAuthConfig = {
     scope: import.meta.env.VITE_SCOPE,
     autoLogin: false,
     clearURL: true,
-    decodeToken: true,
-    onRefreshTokenExpire: (event: TRefreshTokenExpiredEvent) => event.logIn(undefined, undefined, "popup"),
+    decodeToken: false,
+    onRefreshTokenExpire: (event: TRefreshTokenExpiredEvent) => event.logIn(undefined, undefined, "redirect"),
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
