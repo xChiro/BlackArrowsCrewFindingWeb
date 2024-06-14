@@ -14,6 +14,9 @@ export const CrewMenuButton = () => {
     const handleCreateCrewClick = async () => isLogged() ? navigate('/crews/create') : login();
     const handleBackClick = () => navigate('/');
 
+    if(location.pathname.includes("profile/create"))
+        return null;
+
     if (location.pathname !== '/') {
         return <MenuButton backgroundColor={colors.lightBlueColor} text={"Go Back"} onClick={handleBackClick}/>;
     }
