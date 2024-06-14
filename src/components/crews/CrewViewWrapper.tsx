@@ -7,7 +7,6 @@ const CrewViewWrapper = () => {
     const {crew} = useGetCrew(crewId ?? "");
 
     return (
-
         <CrewViewComponent crewId={crewId ?? ""}
                            crewName={crew?.Name ?? ""}
                            captainId={crew?.CaptainId ?? ""}

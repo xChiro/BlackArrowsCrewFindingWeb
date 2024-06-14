@@ -12,7 +12,7 @@ const CrewCardCreateButton = () => {
             if (isLogged()) {
                 navigate('/crews/create');
             } else {
-                await login();
+                login();
             }
         } catch (e) {
             console.error(e);

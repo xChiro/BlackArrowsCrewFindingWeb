@@ -2,10 +2,10 @@ import {useAuth} from "../useAuth.tsx";
 import CrewMemberService from "../../services/CrewMemberService.ts";
 
 const useKickMember = () => {
-    const {getToken} = useAuth();
+    const {getAccessToken} = useAuth();
 
     return async (id: string) => {
-        const token = await getToken();
+        const token = getAccessToken();
         const memberService = new CrewMemberService(token);
         await memberService.kickMember(id);
     };

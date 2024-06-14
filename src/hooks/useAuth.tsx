@@ -1,27 +1,27 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import {useNavigate} from "react-router-dom";
+import {AuthContext, IAuthContext} from "react-oauth2-code-pkce";
+import {useContext} from "react";
 
 export const useAuth = () => {
-    const {isAuthenticated, loginWithRedirect, getAccessTokenSilently, logout} = useAuth0();
+    const {logIn, logOut, idToken, loginInProgress} = useContext<IAuthContext>(AuthContext);
     const navigate = useNavigate();
 
-    const getToken = async () => {
-        return await getAccessTokenSilently();
+    const getAccessToken = () => {
+        return idToken;
     };
 
-    const login = async () => {
-        await loginWithRedirect();
+    const login = () => {
+        logIn(undefined, undefined, "redirect");
     }
 
-    const closeSession = () => {
-        logout().then(() => {
-            navigate('/');
-        });
+    const logout = () => {
+        logOut(undefined, undefined, undefined);
+        navigate('/');
     }
 
     const isLogged = () => {
-        return isAuthenticated;
+        return idToken !== undefined;
     }
 
-    return {isLogged, getToken, closeSession, login};
+    return {isLogged, getAccessToken, logout, login, loginInProgress};
 };
