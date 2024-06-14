@@ -14,7 +14,7 @@ const authConfig: TAuthConfig = {
     scope: import.meta.env.VITE_SCOPE,
     autoLogin: false,
     clearURL: true,
-    decodeToken: false,
+    decodeToken: true,
     onRefreshTokenExpire: (event: TRefreshTokenExpiredEvent) => event.logIn(undefined, undefined, "popup"),
 }
 
