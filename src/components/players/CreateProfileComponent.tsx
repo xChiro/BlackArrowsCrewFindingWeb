@@ -40,7 +40,7 @@ const CreateProfile = () => {
     }
 
     return (
-        <div style={{display: 'flex', justifyContent: 'center', marginTop: '4rem'}}>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
             <StyledCard $maxWidth="30rem" $minHeight="9rem" $maxHeight="15rem">
                 <StyledForm onSubmit={onSaveClick}>
                     <StyledBodyCard>

@@ -4,6 +4,7 @@ import CreateProfile from "./components/players/CreateProfileComponent.tsx";
 import CreateCrewComponent from "./components/crews/create/CreateCrewComponent.tsx";
 import RecentCrewCardContainer from "./components/crews/cards/RecentCrewCardContainer.tsx";
 import CrewViewWrapper from "./components/crews/CrewViewWrapper.tsx";
+import PrivacyAdvice from "./components/privacy/PrivacyAdviceComponent.tsx";
 
 export const AppRouter = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ export const AppRouter = createBrowserRouter([
             {
                 path: "/crews/:crewId",
                 element: <CrewViewWrapper/>,
+            },
+            {
+                path: "/privacy",
+                element: <PrivacyAdvice/>,
             }
         ]
     }
