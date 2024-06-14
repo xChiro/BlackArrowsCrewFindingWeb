@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from 'react-redux';
-import {addCrew, removeCrew} from "../stores/PlayerProfileSlice.ts";
+import {addCrew, removeCrew, updateCitizenName} from "../stores/PlayerProfileSlice.ts";
 
 export interface PlayerProfile {
     Id: string;
@@ -28,5 +28,9 @@ export const usePlayer = () => {
         return profile.ActiveCrewId == crewId && profile.Id == crewCaptainId;
     }
 
-    return {profile, isInCrew, joinCrew, leaveCrew, isCaptain};
+    const setCitizenName = (citizenName: string) => {
+        dispatch(updateCitizenName(citizenName));
+    }
+
+    return {profile, isInCrew, joinCrew, leaveCrew, isCaptain, setCitizenName};
 };

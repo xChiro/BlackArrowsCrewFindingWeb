@@ -33,7 +33,7 @@ const CreateProfile = () => {
         const playerService = new PlayerService(getAccessToken() ?? "");
 
         playerService.createProfile({UserName: citizenName}).then(() => {
-            profile.CitizenName = citizenName;
+            setCitizenName(citizenName);
             navigate("/");
         }).catch(error => {
             setErrorMessage(error.message);
