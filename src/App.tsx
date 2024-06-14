@@ -8,6 +8,7 @@ import {useAuth} from "./hooks/useAuth.tsx";
 import {useDispatch} from "react-redux";
 import {createProfile} from "./stores/PlayerProfileSlice.ts";
 import styled from "styled-components";
+import Footer from "./components/footer/FooterComponent.tsx";
 
 const StyledContainer = styled.div`
     display: flex;
@@ -44,6 +45,7 @@ const App = () => {
             <StyledContainer>
                 <Outlet/>
             </StyledContainer>
+            <Footer/>
         </>
     )
 }
