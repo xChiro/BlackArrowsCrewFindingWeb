@@ -3,11 +3,11 @@ import {usePlayer} from "../usePlayerProfile.tsx";
 import CrewMemberService from "../../services/CrewMemberService.ts";
 
 const useJoinCrew = (crewId: string) => {
-    const {getToken} = useAuth();
+    const {getAccessToken} = useAuth();
     const { joinCrew } = usePlayer();
 
     return async () => {
-        const token = await getToken();
+        const token = getAccessToken();
         const memberService = new CrewMemberService(token);
         await memberService.joinCrew(crewId);
         joinCrew(crewId);

@@ -36,7 +36,7 @@ const CrewJoinCardButton = (props: CardButtonProps) => {
 
     const onClick = async () => {
         if (!isLogged())
-            login().catch(e => console.error(e));
+            login();
         else {
             try {
                 await joinCrew();

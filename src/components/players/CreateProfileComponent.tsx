@@ -18,7 +18,7 @@ const StyledLabel = styled.h2`
 const CreateProfile = () => {
     const [citizenName, setCitizenName] = useState("")
     const navigate = useNavigate();
-    const {getToken} = useAuth();
+    const {getAccessToken} = useAuth();
     const [errorMessage, setErrorMessage] = useState("");
     const {profile} = usePlayer();
 
@@ -29,7 +29,7 @@ const CreateProfile = () => {
     }, [profile.CitizenName, navigate]);
 
     const onSaveClick = async () => {
-        const playerService = new PlayerService(await getToken());
+        const playerService = new PlayerService(getAccessToken() ?? "");
 
         playerService.createProfile({UserName: citizenName}).then(() => {
             profile.CitizenName = citizenName;

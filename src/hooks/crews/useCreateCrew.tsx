@@ -10,14 +10,14 @@ export const useCreateCrew = (initialCrew: CrewCreation): {
     setCrew: (crew: CrewCreation) => void,
     createCrew: (crew: CrewCreation) => Promise<void>
 } => {
-    const {getToken} = useAuth();
+    const {getAccessToken} = useAuth();
     const {joinCrew} = usePlayer();
     const [crew, setCrew] = useState<CrewCreation>(initialCrew);
     const navigate = useNavigate();
 
     const createCrew = async (crew: CrewCreation) => {
         try {
-            const token = await getToken();
+            const token = getAccessToken();
             const crewService = new CrewService(token);
             const crewId = await crewService.createCrew(crew);
             joinCrew(crewId);

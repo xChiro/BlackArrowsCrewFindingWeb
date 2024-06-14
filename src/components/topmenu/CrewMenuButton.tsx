@@ -11,7 +11,7 @@ export const CrewMenuButton = () => {
     const navigate = useNavigate();
 
     const handleViewCrewClick = () => navigate('/crews/' + profile.ActiveCrewId);
-    const handleCreateCrewClick = async () => isLogged() ? navigate('/crews/create') : await login();
+    const handleCreateCrewClick = async () => isLogged() ? navigate('/crews/create') : login();
     const handleBackClick = () => navigate('/');
 
     if (location.pathname.includes('/crews/')) {
