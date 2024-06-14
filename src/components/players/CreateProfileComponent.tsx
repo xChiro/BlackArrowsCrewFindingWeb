@@ -57,7 +57,7 @@ const CreateProfile = () => {
                             required={true}
                         />
                     </StyledBodyCard>
-                    <StyledCardButton type={"submit"} $buttonBackgroundColor={colors.greenColor} $canClick={true}>
+                    <StyledCardButton type="submit" $buttonBackgroundColor={colors.greenColor} $canClick={true}>
                         Save
                     </StyledCardButton>
                 </StyledForm>
