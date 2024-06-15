@@ -25,7 +25,7 @@ export const NavUserComponent = () => {
                     <MenuButton text={"Log Out"} onClick={handleLogout} backgroundColor={colors.lightRed}/>
                 </NavUserContainer>
             ) : (
-                <MenuButton text={"Sign In"} onClick={login} backgroundColor={colors.darkcyan}/>
+                <MenuButton fontSize={".9rem"}  minFontSize={".6rem"} text={"Sign in with Discord"} onClick={login} backgroundColor={colors.darkcyan}/>
             )}
         </>
     );

@@ -14,7 +14,7 @@ const StyledContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 4rem 0 0 0;
+    margin: 4rem 0 4rem 0;
 `;
 
 const App = () => {

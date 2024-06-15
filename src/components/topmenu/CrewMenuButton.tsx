@@ -14,15 +14,15 @@ export const CrewMenuButton = () => {
     const handleCreateCrewClick = async () => isLogged() ? navigate('/crews/create') : login();
     const handleBackClick = () => navigate('/');
 
-    if(location.pathname.includes("profile/create"))
-        return null;
-
-    if (location.pathname !== '/') {
+    if (location.pathname !== '/' && !location.pathname.includes("profile/create")) {
         return <MenuButton backgroundColor={colors.lightBlueColor} text={"Go Back"} onClick={handleBackClick}/>;
     }
 
+    if (location.pathname.includes("profile/create") || !isLogged())
+        return null;
+
     return isInCrew()
         ? <MenuButton backgroundColor={colors.lightBlueColor} text={"View My Crew"} onClick={handleViewCrewClick}/>
-        : <MenuButton backgroundColor={colors.greenColor} text={isLogged() ? "Create Crew" : "Sign In to Create"}
-                      fontSize={isLogged() ? "1rem" : ".8rem"} onClick={handleCreateCrewClick}/>;
+        : <MenuButton backgroundColor={colors.greenColor} text={"Create Crew"} fontSize={isLogged() ? "1rem" : ".8rem"}
+                      onClick={handleCreateCrewClick}/>;
 };
