@@ -22,7 +22,7 @@ export interface CrewViewProps {
     totalCurrentMembers: number,
     activity: string,
     description: string,
-    Members: CrewMember[],
+    Members?: CrewMember[],
 }
 
 const StyledMemberList = styled.ul`
