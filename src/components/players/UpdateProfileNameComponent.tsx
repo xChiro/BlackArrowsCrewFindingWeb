@@ -5,28 +5,35 @@ import {StyledForm} from "../utilities/forms/StyledForm.tsx";
 import {StyledBodyCard} from "../utilities/cards/StyledBodyCard.tsx";
 import PlayerService from "../../services/PlayerService.ts";
 import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../hooks/useAuth.tsx";
 import TextInputField from "../utilities/forms/TextInputField.tsx";
 import {colors} from "../../themes/Colors.ts";
+import {usePlayer} from "../../hooks/usePlayerProfile.tsx";
 
 const StyledLabel = styled.h2`
     margin-bottom: 0.5rem;
 `;
 
-const CreateProfile = () => {
-    const [citizenName, setCitizenName] = useState("")
-    const navigate = useNavigate();
-    const {getAccessToken} = useAuth();
+const UpdateProfileName = () => {
+    const [name, setName] = useState("")
     const [errorMessage, setErrorMessage] = useState("");
+    const [buttonState, setButtonState] = useState({
+        text: "Update",
+        disabled: false,
+        color: colors.greenColor
+    });
+    const {setCitizenName}= usePlayer();
+    const {getAccessToken} = useAuth();
 
-    const onSaveClick = async (event: React.FormEvent<HTMLFormElement>) => {
+    const onUpdateClick = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const playerService = new PlayerService(getAccessToken() ?? "");
 
-        playerService.createProfile({UserName: citizenName}).then(() => {
-            setCitizenName(citizenName);
-            navigate("/");
+        playerService.updateProfileName(name).then(() => {
+            setName(name);
+            setCitizenName(name);
+            setButtonState(prevState => ({...prevState, text: "Updated", disabled: true, color: colors.inactiveColor}));
+
         }).catch(error => {
             setErrorMessage(error.message);
         });
@@ -35,14 +42,14 @@ const CreateProfile = () => {
     return (
         <div style={{display: 'flex', justifyContent: 'center'}}>
             <StyledCard $maxWidth="30rem" $minHeight="9rem" $maxHeight="15rem">
-                <StyledForm onSubmit={onSaveClick}>
+                <StyledForm onSubmit={onUpdateClick}>
                     <StyledBodyCard>
                         <StyledLabel>
-                            What is your citizen handler name?
+                            Change your citizen handler name:
                         </StyledLabel>
                         <TextInputField
-                            value={citizenName}
-                            onChange={setCitizenName}
+                            value={name}
+                            onChange={setName}
                             errorMessage={errorMessage}
                             minLength={3}
                             maxLength={30}
@@ -50,8 +57,9 @@ const CreateProfile = () => {
                             required={true}
                         />
                     </StyledBodyCard>
-                    <StyledCardButton type="submit" $buttonBackgroundColor={colors.greenColor} $canClick={true}>
-                        Save
+                    <StyledCardButton type="submit" $buttonBackgroundColor={buttonState.color}
+                                      $canClick={!buttonState.disabled}>
+                        {buttonState.text}
                     </StyledCardButton>
                 </StyledForm>
             </StyledCard>
@@ -59,4 +67,4 @@ const CreateProfile = () => {
     );
 }
 
-export default CreateProfile;
+export default UpdateProfileName;

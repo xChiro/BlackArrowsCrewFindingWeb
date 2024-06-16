@@ -5,6 +5,8 @@ import CreateCrewComponent from "./components/crews/create/CreateCrewComponent.t
 import RecentCrewCardContainer from "./components/crews/cards/RecentCrewCardContainer.tsx";
 import CrewViewWrapper from "./components/crews/CrewViewWrapper.tsx";
 import PrivacyAdvice from "./components/privacy/PrivacyAdviceComponent.tsx";
+import UpdateProfileName from "./components/players/UpdateProfileNameComponent.tsx";
+import ProtectedRoute from "./components/utilities/routes/ProtectedRoute.tsx";
 
 export const AppRouter = createBrowserRouter([
     {
@@ -16,16 +18,30 @@ export const AppRouter = createBrowserRouter([
                 element: <RecentCrewCardContainer/>,
             },
             {
-                path: "/profile/create",
-                element: <CreateProfile/>,
+                path: "/profile",
+                children: [
+                    {
+                        path: "create",
+                        element: <ProtectedRoute><CreateProfile/></ProtectedRoute>,
+                    },
+                    {
+                        path: "update",
+                        element: <ProtectedRoute><UpdateProfileName/></ProtectedRoute>,
+                    }
+                ],
             },
             {
-                path: "/crews/create",
-                element: <CreateCrewComponent/>,
-            },
-            {
-                path: "/crews/:crewId",
-                element: <CrewViewWrapper/>,
+                path: "/crews",
+                children: [
+                    {
+                        path: "create",
+                        element: <ProtectedRoute><CreateCrewComponent/></ProtectedRoute>,
+                    },
+                    {
+                        path: ":crewId",
+                        element: <ProtectedRoute><CrewViewWrapper/></ProtectedRoute>,
+                    }
+                ],
             },
             {
                 path: "/privacy",

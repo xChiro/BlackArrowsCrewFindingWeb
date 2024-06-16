@@ -11,7 +11,7 @@ const CrewViewWrapper = () => {
                            crewName={crew?.Name ?? ""}
                            captainId={crew?.CaptainId ?? ""}
                            captainName={crew?.CaptainName ?? ""}
-                           location={`${crew?.ReunionPoint.PlanetarySystem} - ${crew?.ReunionPoint.System} - ${crew?.ReunionPoint.PlanetMoon} - ${crew?.ReunionPoint.Place}`}
+                           location={`${crew?.ReunionPoint.System} - ${crew?.ReunionPoint.PlanetarySystem} - ${crew?.ReunionPoint.PlanetMoon} - ${crew?.ReunionPoint.Place}`}
                            maxAllowedMembers={crew?.MaxPlayers ?? 0}
                            totalCurrentMembers={crew?.Members.length ?? 0}
                            activity={crew?.Activity ?? ""}

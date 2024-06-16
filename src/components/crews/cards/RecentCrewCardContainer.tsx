@@ -4,12 +4,35 @@ import CrewViewComponent from "./CrewViewComponent.tsx";
 import NotCrewsAvailable from "./NotCrewsAvailable.tsx";
 
 const StyledRecentCrewCardContainer = styled.div`
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-    gap: 3rem;
-    width: 90%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 28rem);
+    gap: 1rem;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    &::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    @media (max-width: 767px) {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        width: 100vh;
+    }
 `;
+
 
 const RecentCrewCardContainer = () => {
     const crewData = useRecentCrewData();

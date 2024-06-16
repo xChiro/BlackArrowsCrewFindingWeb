@@ -50,8 +50,8 @@ export class BaseAPIService {
         return this.sendRequest<T>('GET', endpoint, needsToken);
     }
 
-    protected async putRequest<T>(endpoint: string): Promise<T> {
-        return this.sendRequest<T>('PUT', endpoint);
+    protected async putRequest<T>(endpoint: string, body?: object): Promise<T> {
+        return this.sendRequest<T>('PUT', endpoint, true, body);
     }
 
     protected async deleteRequest<T>(endpoint: string): Promise<T> {
