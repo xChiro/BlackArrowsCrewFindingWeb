@@ -19,8 +19,8 @@ const StyledButton = styled.button<{
     height: 2.2rem;
     cursor: ${({$canClick}) => $canClick ? 'pointer' : 'not-allowed'};
 
-    @media (max-width: 400px) {
-        font-size: ${({$minFontSize}) => $minFontSize || '.8rem'};
+    @media (max-width: 600px) {
+        font-size: ${({$minFontSize}) => $minFontSize || '.6rem'};
     }
 `;
 

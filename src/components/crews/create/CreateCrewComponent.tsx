@@ -64,8 +64,8 @@ const CreateCrewComponent = () => {
 
                     <StyledLabel>Description:</StyledLabel>
                     <TextAreaField inputName="description" value={crew.description}
-                                   onChange={(value) => updateCrew("description", value)} minLength={50}
-                                   maxLength={155} height="8rem" width="100%"/>
+                                   onChange={(value) => updateCrew("description", value)} minLength={10}
+                                   maxLength={100} height="8rem" width="100%"/>
 
                     <StyledLabel>Members Size:</StyledLabel>
                     <ComboBoxField inputName="crewSize" value={crew.crewSize.toString()} options={CREW_SIZE_OPTIONS}
