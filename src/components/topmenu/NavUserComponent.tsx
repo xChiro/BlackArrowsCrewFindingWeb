@@ -57,7 +57,7 @@ export const NavUserComponent = () => {
             {isLogged() ? (
                 <NavUserContainer>
                     <MenuButton fontSize={"1rem"} minFontSize={".6rem"} backgroundColor={colors.darkcyan}>
-                        {profile?.CitizenName}
+                        {profile?.CitizenName || "User"}
                     </MenuButton>
                     <SubMenu>
                         <a onClick={handlerChangeName}>Change Handler Name</a>

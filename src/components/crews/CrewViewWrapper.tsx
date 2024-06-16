@@ -16,7 +16,7 @@ const CrewViewWrapper = () => {
                            totalCurrentMembers={crew?.Members.length ?? 0}
                            activity={crew?.Activity ?? ""}
                            description={crew?.Description ?? ""}
-                           Members={crew?.Members.map(member => [member.Id, member.CitizenName])}
+                           Members={crew?.Members ?? []}
         />
     );
 };

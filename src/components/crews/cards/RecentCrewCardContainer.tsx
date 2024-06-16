@@ -5,7 +5,7 @@ import NotCrewsAvailable from "./NotCrewsAvailable.tsx";
 
 const StyledRecentCrewCardContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, 28rem);
+    grid-template-columns: repeat(auto-fit, 25rem);
     gap: 1rem;
     justify-content: center;
     align-items: center;

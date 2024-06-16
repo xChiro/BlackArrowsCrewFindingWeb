@@ -10,6 +10,7 @@ import {colors} from "../../../themes/Colors.ts";
 import {useEffect, useState} from "react";
 import {usePlayer} from "../../../hooks/usePlayerProfile.tsx";
 import useKickMember from "../../../hooks/crews/useKickMember.tsx";
+import {CrewMember} from "../../../services/models/crews/CrewMember.ts";
 
 export interface CrewViewProps {
     crewId: string,
@@ -21,7 +22,7 @@ export interface CrewViewProps {
     totalCurrentMembers: number,
     activity: string,
     description: string,
-    Members?: string[][],
+    Members: CrewMember[],
 }
 
 const StyledMemberList = styled.ul`
@@ -30,6 +31,8 @@ const StyledMemberList = styled.ul`
     margin: 0;
     background: none;
     border: none;
+    overflow-y: auto;
+    max-height: 200px;
 `;
 
 const StyledMemberItem = styled.li`
@@ -65,7 +68,7 @@ const CrewViewComponent = (props: CrewViewProps) => {
 
     const onKickMember = (memberId: string) => {
         kickMember(memberId).then(() => {
-                setMembers(members?.filter(member => member[0] !== memberId));
+                setMembers(members?.filter(member => member.Id !== memberId));
                 setTotalCurrentMembers(totalCurrentMembers - 1);
             }
         );
@@ -100,18 +103,18 @@ const CrewViewComponent = (props: CrewViewProps) => {
                     <>
                         <span>Members:</span>
                         <StyledMemberList>
-                            {members.map((member, index) => (
-                                <StyledMemberItem key={index}>
-                                    <a href={`https://robertsspaceindustries.com/citizens/${member[1]}`}
+                            {members.map((member) => (
+                                <StyledMemberItem key={member.Id}>
+                                    <a href={`https://robertsspaceindustries.com/citizens/${member.Id}`}
                                        target="_blank"
                                        rel="noreferrer noopener"
                                        style={{color: 'white', textDecoration: 'none'}}>
-                                        {member[1]}
+                                        {member.CitizenName.Value}
                                     </a>
 
                                     {isCaptain(props.crewId, props.captainId) && (
                                         <StyledKickMemberButton
-                                            onClick={() => onKickMember(member[0])}>Remove
+                                            onClick={() => onKickMember(member.Id)}>Remove
                                         </StyledKickMemberButton>
                                     )}
                                 </StyledMemberItem>
