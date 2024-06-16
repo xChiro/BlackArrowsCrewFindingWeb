@@ -28,25 +28,25 @@ const SYSTEM_OPTIONS = [
         planetarySystems: [
             {
                 name: "Microtech",
-                moons: [
+                bodies: [
                     {name: "Microtech", places: ["New Babbage", "Port Tressler"]},
                 ]
             },
             {
                 name: "Hurston",
-                moons: [
+                bodies: [
                     {name: "Hurston", places: ["Lorville", "Everus Harbor"]},
                 ]
             },
             {
                 name: "ArcCorp",
-                moons: [
+                bodies: [
                     {name: "ArcCorp", places: ["Area 18", "Baijini Point"]},
                 ]
             },
             {
                 name: "Crusader",
-                moons: [
+                bodies: [
                     {name: "Crusader", places: ["Orison", "Port Olisar"]},
                     {name: "Yela", places: ["GrimHex"]},
                 ]
@@ -58,8 +58,8 @@ const SYSTEM_OPTIONS = [
 const CreateCrewComponent = () => {
     const [selectedSystem, setSelectedSystem] = useState(SYSTEM_OPTIONS[0]);
     const [selectedPlanetarySystem, setSelectedPlanetarySystem] = useState(SYSTEM_OPTIONS[0].planetarySystems[0]);
-    const [selectedMoon, setSelectedMoon] = useState(SYSTEM_OPTIONS[0].planetarySystems[0].moons[0]);
-    const [places, setPlaces] = useState(SYSTEM_OPTIONS[0].planetarySystems[0].moons[0].places);
+    const [selectedMoon, setSelectedMoon] = useState(SYSTEM_OPTIONS[0].planetarySystems[0].bodies[0]);
+    const [places, setPlaces] = useState(SYSTEM_OPTIONS[0].planetarySystems[0].bodies[0].places);
     const [selectedPlace, setSelectedPlace] = useState(places[0]);
 
     const handleSystemChange = (value: string) => {
@@ -68,7 +68,7 @@ const CreateCrewComponent = () => {
             setSelectedSystem(system);
             const firstPlanetarySystem = system.planetarySystems[0];
             setSelectedPlanetarySystem(firstPlanetarySystem);
-            const firstMoon = firstPlanetarySystem.moons[0];
+            const firstMoon = firstPlanetarySystem.bodies[0];
             setSelectedMoon(firstMoon);
             setPlaces(firstMoon.places);
         }
@@ -78,14 +78,14 @@ const CreateCrewComponent = () => {
         const planetarySystem = selectedSystem.planetarySystems.find(ps => ps.name === value);
         if (planetarySystem) {
             setSelectedPlanetarySystem(planetarySystem);
-            const firstMoon = planetarySystem.moons[0];
+            const firstMoon = planetarySystem.bodies[0];
             setSelectedMoon(firstMoon);
             setPlaces(firstMoon.places);
         }
     };
 
     const handleMoonChange = (value: string) => {
-        const moon = selectedPlanetarySystem.moons.find(moon => moon.name === value);
+        const moon = selectedPlanetarySystem.bodies.find(moon => moon.name === value);
         if (moon) {
             setSelectedMoon(moon);
             setPlaces(moon.places);
@@ -166,7 +166,7 @@ const CreateCrewComponent = () => {
                     <ComboBoxField
                         inputName="moon"
                         value={selectedMoon.name}
-                        options={selectedPlanetarySystem.moons.map(moon => moon.name)}
+                        options={selectedPlanetarySystem.bodies.map(moon => moon.name)}
                         onChange={(value) => {
                             updateCrew("planetMoon", value);
                             handleMoonChange(value);
