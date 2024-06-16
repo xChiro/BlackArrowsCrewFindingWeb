@@ -2,13 +2,5 @@
   "navigationFallback": {
     "rewrite": "index.html",
     "exclude": ["/images/*.{png,jpg,gif,ico}", "/*.{css,scss,js}"]
-  },
-  "globalHeaders": {
-    "content-type": [
-      {
-        "route": "*.js",
-        "value": "text/javascript"
-      }
-    ]
   }
 }
