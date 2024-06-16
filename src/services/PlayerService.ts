@@ -9,7 +9,7 @@ export interface ErrorMessageResponse {
 
 export default class CrewService extends BaseAPIService {
     public async getCurrenProfile(): Promise<PlayerProfile> {
-        return await this.getRequest('/Players/Current/Profile');
+        return await this.getRequest('/Profiles/Current/');
     }
 
     public async createProfile(profile: PlayerCreationRequest): Promise<void> {
@@ -17,6 +17,6 @@ export default class CrewService extends BaseAPIService {
     }
 
     public async updateProfileName(newName: string): Promise<void> {
-        return await this.putRequest('/Players/Current/Profile/Name', {UserName: newName});
+        return await this.putRequest('/Profiles/Current/Name', {UserName: newName});
     }
 }

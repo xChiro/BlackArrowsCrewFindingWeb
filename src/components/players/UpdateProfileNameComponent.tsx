@@ -8,27 +8,30 @@ import React, {useState} from "react";
 import {useAuth} from "../../hooks/useAuth.tsx";
 import TextInputField from "../utilities/forms/TextInputField.tsx";
 import {colors} from "../../themes/Colors.ts";
+import {usePlayer} from "../../hooks/usePlayerProfile.tsx";
 
 const StyledLabel = styled.h2`
     margin-bottom: 0.5rem;
 `;
 
 const UpdateProfileName = () => {
-    const [citizenName, setCitizenName] = useState("")
+    const [name, setName] = useState("")
     const [errorMessage, setErrorMessage] = useState("");
     const [buttonState, setButtonState] = useState({
         text: "Update",
         disabled: false,
         color: colors.greenColor
     });
+    const {setCitizenName}= usePlayer();
     const {getAccessToken} = useAuth();
 
     const onUpdateClick = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const playerService = new PlayerService(getAccessToken() ?? "");
 
-        playerService.updateProfileName(citizenName).then(() => {
-            setCitizenName(citizenName);
+        playerService.updateProfileName(name).then(() => {
+            setName(name);
+            setCitizenName(name);
             setButtonState(prevState => ({...prevState, text: "Updated", disabled: true, color: colors.inactiveColor}));
 
         }).catch(error => {
@@ -45,8 +48,8 @@ const UpdateProfileName = () => {
                             Change your citizen handler name:
                         </StyledLabel>
                         <TextInputField
-                            value={citizenName}
-                            onChange={setCitizenName}
+                            value={name}
+                            onChange={setName}
                             errorMessage={errorMessage}
                             minLength={3}
                             maxLength={30}

@@ -25,7 +25,7 @@ export const AppRouter = createBrowserRouter([
                         element: <ProtectedRoute><CreateProfile/></ProtectedRoute>,
                     },
                     {
-                        path: "profile/update",
+                        path: "update",
                         element: <ProtectedRoute><UpdateProfileName/></ProtectedRoute>,
                     }
                 ],

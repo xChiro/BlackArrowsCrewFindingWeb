@@ -1,5 +1,6 @@
 import {colors} from "../../themes/Colors.ts";
 import styled from "styled-components";
+import React from "react";
 
 const StyledButton = styled.button<{
     $buttonBackgroundColor: string;
@@ -25,15 +26,22 @@ const StyledButton = styled.button<{
 `;
 
 export interface MenuButtonProps {
-    onClick: () => void;
-    text: string;
+    onClick?: () => void;
     backgroundColor: string;
     fontSize?: string;
     minFontSize?: string;
+    children: React.ReactNode;
 }
 
-export const MenuButton = ({onClick, text, backgroundColor, fontSize = "1rem", minFontSize = ".8rem"}: MenuButtonProps) => (
-    <StyledButton $canClick={true} $fontSize={fontSize} $minFontSize={minFontSize} $buttonBackgroundColor={backgroundColor} onClick={onClick}>
-        {text}
+export const MenuButton = ({
+                               onClick,
+                               backgroundColor,
+                               fontSize = "1rem",
+                               minFontSize = ".8rem",
+                               children
+                           }: MenuButtonProps) => (
+    <StyledButton $canClick={true} $fontSize={fontSize} $minFontSize={minFontSize}
+                  $buttonBackgroundColor={backgroundColor} onClick={onClick}>
+        {children}
     </StyledButton>
 );
