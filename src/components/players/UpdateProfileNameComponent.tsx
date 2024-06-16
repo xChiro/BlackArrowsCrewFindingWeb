@@ -8,7 +8,6 @@ import React, {useEffect, useState} from "react";
 import {useAuth} from "../../hooks/useAuth.tsx";
 import TextInputField from "../utilities/forms/TextInputField.tsx";
 import {colors} from "../../themes/Colors.ts";
-import {usePlayer} from "../../hooks/usePlayerProfile.tsx";
 import {useNavigate} from "react-router-dom";
 
 const StyledLabel = styled.h2`
@@ -24,14 +23,13 @@ const UpdateProfileName = () => {
     });
     const {getAccessToken, isLogged} = useAuth();
     const [errorMessage, setErrorMessage] = useState("");
-    const {profile,} = usePlayer();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isLogged()) {
+        if (!isLogged()) {
             navigate("/");
         }
-    }, [profile.CitizenName]);
+    }, [isLogged, navigate]);
 
     const onUpdateClick = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
