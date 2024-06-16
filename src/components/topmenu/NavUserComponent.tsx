@@ -15,7 +15,7 @@ const SubMenu = styled.div`
     position: absolute;
     right: 0;
     background-color: ${colors.secondary};
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
     width: max-content;
     text-align: left;
