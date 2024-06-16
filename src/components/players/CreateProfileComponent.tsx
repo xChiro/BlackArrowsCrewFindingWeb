@@ -4,12 +4,11 @@ import styled from "styled-components";
 import {StyledForm} from "../utilities/forms/StyledForm.tsx";
 import {StyledBodyCard} from "../utilities/cards/StyledBodyCard.tsx";
 import PlayerService from "../../services/PlayerService.ts";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../hooks/useAuth.tsx";
 import TextInputField from "../utilities/forms/TextInputField.tsx";
 import {colors} from "../../themes/Colors.ts";
-import {usePlayer} from "../../hooks/usePlayerProfile.tsx";
 
 const StyledLabel = styled.h2`
     margin-bottom: 0.5rem;
@@ -20,13 +19,6 @@ const CreateProfile = () => {
     const navigate = useNavigate();
     const {getAccessToken} = useAuth();
     const [errorMessage, setErrorMessage] = useState("");
-    const {profile} = usePlayer();
-
-    useEffect(() => {
-        if (profile.CitizenName) {
-            navigate("/");
-        }
-    }, [profile.CitizenName, navigate]);
 
     const onSaveClick = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();

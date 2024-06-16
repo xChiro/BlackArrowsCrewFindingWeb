@@ -4,11 +4,10 @@ import styled from "styled-components";
 import {StyledForm} from "../utilities/forms/StyledForm.tsx";
 import {StyledBodyCard} from "../utilities/cards/StyledBodyCard.tsx";
 import PlayerService from "../../services/PlayerService.ts";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useAuth} from "../../hooks/useAuth.tsx";
 import TextInputField from "../utilities/forms/TextInputField.tsx";
 import {colors} from "../../themes/Colors.ts";
-import {useNavigate} from "react-router-dom";
 
 const StyledLabel = styled.h2`
     margin-bottom: 0.5rem;
@@ -16,20 +15,13 @@ const StyledLabel = styled.h2`
 
 const UpdateProfileName = () => {
     const [citizenName, setCitizenName] = useState("")
+    const [errorMessage, setErrorMessage] = useState("");
     const [buttonState, setButtonState] = useState({
         text: "Update",
         disabled: false,
         color: colors.greenColor
     });
-    const {getAccessToken, isLogged} = useAuth();
-    const [errorMessage, setErrorMessage] = useState("");
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (!isLogged()) {
-            navigate("/");
-        }
-    }, [isLogged, navigate]);
+    const {getAccessToken} = useAuth();
 
     const onUpdateClick = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
