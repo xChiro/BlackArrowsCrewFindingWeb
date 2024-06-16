@@ -20,6 +20,7 @@ const SubMenu = styled.div`
     width: max-content;
     text-align: left;
     cursor: pointer;
+    border-radius: .7rem;
 
     & a {
         color: white;
