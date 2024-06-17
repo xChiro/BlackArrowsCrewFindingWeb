@@ -12,7 +12,6 @@ const StyledRecentCrewCardContainer = styled.div`
     gap: 1rem;
     justify-content: center;
     align-items: center;
-    width: 100%;
 
     &::-webkit-scrollbar {
         height: 8px;
@@ -31,8 +30,6 @@ const StyledRecentCrewCardContainer = styled.div`
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        padding: 1rem;
-        width: 100vh;
     }
 `;
 
