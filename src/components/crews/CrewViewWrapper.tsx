@@ -7,7 +7,7 @@ const CrewViewWrapper = () => {
     const {crew} = useGetCrew(crewId ?? "");
 
     return (
-        <div style={{display: 'flex', flexDirection: 'column', width: '100%'}}>
+        <div style={{display: 'flex', flexDirection: 'column', width: '100%', margin: '0'}}>
 
             <div style={{
                 backgroundColor: '#d9c56d',

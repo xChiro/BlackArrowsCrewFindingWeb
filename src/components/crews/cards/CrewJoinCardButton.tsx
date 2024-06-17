@@ -1,7 +1,6 @@
 import {StyledCardButton} from "../../utilities/cards/StyledCardButton.tsx";
 import {usePlayer} from "../../../hooks/usePlayerProfile.tsx";
 import {colors} from "../../../themes/Colors.ts";
-import {useNavigate} from "react-router-dom";
 import useJoinCrew from "../../../hooks/crews/useJoinCrew.tsx";
 import {useAuth} from "../../../hooks/useAuth.tsx";
 
@@ -32,7 +31,6 @@ const CrewJoinCardButton = (props: CardButtonProps) => {
     const {login, isLogged} = useAuth();
     const buttonInfo = getButtonInfo(props.isFull, isInCrew(), isLogged());
     const joinCrew = useJoinCrew(props.crewId || '');
-    const navigate = useNavigate();
 
     const onClick = async () => {
         if (!isLogged())
@@ -40,7 +38,6 @@ const CrewJoinCardButton = (props: CardButtonProps) => {
         else {
             try {
                 await joinCrew();
-                navigate('/');
             } catch (e) {
                 console.error(e);
             }

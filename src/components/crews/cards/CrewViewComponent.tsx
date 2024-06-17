@@ -105,7 +105,7 @@ const CrewViewComponent = (props: CrewViewProps) => {
                         <StyledMemberList>
                             {members.map((member) => (
                                 <StyledMemberItem key={member.Id}>
-                                    <a href={`https://robertsspaceindustries.com/citizens/${member.Id}`}
+                                    <a href={`https://robertsspaceindustries.com/citizens/${member.CitizenName.Value}`}
                                        target="_blank"
                                        rel="noreferrer noopener"
                                        style={{color: 'white', textDecoration: 'underline'}}>
