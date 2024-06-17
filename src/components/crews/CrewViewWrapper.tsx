@@ -21,7 +21,7 @@ const CrewViewWrapper = () => {
                 padding: '.5rem',
                 marginBottom: '1rem',
                 color: 'black',
-                fontWeight: 'bold',
+                fontStyle: 'italic',
                 borderRadius: '.5rem',
             }}>
                 Remember to add your captain/crew member to your in-game friend list!

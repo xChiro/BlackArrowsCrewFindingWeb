@@ -67,9 +67,9 @@ const CrewViewComponent = (props: CrewViewProps) => {
                         available</h3>
                     <h6>Created {timeAgo}</h6>
                     {props.captainName &&
-                        <span>Captain: <b><HandleNameLink handleName={props.captainName}/></b>
+                        <span>Captain: <HandleNameLink handleName={props.captainName}/>
                         </span>}
-                    <span>Activity: <b>{props.activity}</b></span>
+                    <span style={{marginTop: ".7rem"}}>Activity: {props.activity}</span>
                 </StyledCardInfo>
                 <span>Languages: {props.Languages?.join(', ') ?? "Unknown"}</span>
                 <span style={{marginTop: ".5rem"}}>Description:</span>
