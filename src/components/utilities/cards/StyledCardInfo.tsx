@@ -7,7 +7,7 @@ export const StyledCardInfo = styled.div`
     justify-content: center;
     line-height: 0;
 
-    h1 {
+    h2 {
         margin-bottom: 0;
         align-self: center;
     }

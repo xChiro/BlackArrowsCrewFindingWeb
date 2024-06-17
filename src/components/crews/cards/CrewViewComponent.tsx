@@ -61,7 +61,7 @@ const CrewViewComponent = (props: CrewViewProps) => {
             </ActivityCrewCardHeader>
             <StyledBodyCard>
                 <StyledCardInfo>
-                    <h1>{props.crewName}</h1>
+                    <h2>{props.crewName}</h2>
                     <h6>{props.location}</h6>
                     <h3>{freeSlots(props.maxAllowedMembers, totalCurrentMembers)} slots
                         available</h3>
