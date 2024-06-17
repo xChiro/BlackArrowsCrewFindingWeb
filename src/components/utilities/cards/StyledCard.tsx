@@ -3,6 +3,7 @@ import {colors} from "../../../themes/Colors.ts";
 
 interface StyledCardProps {
     $maxWidth?: string;
+    $minWidth?: string;
     $minHeight?: string;
     $maxHeight?: string;
 }
@@ -12,7 +13,8 @@ export const StyledCard = styled.div<StyledCardProps>`
     flex-direction: column;
     background-color: ${colors.primary};
     border-radius: 1rem;
-    min-width: 25rem;
+    width: 100%;
+    min-width: ${props => props.$minWidth || '20rem'};
     max-width: ${props => props.$maxWidth || '25rem'};
     min-height: ${props => props.$minHeight || '30rem'};
     max-height: ${props => props.$maxHeight || '90rem'};

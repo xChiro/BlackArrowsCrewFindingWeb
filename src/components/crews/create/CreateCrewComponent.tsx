@@ -123,7 +123,7 @@ const CreateCrewComponent = () => {
     };
 
     return (
-        <StyledCard $maxWidth="30rem" $minHeight="9rem" $maxHeight="90rem">
+        <StyledCard $maxWidth="30rem" $minHeight="9rem" $maxHeight="90rem" $minWidth="25rem" >
             <ActivityCrewCardHeader activity={crew.activityName}/>
             <StyledForm onSubmit={onCreateCrewClick}>
                 <StyledBodyCard>
