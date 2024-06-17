@@ -20,7 +20,7 @@ const CrewViewWrapper = () => {
                 marginBottom: '1rem',
                 fontWeight: 'bold',
             }}>
-                Don't forget to add your captain/crew member to your in-game friend list!
+                Remember to add your captain/crew member to your in-game friend list!
             </div>
             <div style={{
                 display: 'flex',
