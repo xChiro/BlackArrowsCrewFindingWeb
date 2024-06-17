@@ -7,18 +7,22 @@ const CrewViewWrapper = () => {
     const {crew} = useGetCrew(crewId ?? "");
 
     return (
-        <div style={{display: 'flex', flexDirection: 'column', width: '100%', margin: '0'}}>
-
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+        }}>
             <div style={{
                 backgroundColor: '#d9c56d',
                 width: '100%',
                 textAlign: 'center',
-                position: 'relative',
-                zIndex: 1000,
+                alignItems: 'center',
                 padding: '.5rem',
-                color: 'black',
                 marginBottom: '1rem',
+                color: 'black',
                 fontWeight: 'bold',
+                borderRadius: '.5rem',
             }}>
                 Remember to add your captain/crew member to your in-game friend list!
             </div>
