@@ -72,7 +72,7 @@ const CrewViewComponent = (props: CrewViewProps) => {
                     <span>Activity: <b>{props.activity}</b></span>
                 </StyledCardInfo>
                 <span>Languages: {props.Languages?.join(', ') ?? "Unknown"}</span>
-                <span>Description:</span>
+                <span style={{marginTop: ".5rem"}}>Description:</span>
                 <StyledCardDescription>{props.description}</StyledCardDescription>
                 {members && members.length > 0 && (
                     <>
