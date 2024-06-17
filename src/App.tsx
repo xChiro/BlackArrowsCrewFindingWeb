@@ -18,9 +18,8 @@ const StyledContainer = styled.div`
 `;
 
 const App = () => {
-    const {isLogged, loginInProgress} = useAuth();
+    const {isLogged, loginInProgress, getAccessToken} = useAuth();
     const navigate = useNavigate();
-    const {getAccessToken} = useAuth();
 
     const dispatch = useDispatch();
 
@@ -37,7 +36,7 @@ const App = () => {
             .catch(() => {
                 navigate('/profile/create');
             });
-    }, [isLogged(), loginInProgress])
+    }, [isLogged, loginInProgress, getAccessToken, dispatch, navigate]);
 
     return (
         <>

@@ -15,7 +15,8 @@ const authConfig: TAuthConfig = {
     autoLogin: false,
     clearURL: true,
     decodeToken: false,
-    onRefreshTokenExpire: (event: TRefreshTokenExpiredEvent) => event.logIn(undefined, undefined, "redirect"),
+    storage: "session",
+    onRefreshTokenExpire: (event: TRefreshTokenExpiredEvent) => event.logIn(),
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
