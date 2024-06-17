@@ -45,7 +45,7 @@ const UpdateProfileName = () => {
                 <StyledForm onSubmit={onUpdateClick}>
                     <StyledBodyCard>
                         <StyledLabel>
-                            Change your citizen handler name:
+                            Change your citizen handle name:
                         </StyledLabel>
                         <TextInputField
                             value={name}
@@ -53,7 +53,7 @@ const UpdateProfileName = () => {
                             errorMessage={errorMessage}
                             minLength={3}
                             maxLength={30}
-                            inputName="handlerName"
+                            inputName="handleName"
                             required={true}
                         />
                     </StyledBodyCard>

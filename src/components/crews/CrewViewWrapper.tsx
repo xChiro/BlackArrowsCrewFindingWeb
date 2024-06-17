@@ -38,6 +38,8 @@ const CrewViewWrapper = () => {
                                    activity={crew?.Activity ?? ""}
                                    description={crew?.Description ?? ""}
                                    Members={crew?.Members ?? []}
+                                   Languages={crew?.Languages ?? []}
+                                   CreatedAt={crew?.CreatedAt ?? new Date()}
                 />
             </div>
         </div>

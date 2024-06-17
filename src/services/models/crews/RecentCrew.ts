@@ -7,6 +7,7 @@ export interface BaseCrew {
     Activity: string;
     Description: string;
     ReunionPoint: ReunionPoint;
+    CreatedAt: Date;
     Languages: string[];
     MaxPlayers: number;
 }

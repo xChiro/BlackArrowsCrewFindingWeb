@@ -3,14 +3,15 @@ import {StyledBodyCard} from "../../utilities/cards/StyledBodyCard.tsx";
 import {StyledCardInfo} from "../../utilities/cards/StyledCardInfo.tsx";
 import {StyledCardDescription} from "../../utilities/cards/StyledCardDescription.tsx";
 import {useFreeSlots, useIsFull} from "../../../hooks/crews/useCrewMembers.tsx";
-import styled from "styled-components";
 import {StyledCard} from "../../utilities/cards/StyledCard.tsx";
 import useCrewButton from "../../../hooks/crews/useCrewButton.tsx";
-import {colors} from "../../../themes/Colors.ts";
 import {useEffect, useState} from "react";
 import {usePlayer} from "../../../hooks/usePlayerProfile.tsx";
 import useKickMember from "../../../hooks/crews/useKickMember.tsx";
 import {CrewMember} from "../../../services/models/crews/CrewMember.ts";
+import useTimeAgo from "../../../hooks/useTimeAgo.tsx";
+import MemberList from "./MemberList.tsx";
+import HandleNameLink from "./HandleNameLink.tsx";
 
 export interface CrewViewProps {
     crewId: string,
@@ -22,32 +23,10 @@ export interface CrewViewProps {
     totalCurrentMembers: number,
     activity: string,
     description: string,
+    Languages: string[],
+    CreatedAt: Date,
     Members?: CrewMember[],
 }
-
-const StyledMemberList = styled.ul`
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background: none;
-    border: none;
-    overflow-y: auto;
-    max-height: 200px;
-`;
-
-const StyledMemberItem = styled.li`
-    background: none;
-    border: none;
-`;
-
-const StyledKickMemberButton = styled.button`
-    background-color: ${colors.redAlertColor};
-    border: none;
-    color: white;
-    cursor: pointer;
-    margin-left: 1rem;
-    border-radius: .3rem;
-`;
 
 const CrewViewComponent = (props: CrewViewProps) => {
     const freeSlots = useFreeSlots();
@@ -74,6 +53,8 @@ const CrewViewComponent = (props: CrewViewProps) => {
         );
     };
 
+    const timeAgo = useTimeAgo(new Date(props.CreatedAt));
+
     return (
         <StyledCard>
             <ActivityCrewCardHeader activity={props.activity}>
@@ -82,44 +63,22 @@ const CrewViewComponent = (props: CrewViewProps) => {
                 <StyledCardInfo>
                     <h1>{props.crewName}</h1>
                     <h6>{props.location}</h6>
-                    <h2 style={{marginTop: "1rem"}}>{freeSlots(props.maxAllowedMembers, totalCurrentMembers)} slots
-                        available</h2>
+                    <h3>{freeSlots(props.maxAllowedMembers, totalCurrentMembers)} slots
+                        available</h3>
+                    <h6>Created {timeAgo}</h6>
                     {props.captainName &&
-                        <span>Captain: <b>
-                                 <a href={`https://robertsspaceindustries.com/citizens/${props.captainName}`}
-                                    target="_blank"
-                                    rel="noreferrer noopener"
-                                    style={{color: 'white', textDecoration: 'underline'}}>
-                                       {props.captainName}
-                                </a>
-                            </b>
+                        <span>Captain: <b><HandleNameLink handleName={props.captainName}/></b>
                         </span>}
                     <span>Activity: <b>{props.activity}</b></span>
                 </StyledCardInfo>
+                <span>Languages: {props.Languages?.join(', ') ?? "Unknown"}</span>
                 <span>Description:</span>
                 <StyledCardDescription>{props.description}</StyledCardDescription>
-
                 {members && members.length > 0 && (
                     <>
                         <span>Members:</span>
-                        <StyledMemberList>
-                            {members.map((member) => (
-                                <StyledMemberItem key={member.Id}>
-                                    <a href={`https://robertsspaceindustries.com/citizens/${member.CitizenName.Value}`}
-                                       target="_blank"
-                                       rel="noreferrer noopener"
-                                       style={{color: 'white', textDecoration: 'underline'}}>
-                                        {member.CitizenName.Value}
-                                    </a>
-
-                                    {isCaptain(props.crewId, props.captainId) && (
-                                        <StyledKickMemberButton
-                                            onClick={() => onKickMember(member.Id)}>Remove
-                                        </StyledKickMemberButton>
-                                    )}
-                                </StyledMemberItem>
-                            ))}
-                        </StyledMemberList>
+                        <MemberList members={members} isCaptain={isCaptain} crewId={props.crewId}
+                                    captainId={props.captainId} onKickMember={onKickMember}/>
                     </>
                 )}
             </StyledBodyCard>

@@ -40,9 +40,21 @@ const RecentCrewCardContainer = () => {
     return (
         <StyledRecentCrewCardContainer>
             {crewData.length === 0
-                ? <NotCrewsAvailable />
+                ? <NotCrewsAvailable/>
                 : crewData.map((crew) => (
-                    <CrewViewComponent key={crew.crewId} {...crew} />
+                    <CrewViewComponent key={crew.crewId}
+                                       crewId={crew.crewId}
+                                       crewName={crew.crewName}
+                                       captainId={crew.captainId}
+                                       captainName={crew.captainName}
+                                       location={crew.location}
+                                       maxAllowedMembers={crew.maxAllowedMembers}
+                                       totalCurrentMembers={crew.totalCurrentMembers}
+                                       activity={crew.activity}
+                                       description={crew.description}
+                                       Members={crew.Members}
+                                       Languages={crew.Languages}
+                                       CreatedAt={crew.CreatedAt}/>
                 ))
             }
         </StyledRecentCrewCardContainer>

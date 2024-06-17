@@ -14,6 +14,8 @@ const extractCrew = (crew: RecentCrew): CrewViewProps => {
         description: crew.Description,
         maxAllowedMembers: crew.MaxPlayers,
         totalCurrentMembers: crew.CurrentPlayers,
+        Languages: crew.Languages,
+        CreatedAt: crew.CreatedAt,
         location: `${crew.ReunionPoint.System}/${crew.ReunionPoint.PlanetarySystem}/${crew.ReunionPoint.PlanetMoon}/${crew.ReunionPoint.Place}`
     };
 }
