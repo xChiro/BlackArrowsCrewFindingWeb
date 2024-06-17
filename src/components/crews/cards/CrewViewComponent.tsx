@@ -89,7 +89,7 @@ const CrewViewComponent = (props: CrewViewProps) => {
                                  <a href={`https://robertsspaceindustries.com/citizens/${props.captainName}`}
                                     target="_blank"
                                     rel="noreferrer noopener"
-                                    style={{color: 'white', textDecoration: 'none'}}>
+                                    style={{color: 'white', textDecoration: 'underline'}}>
                                        {props.captainName}
                                 </a>
                             </b>
@@ -108,7 +108,7 @@ const CrewViewComponent = (props: CrewViewProps) => {
                                     <a href={`https://robertsspaceindustries.com/citizens/${member.Id}`}
                                        target="_blank"
                                        rel="noreferrer noopener"
-                                       style={{color: 'white', textDecoration: 'none'}}>
+                                       style={{color: 'white', textDecoration: 'underline'}}>
                                         {member.CitizenName.Value}
                                     </a>
 
