@@ -4,7 +4,6 @@ const useTimeAgo = (date: Date) => {
     const [timeAgo, setTimeAgo] = useState('');
 
     useEffect(() => {
-        const intervalId = setInterval(() => {
             const now = new Date();
             const differenceInMilliseconds = now.getTime() - date.getTime();
             const differenceInSeconds = Math.floor(differenceInMilliseconds / 1000);
@@ -21,9 +20,6 @@ const useTimeAgo = (date: Date) => {
             } else {
                 setTimeAgo(`${differenceInSeconds} seconds ago`);
             }
-        }, 1000);
-
-        return () => clearInterval(intervalId);
     }, [date]);
 
     return timeAgo;
