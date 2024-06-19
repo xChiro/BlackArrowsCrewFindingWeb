@@ -19,9 +19,9 @@ export const useCreateCrew = (initialCrew: CrewCreation): {
         try {
             const token = getAccessToken();
             const crewService = new CrewService(token);
-            const crewId = await crewService.createCrew(crew);
-            joinCrew(crewId);
-            navigate('/crews/' + crewId);
+            const crewResponse = await crewService.createCrew(crew);
+            joinCrew(crewResponse.Id);
+            navigate('/crews/' + crewResponse.Id);
         } catch (e) {
             console.error(e);
         }
