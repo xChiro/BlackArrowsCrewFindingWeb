@@ -42,7 +42,7 @@ export class BaseAPIService {
         return responseData;
     }
 
-    protected async postRequest<T>(endpoint: string, body: object): Promise<T> {
+    protected async postRequest<T>(endpoint: string, body?: object): Promise<T> {
         return this.sendRequest<T>('POST', endpoint, true, body);
     }
 
