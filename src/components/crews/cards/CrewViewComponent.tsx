@@ -25,7 +25,7 @@ export interface CrewViewProps {
     description: string,
     Languages: string[],
     CreatedAt: Date,
-    Members?: CrewMember[],
+    Members?: CrewMember[]
 }
 
 const CrewViewComponent = (props: CrewViewProps) => {
