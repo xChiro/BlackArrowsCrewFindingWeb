@@ -18,7 +18,7 @@ const StyledContainer = styled.div`
 `;
 
 const App = () => {
-    const {isLogged, loginInProgress, getAccessToken} = useAuth();
+    const {isLogged, loginInProgress, getAccessToken, login} = useAuth();
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
@@ -37,8 +37,10 @@ const App = () => {
                 console.log(error);
                 if(error.message.includes("404"))
                     navigate('/profile/create');
+                if (error.message.includes("401"))
+                    login();
             });
-    }, [isLogged, loginInProgress, getAccessToken, dispatch, navigate]);
+    }, [isLogged, loginInProgress, getAccessToken, dispatch, navigate, login]);
 
     return (
         <>
