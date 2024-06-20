@@ -33,8 +33,9 @@ const App = () => {
             .then(profile => {
                 dispatch(createProfile(profile));
             })
-            .catch(() => {
-                navigate('/profile/create');
+            .catch(error => {
+                if(error.status === 404)
+                    navigate('/profile/create');
             });
     }, [isLogged, loginInProgress, getAccessToken, dispatch, navigate]);
 
