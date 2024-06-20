@@ -22,13 +22,7 @@ export class BaseAPIService {
         });
 
         if(!response.ok) {
-            let data;
-            try {
-                data = await response.json();
-            } catch {
-                data = {Message: 'No message provided'};
-            }
-            throw new Error(data.Message);
+            throw new Error(response.status.toString());
         }
 
         let responseData;

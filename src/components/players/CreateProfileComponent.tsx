@@ -9,6 +9,7 @@ import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../hooks/useAuth.tsx";
 import TextInputField from "../utilities/forms/TextInputField.tsx";
 import {colors} from "../../themes/Colors.ts";
+import {usePlayer} from "../../hooks/usePlayerProfile.tsx";
 
 const StyledLabel = styled.h2`
     margin-bottom: 0.5rem;
@@ -19,12 +20,13 @@ const CreateProfile = () => {
     const navigate = useNavigate();
     const {getAccessToken, isLogged} = useAuth();
     const [errorMessage, setErrorMessage] = useState("");
+    const {profile} = usePlayer();
 
     useEffect(() => {
-        if (!isLogged()) {
+        if (!isLogged() || profile.CitizenName !== "") {
             navigate("/");
         }
-    }, [isLogged, navigate]);
+    }, [isLogged, navigate,citizenName, profile.CitizenName]);
 
     const onSaveClick = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();

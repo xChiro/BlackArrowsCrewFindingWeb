@@ -34,7 +34,8 @@ const App = () => {
                 dispatch(createProfile(profile));
             })
             .catch(error => {
-                if(error.status === 404)
+                console.log(error);
+                if(error.message.includes("404"))
                     navigate('/profile/create');
             });
     }, [isLogged, loginInProgress, getAccessToken, dispatch, navigate]);
