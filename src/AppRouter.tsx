@@ -4,9 +4,10 @@ import CreateProfile from "./components/players/CreateProfileComponent.tsx";
 import CreateCrewComponent from "./components/crews/create/CreateCrewComponent.tsx";
 import RecentCrewCardContainer from "./components/crews/cards/RecentCrewCardContainer.tsx";
 import CrewViewWrapper from "./components/crews/CrewViewWrapper.tsx";
-import PrivacyAdvice from "./components/privacy/PrivacyAdviceComponent.tsx";
+import PrivacyAdvice from "./components/legals/PrivacyAdviceComponent.tsx";
 import UpdateProfileName from "./components/players/UpdateProfileNameComponent.tsx";
 import ProtectedRoute from "./components/utilities/routes/ProtectedRoute.tsx";
+import TermsOfServices from "./components/legals/TermsOfServicesComponent.tsx";
 
 export const AppRouter = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ export const AppRouter = createBrowserRouter([
             {
                 path: "/privacy",
                 element: <PrivacyAdvice/>,
+            },
+            {
+                path: "/terms",
+                element: <TermsOfServices/>,
             }
         ]
     }

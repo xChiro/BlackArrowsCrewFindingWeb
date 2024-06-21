@@ -56,7 +56,7 @@ const Footer = () => {
             <CenterAlignedDiv>
             </CenterAlignedDiv>
             <RightAlignedDiv>
-                <StyledLink to="/privacy">Privacy Policy</StyledLink>
+                <StyledLink to="/terms">Terms of Service</StyledLink> · <StyledLink to="/privacy">Privacy Policy</StyledLink>
             </RightAlignedDiv>
         </StyledFooter>
     );
