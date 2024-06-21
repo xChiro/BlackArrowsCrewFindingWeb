@@ -14,8 +14,10 @@ const PrivacyAdvice = () => {
                     <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to
                         the collection and use of information in accordance with this Privacy Policy. This Privacy
                         Policy has been created with the help of the <a
-                            href="https://www.termsfeed.com/privacy-policy-generator/" target="_blank">Privacy Policy
-                            Generator</a>.</p>
+                            href="https://www.termsfeed.com/privacy-policy-generator/"
+                            style={{color: 'white'}}
+                            rel="noreferrer noopener"
+                            target="_blank">Privacy Policy Generator</a>.</p>
                     <h2>Interpretation and Definitions</h2>
                     <h3>Interpretation</h3>
                     <p>The words of which the initial letter is capitalized have meanings defined under the following
@@ -72,7 +74,8 @@ const PrivacyAdvice = () => {
                         </li>
                         <li>
                             <p><strong>Website</strong> refers to SC CrewFinding , accessible from <a
-                                href="https://www.sc-crewfinding.com" rel="external nofollow noopener"
+                                href="https://www.sc-crewfinding.com" style={{color: 'white'}}
+                                rel="external nofollow noreferrer noopener"
                                 target="_blank">https://www.sc-crewfinding.com</a></p>
                         </li>
                         <li>
@@ -129,7 +132,7 @@ const PrivacyAdvice = () => {
                     <p>Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies. Persistent Cookies remain
                         on Your personal computer or mobile device when You go offline, while Session Cookies are
                         deleted as soon as You close Your web browser. You can learn more about cookies on <a
-                            href="https://www.termsfeed.com/blog/cookies/#What_Are_Cookies" target="_blank">TermsFeed
+                            href="https://www.termsfeed.com/blog/cookies/#What_Are_Cookies" style={{color: 'white'}} rel="noreferrer noopener" target="_blank">TermsFeed
                             website</a> article.</p>
                     <p>We use both Session and Persistent Cookies for the purposes set out below:</p>
                     <ul>
