@@ -1,12 +1,12 @@
 import CrewViewComponent from "./cards/CrewViewComponent.tsx";
 import useGetCrew from "../../hooks/crews/useGetCrew.tsx";
 import {useParams} from "react-router-dom";
-import useCreateChannelInvite from "../../hooks/crews/useCreateChannelInvite.tsx";
+import useCreateChannelInviteLink from "../../hooks/crews/useCreateChannelInviteLink.tsx";
 
 const CrewViewWrapper = () => {
     const {crewId} = useParams();
     const {crew} = useGetCrew(crewId ?? "");
-    const inviteLink = useCreateChannelInvite(crew?.VoiceChannelId);
+    const {inviteLink} = useCreateChannelInviteLink();
 
     return (
         <div style={{
@@ -26,7 +26,7 @@ const CrewViewWrapper = () => {
                 fontStyle: 'italic',
                 borderRadius: '.5rem',
             }}>
-                {crew?.VoiceChannelId && crew?.VoiceChannelId == "" ? "Remember to add your captain/crew member to your in-game friend list!" :
+                {!inviteLink ? "Remember to add your captain/crew member to your in-game friend list!" :
                     <>
                         Join your Crew Discord channel to communicate with your crew members: <a href={inviteLink}
                                                                                                  target="_blank"

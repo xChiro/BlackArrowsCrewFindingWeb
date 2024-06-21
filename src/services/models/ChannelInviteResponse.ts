@@ -1,3 +1,3 @@
 export interface ChannelInviteResponse {
-    Code: string;
+    Link: string;
 }
