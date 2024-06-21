@@ -6,7 +6,7 @@ import useCreateChannelInviteLink from "../../hooks/crews/useCreateChannelInvite
 const CrewViewWrapper = () => {
     const {crewId} = useParams();
     const {crew} = useGetCrew(crewId ?? "");
-    const inviteLink = useCreateChannelInviteLink();
+    const {inviteLink} = useCreateChannelInviteLink();
 
     return (
         <div style={{

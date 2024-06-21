@@ -1,21 +1,32 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useAuth} from "../useAuth.tsx";
 import ChannelServices from "../../services/ChannelServices.ts";
+import useSessionStorage from "./useInviteLinkSessionStorage.tsx";
 
 const useCreateChannelInviteLink = () => {
     const {getAccessToken} = useAuth();
-    const [inviteLink, setInviteLink] = useState("");
+    const {saveInviteLink, inviteLink} = useSessionStorage();
 
     useEffect(() => {
-        const token = getAccessToken();
-        new ChannelServices(token).createChannelInvite().then(
-            (invite) => {
-                setInviteLink(invite.Link);
-            }
-        ).catch(() => setInviteLink(""));
+        if (inviteLink === '') {
+            const token = getAccessToken();
+            new ChannelServices(token)
+                .createChannelInvite()
+                .then((invite) => {
+                    const link = invite?.Link || '';
+                    if (sessionStorage.getItem('inviteLink') !== link) {
+                        saveInviteLink(link);
+                    }
+                })
+                .catch(() => {
+                    if (!sessionStorage.getItem('inviteLink')) {
+                        saveInviteLink('');
+                    }
+                });
+        }
     }, []);
 
-    return inviteLink
+    return {inviteLink}
 };
 
 export default useCreateChannelInviteLink;
