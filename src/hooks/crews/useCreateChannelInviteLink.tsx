@@ -2,10 +2,12 @@ import {useEffect} from "react";
 import {useAuth} from "../useAuth.tsx";
 import ChannelServices from "../../services/ChannelServices.ts";
 import useSessionStorage from "./useInviteLinkSessionStorage.tsx";
+import {usePlayer} from "../usePlayerProfile.tsx";
 
 const useCreateChannelInviteLink = () => {
     const {getAccessToken} = useAuth();
-    const {saveInviteLink, inviteLink} = useSessionStorage();
+    const {profile} = usePlayer()
+    const {saveInviteLink, inviteLink} = useSessionStorage(profile.ActiveCrewId);
 
     useEffect(() => {
         if (inviteLink === '') {

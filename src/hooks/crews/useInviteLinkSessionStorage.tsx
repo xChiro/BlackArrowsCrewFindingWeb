@@ -1,17 +1,17 @@
 import { useState } from 'react';
 
-const useSessionStorage = () => {
-    const getSessionStorage = () => sessionStorage.getItem('inviteLink') || '';
+const useSessionStorage = (crewId: string) => {
+    const getSessionStorage = () => sessionStorage.getItem(crewId) || '';
 
     const [inviteLink, setInviteLink] = useState(getSessionStorage());
 
     const saveInviteLink = (link: string) => {
-        sessionStorage.setItem('inviteLink', link);
+        sessionStorage.setItem(crewId, link);
         setInviteLink(link);
     };
 
     const clearInviteLink = () => {
-        sessionStorage.removeItem('inviteLink');
+        sessionStorage.removeItem(crewId);
         setInviteLink('');
     };
 

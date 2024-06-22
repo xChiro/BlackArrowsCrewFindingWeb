@@ -5,8 +5,8 @@ import useSessionStorage from "./useInviteLinkSessionStorage.tsx";
 
 const useLeaveCrew = () => {
     const {getAccessToken} = useAuth();
-    const {leaveCrew} = usePlayer();
-    const {clearInviteLink} = useSessionStorage();
+    const {leaveCrew,profile} = usePlayer();
+    const {clearInviteLink} = useSessionStorage(profile.ActiveCrewId);
 
     return async () => {
         const token = getAccessToken();
