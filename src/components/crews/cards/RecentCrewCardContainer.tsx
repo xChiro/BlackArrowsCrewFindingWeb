@@ -9,7 +9,7 @@ import {StyledCard} from "../../utilities/cards/StyledCard.tsx";
 const StyledRecentCrewCardContainer = styled.div`
     display: grid;
     grid-template-columns: auto auto auto;
-    gap: 1rem;
+    gap: .5rem;
     column-width: 25rem;
     justify-content: center;
     align-items: center;
@@ -59,7 +59,6 @@ const StyledSelect = styled.select`
     font-size: 1rem;
     border-radius: .5rem;
     width: 80%;
-    margin-left: 1rem;
 
     option {
         color: black;
