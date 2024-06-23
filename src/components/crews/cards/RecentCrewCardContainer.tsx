@@ -7,12 +7,17 @@ import {colors} from "../../../themes/Colors.ts";
 import {StyledCard} from "../../utilities/cards/StyledCard.tsx";
 
 const StyledRecentCrewCardContainer = styled.div`
-    display: flex;  
-    grid-template-columns: repeat(auto-fill, minmax(max-content, 25rem));
+    display: grid;
+    grid-template-columns: auto auto auto;
     gap: 1rem;
+    column-width: 25rem;
     justify-content: center;
     align-items: center;
-
+    
+    &:last-child {
+        margin-right: -1rem;
+    }
+    
     &::-webkit-scrollbar {
         height: 8px;
     }
@@ -39,6 +44,7 @@ const StyledWrapper = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 100%;
 `;
 
 const StyledSelect = styled.select`
