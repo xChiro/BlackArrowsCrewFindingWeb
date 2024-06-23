@@ -34,7 +34,11 @@ const StyledRecentCrewCardContainer = styled.div`
     @media (max-width: 750px) {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        row-gap: 1rem;
+        
+        &:last-of-type {
+            margin-right: 0;
+        }
     }
 `;
 
