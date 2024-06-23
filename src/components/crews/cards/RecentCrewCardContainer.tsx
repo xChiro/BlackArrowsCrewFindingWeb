@@ -71,12 +71,12 @@ const RecentCrewCardContainer = () => {
 
     return (
         <StyledWrapper>
-            <StyledCard $maxHeight={"2rem"} $minHeight={"2em"} style={{
+            <StyledCard $maxHeight={"2rem"} $minHeight={"2rem"} style={{
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
                 marginBottom: "1rem",
-                padding: ".4rem 1rem",
+                padding: ".4rem .4rem",
                 textAlign: "center",
             }}>
                 <p style={{fontSize: ".8rem", margin: "0", width: "30%"}}>Choose Activity</p>
