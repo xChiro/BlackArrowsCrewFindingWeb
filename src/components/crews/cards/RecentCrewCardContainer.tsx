@@ -7,8 +7,8 @@ import {colors} from "../../../themes/Colors.ts";
 import {StyledCard} from "../../utilities/cards/StyledCard.tsx";
 
 const StyledRecentCrewCardContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 25rem);
+    display: flex;  
+    grid-template-columns: repeat(auto-fill, minmax(max-content, 25rem));
     gap: 1rem;
     justify-content: center;
     align-items: center;
@@ -26,7 +26,7 @@ const StyledRecentCrewCardContainer = styled.div`
         background: #555;
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 750px) {
         display: flex;
         flex-direction: column;
         gap: 1rem;
