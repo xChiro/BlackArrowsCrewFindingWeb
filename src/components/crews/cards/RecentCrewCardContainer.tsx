@@ -96,25 +96,23 @@ const RecentCrewCardContainer = () => {
                     ))}
                 </StyledSelect>
             </StyledCard>
+            {filteredCrewData.length === 0 && <NotCrewsAvailable/>}
             <StyledRecentCrewCardContainer>
-                {filteredCrewData.length === 0
-                    ? <NotCrewsAvailable/>
-                    : filteredCrewData.map((crew) => (
-                        <CrewViewComponent key={crew.crewId}
-                                           crewId={crew.crewId}
-                                           crewName={crew.crewName}
-                                           captainId={crew.captainId}
-                                           captainName={crew.captainName}
-                                           location={crew.location}
-                                           maxAllowedMembers={crew.maxAllowedMembers}
-                                           totalCurrentMembers={crew.totalCurrentMembers}
-                                           activity={crew.activity}
-                                           description={crew.description}
-                                           Members={crew.Members}
-                                           Languages={crew.Languages}
-                                           CreatedAt={crew.CreatedAt}/>
-                    ))
-                }
+                {filteredCrewData.length !== 0 && filteredCrewData.map((crew) => (
+                    <CrewViewComponent key={crew.crewId}
+                                       crewId={crew.crewId}
+                                       crewName={crew.crewName}
+                                       captainId={crew.captainId}
+                                       captainName={crew.captainName}
+                                       location={crew.location}
+                                       maxAllowedMembers={crew.maxAllowedMembers}
+                                       totalCurrentMembers={crew.totalCurrentMembers}
+                                       activity={crew.activity}
+                                       description={crew.description}
+                                       Members={crew.Members}
+                                       Languages={crew.Languages}
+                                       CreatedAt={crew.CreatedAt}/>
+                ))}
             </StyledRecentCrewCardContainer>
         </StyledWrapper>
     );
