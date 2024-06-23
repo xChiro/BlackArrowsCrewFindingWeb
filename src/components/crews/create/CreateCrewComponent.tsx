@@ -47,7 +47,7 @@ const SYSTEM_OPTIONS = [
             {
                 name: "Crusader",
                 bodies: [
-                    {name: "Crusader", places: ["Orison", "Port Olisar"]},
+                    {name: "Crusader", places: ["Orison", "Seraphim Station"]},
                     {name: "Yela", places: ["GrimHex"]},
                 ]
             }
