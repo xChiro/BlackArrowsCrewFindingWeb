@@ -13,6 +13,7 @@ const activityImages: { [key: string]: string } = {
     mining,
     trading,
     exploration,
+    "bounty hunting": security,
     piracy,
     salvaging,
     security,
@@ -23,7 +24,7 @@ const activityImages: { [key: string]: string } = {
 
 const StyledActivityCrewCardHeader = styled.div<{ activity: string }>`
     height: 10rem;
-    background-image:  url(${props => activityImages[props.activity] || mining});
+    background-image:  url(${(props) => activityImages[props.activity] || other});
     background-size: cover;
     background-position: center; 
     border-radius: 1rem 1rem 0 0;

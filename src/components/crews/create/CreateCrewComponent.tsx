@@ -18,7 +18,7 @@ const StyledLabel = styled.label`
     margin-top: 1rem;
 `;
 
-const ACTIVITY_OPTIONS = ["Mining", "Trading", "Exploration", "Transportation", "Security", "Rescue", "Salvaging", "Piracy", "Other"];
+const ACTIVITY_OPTIONS = ["Mining", "Trading", "Bounty Hunting", "Exploration", "Transportation", "Security", "Rescue", "Salvaging", "Piracy", "Other"];
 const CREW_SIZE_OPTIONS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 const LANGUAGES_OPTIONS = ["EN", "FR", "DE", "ES", "IT", "PT", "RU", "ZH", "JA", "KO"];
 
