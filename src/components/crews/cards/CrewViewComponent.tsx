@@ -12,6 +12,10 @@ import {CrewMember} from "../../../services/models/crews/CrewMember.ts";
 import useTimeAgo from "../../../hooks/useTimeAgo.tsx";
 import MemberList from "./MemberList.tsx";
 import HandleNameLink from "./HandleNameLink.tsx";
+import styled from "styled-components";
+import {useLocation} from 'react-router-dom';
+import {ClipboardShareButton} from "./share/ClipboardShareButton.tsx";
+import {JoinVoiceChannelButton} from "./share/JoinVoiceChannelButton.tsx";
 
 export interface CrewViewProps {
     crewId: string,
@@ -25,8 +29,17 @@ export interface CrewViewProps {
     description: string,
     Languages: string[],
     CreatedAt: Date,
-    Members?: CrewMember[]
+    Members?: CrewMember[],
+    discordVoiceChannel?: string
 }
+
+const StyledSection = styled.section`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    margin-bottom: .8rem;
+`;
 
 const CrewViewComponent = (props: CrewViewProps) => {
     const freeSlots = useFreeSlots();
@@ -36,6 +49,8 @@ const CrewViewComponent = (props: CrewViewProps) => {
     const [members, setMembers] = useState(props.Members);
     const [totalCurrentMembers, setTotalCurrentMembers] = useState(props.totalCurrentMembers);
     const CrewButton = useCrewButton(props.crewId, props.captainId, isFull(props.maxAllowedMembers, totalCurrentMembers));
+    const location = useLocation();
+    const fullUrl = `${window.location.protocol}//${window.location.hostname}${location.pathname}`;
 
     useEffect(() => {
         setMembers(props.Members);
@@ -59,6 +74,10 @@ const CrewViewComponent = (props: CrewViewProps) => {
         <StyledCard $minWidth={"25rem"}>
             <ActivityCrewCardHeader activity={props.activity}>
             </ActivityCrewCardHeader>
+            <StyledSection>
+                <ClipboardShareButton url={fullUrl} text={"Share Crew"}/>
+                {props.discordVoiceChannel && <JoinVoiceChannelButton url={props.discordVoiceChannel}/>}
+            </StyledSection>
             <StyledBodyCard>
                 <StyledCardInfo>
                     <h2>{props.crewName}</h2>

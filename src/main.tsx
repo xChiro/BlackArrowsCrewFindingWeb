@@ -5,6 +5,7 @@ import {AppRouter} from "./AppRouter.tsx";
 import {Provider} from "react-redux";
 import {store} from "./stores/Store.ts";
 import {AuthProvider, TAuthConfig, TRefreshTokenExpiredEvent} from "react-oauth2-code-pkce";
+import 'react-toastify/dist/ReactToastify.css';
 
 const authConfig: TAuthConfig = {
     clientId: import.meta.env.VITE_CLIENT_ID,

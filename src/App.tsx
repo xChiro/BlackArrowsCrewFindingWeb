@@ -9,6 +9,7 @@ import {useDispatch} from "react-redux";
 import {createProfile} from "./stores/PlayerProfileSlice.ts";
 import styled from "styled-components";
 import Footer from "./components/footer/FooterComponent.tsx";
+import {ToastContainer} from "react-toastify";
 
 const StyledContainer = styled.div`
     display: flex;
@@ -44,6 +45,7 @@ const App = () => {
 
     return (
         <>
+            <ToastContainer/>
             <Navbar/>
             <StyledContainer>
                 <Outlet/>

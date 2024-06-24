@@ -3,3 +3,7 @@ body {
     color: #f0f0f0;
     font-family: 'Electrolize', sans-serif;
 }
+
+.Toastify__toast {
+    border-radius: 1rem !important;
+}

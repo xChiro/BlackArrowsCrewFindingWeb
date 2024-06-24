@@ -16,24 +16,6 @@ const CrewViewWrapper = () => {
             alignItems: 'center',
         }}>
             <div style={{
-                backgroundColor: '#d9c56d',
-                width: '100%',
-                textAlign: 'center',
-                alignItems: 'center',
-                padding: '.5rem',
-                marginBottom: '1rem',
-                color: 'black',
-                fontStyle: 'italic',
-                borderRadius: '.5rem',
-            }}>
-                {!inviteLink ? "Remember to add your captain/crew member to your in-game friend list!" :
-                    <>
-                        Join your Crew Discord channel to communicate with your crew members: <a href={inviteLink}
-                                                                                                 target="_blank"
-                                                                                                 rel="noreferrer">{inviteLink}</a>
-                    </>}
-            </div>
-            <div style={{
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -51,6 +33,7 @@ const CrewViewWrapper = () => {
                                    Members={crew?.Members ?? []}
                                    Languages={crew?.Languages ?? []}
                                    CreatedAt={crew?.CreatedAt ?? new Date()}
+                                   discordVoiceChannel={inviteLink ?? null}
                 />
             </div>
         </div>
