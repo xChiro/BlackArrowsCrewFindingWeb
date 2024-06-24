@@ -20,6 +20,7 @@ const CrewViewWrapper = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 width: '100%',
+                minWidth: '25rem',
             }}>
                 <CrewViewComponent crewId={crewId ?? ""}
                                    crewName={crew?.Name ?? ""}
