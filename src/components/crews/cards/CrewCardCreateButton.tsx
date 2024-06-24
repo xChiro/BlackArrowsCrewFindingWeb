@@ -26,7 +26,7 @@ const CrewCardCreateButton = () => {
             onClick={onClick}
             $fontSize={isLogged() ? "1.9rem" : "1.4rem"}
         >
-            {isLogged() ? "Create Crew" : "Sing In to Create"}
+            {isLogged() ? "Create Crew" : "Sign In to Create"}
         </StyledCardButton>
     );
 };
