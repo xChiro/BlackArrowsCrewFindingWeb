@@ -1,6 +1,6 @@
 import './App.css'
 import Navbar from "./components/topmenu/NavBarComponent.tsx";
-import {Outlet} from "react-router-dom";
+import {Outlet, useLocation} from "react-router-dom";
 import {useEffect} from "react";
 import PlayerService from './services/PlayerService.ts';
 import {useNavigate} from "react-router-dom";
@@ -21,6 +21,7 @@ const StyledContainer = styled.div`
 const App = () => {
     const {isLogged, loginInProgress, getAccessToken, login} = useAuth();
     const navigate = useNavigate();
+    const { pathname } = useLocation();
 
     const dispatch = useDispatch();
 
@@ -29,6 +30,8 @@ const App = () => {
 
         const token = getAccessToken() ?? "";
         const playerServices = new PlayerService(token)
+
+        if(pathname === '/profile/create') return;
 
         playerServices.getCurrenProfile()
             .then(profile => {
@@ -41,7 +44,7 @@ const App = () => {
                 if (error.message.includes("401"))
                     login();
             });
-    }, [isLogged, loginInProgress, getAccessToken, dispatch, navigate, login]);
+    }, [isLogged, loginInProgress, getAccessToken, dispatch, navigate, login, pathname]);
 
     return (
         <>
