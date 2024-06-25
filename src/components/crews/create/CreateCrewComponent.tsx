@@ -216,7 +216,7 @@ const CreateCrewComponent = () => {
                                     disabled={!isDiscordChannelActive}
                     />
                     {!isDiscordChannelActive &&
-                        <span style={{margin: "1rem 0", fontStyle: "italic", fontSize:".8rem"}}>Discord channel will be created for you.</span>}
+                        <span style={{margin: "1rem 0", fontStyle: "italic", fontSize:".8rem"}}>A Discord channel will be created for you.</span>}
                 </StyledBodyCard>
                 <StyledCardButton type="submit" $buttonBackgroundColor={"green"}
                                   $canClick={true}>Create</StyledCardButton>
