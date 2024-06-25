@@ -18,9 +18,9 @@ const StyledContainer = styled.div`
     margin: 4rem 0 4rem 0;
     padding-bottom: 2rem;
     
-    @media (max-width: 600px) {
+    @media (max-width: 750px) {
         margin: 4rem 0 2rem 0;
-        padding-bottom: 8rem;
+        padding-bottom: 10rem;
     }
 `;
 

@@ -17,7 +17,7 @@ const StyledFooter = styled.footer`
     gap: 1rem;
     margin-top: 1rem;
 
-    @media (max-width: 600px) {
+    @media (max-width: 750px) {
         flex-direction: column;
         align-items: center;
         text-align: center;
@@ -38,7 +38,7 @@ const SocialMediaDiv = styled.div`
         font-size: .8rem;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 750px) {
         justify-content: center;
         text-align: center;
     }
