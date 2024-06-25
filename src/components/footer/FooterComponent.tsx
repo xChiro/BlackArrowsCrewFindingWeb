@@ -53,8 +53,7 @@ const Footer = () => {
                 <span style={{fontSize: ".8rem"}}>Not endorsed or affiliated with Cloud Imperium Games (CIG) or Star Citizen. All trademarks are property of their respective owners.</span>
             </CenterAlignedDiv>
             <RightAlignedDiv>
-                <StyledLink to="/terms">Terms of Service</StyledLink> ·
-                <StyledLink to="/privacy">Privacy Policy</StyledLink>
+                <StyledLink to="/terms">Terms of Service</StyledLink> · <StyledLink to="/privacy">Privacy Policy</StyledLink>
             </RightAlignedDiv>
         </StyledFooter>
     );
