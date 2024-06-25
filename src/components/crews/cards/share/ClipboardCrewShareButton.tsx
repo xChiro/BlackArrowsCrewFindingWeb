@@ -7,7 +7,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 const StyledShareButton = styled.button`
     background-color: ${colors.lightBlueColor};
     color: ${colors.fontColor};
-    min-height: 2rem;
     border: none;
     cursor: pointer;    
     min-height: 1.8rem;
@@ -27,11 +26,11 @@ const StyledShareButton = styled.button`
     }
 `;
 
-export const ClipboardShareButton = ({url, text}: { url: string, text: string }) => {
+export const ClipboardCrewShareButton = ({crewId, text}: { crewId: string, text: string }) => {
     const showToast = useToast();
 
     const onShareClick = () => {
-        navigator.clipboard.writeText(url).then(() => {
+        navigator.clipboard.writeText(`${window.location.origin}/crews/${crewId}`).then(() => {
             showToast('Crew Link Copied to clipboard');
         });
     };

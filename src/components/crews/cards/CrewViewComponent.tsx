@@ -13,8 +13,7 @@ import useTimeAgo from "../../../hooks/useTimeAgo.tsx";
 import MemberList from "./MemberList.tsx";
 import HandleNameLink from "./HandleNameLink.tsx";
 import styled from "styled-components";
-import {useLocation} from 'react-router-dom';
-import {ClipboardShareButton} from "./share/ClipboardShareButton.tsx";
+import {ClipboardCrewShareButton} from "./share/ClipboardCrewShareButton.tsx";
 import {JoinVoiceChannelButton} from "./share/JoinVoiceChannelButton.tsx";
 
 export interface CrewViewProps {
@@ -49,8 +48,6 @@ const CrewViewComponent = (props: CrewViewProps) => {
     const [members, setMembers] = useState(props.Members);
     const [totalCurrentMembers, setTotalCurrentMembers] = useState(props.totalCurrentMembers);
     const CrewButton = useCrewButton(props.crewId, props.captainId, isFull(props.maxAllowedMembers, totalCurrentMembers));
-    const location = useLocation();
-    const fullUrl = `${window.location.protocol}//${window.location.hostname}${location.pathname}`;
 
     useEffect(() => {
         setMembers(props.Members);
@@ -75,7 +72,7 @@ const CrewViewComponent = (props: CrewViewProps) => {
             <ActivityCrewCardHeader activity={props.activity}>
             </ActivityCrewCardHeader>
             <StyledSection>
-                <ClipboardShareButton url={fullUrl} text={"Share Crew"}/>
+                <ClipboardCrewShareButton crewId={props.crewId} text={"Share Crew"}/>
                 {props.discordVoiceChannel && <JoinVoiceChannelButton url={props.discordVoiceChannel}/>}
             </StyledSection>
             <StyledBodyCard>
