@@ -7,46 +7,42 @@ const StyledFooter = styled.footer`
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: ${colors.primary};
-    margin: 0;
-    padding: 0 1rem;
-    box-sizing: border-box;
-
+    padding: 1rem 0 1rem 0;
+    gap: 1rem;
+    
     @media (max-width: 600px) {
-        flex-direction: row;
-        height: 3rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 `;
 
 const LeftAlignedDiv = styled.div`
-    width: 33%;
     text-align: left;
+    margin-left: 1rem;
 `;
 
 const CenterAlignedDiv = styled.div`
-    width: 34%;
     text-align: center;
 `;
 
 const RightAlignedDiv = styled.div`
-    width: 33%;
     text-align: right;
+    margin-right: 1rem;
 `;
 
 const StyledLink = styled(Link)`
-  color: white;
-  text-decoration: none;
-
-  &:visited {
     color: white;
-  }
+    text-decoration: none;
+
+    &:visited {
+        color: white;
+    }
 `;
-
-
 const Footer = () => {
     return (
         <StyledFooter>
@@ -54,9 +50,11 @@ const Footer = () => {
                 <StyledLink to="/">SC Crew Finding by Black Arrows</StyledLink>
             </LeftAlignedDiv>
             <CenterAlignedDiv>
+                <span style={{fontSize: ".8rem"}}>Not endorsed or affiliated with Cloud Imperium Games (CIG) or Star Citizen. All trademarks are property of their respective owners.</span>
             </CenterAlignedDiv>
             <RightAlignedDiv>
-                <StyledLink to="/terms">Terms of Service</StyledLink> · <StyledLink to="/privacy">Privacy Policy</StyledLink>
+                <StyledLink to="/terms">Terms of Service</StyledLink> ·
+                <StyledLink to="/privacy">Privacy Policy</StyledLink>
             </RightAlignedDiv>
         </StyledFooter>
     );
