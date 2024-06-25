@@ -199,7 +199,7 @@ const CreateCrewComponent = () => {
                                         onChange={(value) => updateCrew("languagesAbbrevs", value)}/>
                     <hr style={{width: "100%", marginTop: "1rem"}}/>
                     <span style={{margin: ".8rem 0"}}>
-                        We can create a discord for you or you could use your own channel.
+                        You can use your own voice channel from any Discord server, or we can create one for you on our server.
                     </span>
                     <CheckboxField labelName={"I'll Use My Own Discord Channel"}
                                    onChange={() => setDiscordChannelActive(val => !val)}
@@ -216,7 +216,7 @@ const CreateCrewComponent = () => {
                                     disabled={!isDiscordChannelActive}
                     />
                     {!isDiscordChannelActive &&
-                        <span style={{margin: "1rem 0", fontStyle: "italic", fontSize:".8rem"}}>A Discord channel will be created for you.</span>}
+                        <span style={{margin: "1rem 0", fontStyle: "italic", fontSize: ".8rem"}}>A Discord channel will be created for you.</span>}
                 </StyledBodyCard>
                 <StyledCardButton type="submit" $buttonBackgroundColor={"green"}
                                   $canClick={true}>Create</StyledCardButton>
