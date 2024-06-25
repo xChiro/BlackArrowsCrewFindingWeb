@@ -201,10 +201,10 @@ const CreateCrewComponent = () => {
                     <span style={{margin: ".8rem 0"}}>
                         We can create a discord for you or you could use your own channel.
                     </span>
-                    <CheckboxField labelName={"Use My Own Discord Channel"}
+                    <CheckboxField labelName={"I'll Use My Own Discord Channel"}
                                    onChange={() => setDiscordChannelActive(val => !val)}
                                    checked={isDiscordChannelActive}/>
-                    <StyledLabel>Paste Discord Channel Invite Link:</StyledLabel>
+                    <StyledLabel>Provide Your Discord Channel Invite Link:</StyledLabel>
                     <TextInputField inputName="customChannelLink"
                                     value={crew.customChannelLink || ""}
                                     onChange={(value) => updateCrew("customChannelLink", value)}
