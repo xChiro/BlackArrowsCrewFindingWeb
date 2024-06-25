@@ -212,7 +212,7 @@ const CreateCrewComponent = () => {
                                     maxLength={29}
                                     errorMessage=""
                                     required={false}
-                                    placeholder="https://discord.gg/q2cn3pD5"
+                                    placeholder="Example: https://discord.gg/q2cn3pD5"
                                     disabled={!isDiscordChannelActive}
                     />
                     {!isDiscordChannelActive &&
