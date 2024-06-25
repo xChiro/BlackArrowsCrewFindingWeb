@@ -95,6 +95,9 @@ const PrivacyAdvice = () => {
                             <p>Discord User Account Id</p>
                         </li>
                         <li>
+                            <p>Discord Channels Invite Links</p>
+                        </li>
+                        <li>
                             <p>Usage Data</p>
                         </li>
                         <li>

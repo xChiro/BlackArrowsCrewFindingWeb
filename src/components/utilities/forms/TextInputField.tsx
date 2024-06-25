@@ -8,6 +8,8 @@ interface InputFieldProps {
     minLength: number;
     maxLength: number;
     inputName: string;
+    disabled?: boolean;
+    placeholder?: string;
 }
 
 const TextInputField = ({
@@ -17,7 +19,9 @@ const TextInputField = ({
                             minLength,
                             maxLength,
                             inputName,
-                            required = false
+                            placeholder = "",
+                            required = false,
+                            disabled = false
                         }: InputFieldProps) => {
     return (
         <>
@@ -28,10 +32,12 @@ const TextInputField = ({
                 minLength={minLength}
                 maxLength={maxLength}
                 onChange={(e) => onChange(e.target.value)}
+                disabled={disabled}
+                placeholder={placeholder}
             />
             {errorMessage && <div>{errorMessage}</div>}
         </>
-    ) ;
+    );
 }
 
 export default TextInputField;
