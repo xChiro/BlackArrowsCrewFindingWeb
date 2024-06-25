@@ -7,4 +7,5 @@ export interface CrewCreation {
     languagesAbbrevs: string[];
     activityName: string;
     description: string;
+    customChannelLink?: string;
 }

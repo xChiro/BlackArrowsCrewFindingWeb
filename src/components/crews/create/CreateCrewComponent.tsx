@@ -10,9 +10,12 @@ import TextAreaField from "../../utilities/forms/TextAreaField.tsx";
 import MultiComboBoxField from "../../utilities/forms/MultiComboBoxField.tsx";
 import {useCreateCrew} from "../../../hooks/crews/useCreateCrew.tsx";
 import ActivityCrewCardHeader from "../cards/ActivityCrewCardHeader.tsx";
+import TextInputField from "../../utilities/forms/TextInputField.tsx";
+import CheckboxField from "../../utilities/forms/CheckBoxField.tsx";
+import useToast from "../../utilities/notifications/useToast.tsx";
 
 const StyledLabel = styled.label`
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
     margin-top: 1rem;
@@ -61,6 +64,8 @@ const CreateCrewComponent = () => {
     const [selectedMoon, setSelectedMoon] = useState(SYSTEM_OPTIONS[0].planetarySystems[0].bodies[0]);
     const [places, setPlaces] = useState(SYSTEM_OPTIONS[0].planetarySystems[0].bodies[0].places);
     const [selectedPlace, setSelectedPlace] = useState(places[0]);
+    const [isDiscordChannelActive, setDiscordChannelActive] = useState(false);
+    const showToast = useToast();
 
     const handleSystemChange = (value: string) => {
         const system = SYSTEM_OPTIONS.find(system => system.name === value);
@@ -110,6 +115,10 @@ const CreateCrewComponent = () => {
     const {crew, setCrew, createCrew} = useCreateCrew(initialCrew);
 
     const updateCrew = (Attr: keyof CrewCreation, value: string | number | string[]) => {
+        if (Attr === "customChannelLink" && !isDiscordChannelActive) {
+            value = "";
+        }
+
         setCrew({...crew, [Attr]: value});
     };
 
@@ -118,12 +127,12 @@ const CreateCrewComponent = () => {
         try {
             await createCrew(crew);
         } catch (e) {
-            console.error(e);
+            showToast("error: ", {type: "error"});
         }
     };
 
     return (
-        <StyledCard $maxWidth="30rem" $minHeight="9rem" $maxHeight="90rem" $minWidth="25rem" >
+        <StyledCard $maxWidth="30rem" $minHeight="9rem" $maxHeight="90rem" $minWidth="25rem">
             <ActivityCrewCardHeader activity={crew.activityName}/>
             <StyledForm onSubmit={onCreateCrewClick}>
                 <StyledBodyCard>
@@ -188,8 +197,27 @@ const CreateCrewComponent = () => {
                     <MultiComboBoxField inputName="languagesAbbrevs" value={crew.languagesAbbrevs}
                                         options={LANGUAGES_OPTIONS}
                                         onChange={(value) => updateCrew("languagesAbbrevs", value)}/>
+                    <hr style={{width: "100%", marginTop: "1rem"}}/>
+                    <span style={{margin: ".8rem 0"}}>
+                        We can create a discord for you or you could use your own channel.
+                    </span>
+                    <CheckboxField labelName={"Use Custom Discord Channel"}
+                                   onChange={() => setDiscordChannelActive(val => !val)}
+                                   checked={isDiscordChannelActive}/>
+                    <StyledLabel>Paste Discord Channel Invite Link:</StyledLabel>
+                    <TextInputField inputName="customChannelLink"
+                                    value={crew.customChannelLink || ""}
+                                    onChange={(value) => updateCrew("customChannelLink", value)}
+                                    minLength={0}
+                                    maxLength={29}
+                                    errorMessage=""
+                                    required={false}
+                                    placeholder="https://discord.gg/q2cn3pD5"
+                                    disabled={!isDiscordChannelActive}
+                    />
+                    {!isDiscordChannelActive &&
+                        <span style={{margin: "1rem 0", fontStyle: "italic", fontSize:".8rem"}}>Discord channel will be created for you.</span>}
                 </StyledBodyCard>
-
                 <StyledCardButton type="submit" $buttonBackgroundColor={"green"}
                                   $canClick={true}>Create</StyledCardButton>
             </StyledForm>

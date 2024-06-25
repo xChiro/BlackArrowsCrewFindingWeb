@@ -1,7 +1,7 @@
-import { toast } from 'react-toastify';
+import {toast, ToastOptions} from 'react-toastify';
 
 const useToast = () => {
-    const showToast = (message: string, options = {}) => {
+    return (message: string, options: ToastOptions) => {
         toast(message, {
             position: "top-center",
             autoClose: 3000,
@@ -14,8 +14,6 @@ const useToast = () => {
             ...options,
         });
     };
-
-    return showToast;
 };
 
 export default useToast;
