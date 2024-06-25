@@ -24,16 +24,17 @@ const StyledFooter = styled.footer`
 
 const LeftAlignedDiv = styled.div`
     text-align: left;
-    margin-left: 1rem;
+    margin: 1rem 0;
 `;
 
 const CenterAlignedDiv = styled.div`
     text-align: center;
+    margin: 1rem 0;
 `;
 
 const RightAlignedDiv = styled.div`
     text-align: right;
-    margin-right: 1rem;
+    margin: 1rem 0;
 `;
 
 const StyledLink = styled(Link)`
