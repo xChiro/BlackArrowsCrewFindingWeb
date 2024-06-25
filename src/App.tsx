@@ -16,6 +16,12 @@ const StyledContainer = styled.div`
     justify-content: center;
     align-items: center;
     margin: 4rem 0 4rem 0;
+    padding-bottom: 2rem;
+    
+    @media (max-width: 600px) {
+        margin: 4rem 0 2rem 0;
+        padding-bottom: 8rem;
+    }
 `;
 
 const App = () => {

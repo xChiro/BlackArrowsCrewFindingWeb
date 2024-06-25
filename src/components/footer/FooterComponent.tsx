@@ -13,6 +13,7 @@ const StyledFooter = styled.footer`
     background-color: ${colors.primary};
     padding: 1rem 0 1rem 0;
     gap: 1rem;
+    margin-top: 1rem;
     
     @media (max-width: 600px) {
         flex-direction: column;
