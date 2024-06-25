@@ -92,10 +92,13 @@ const PrivacyAdvice = () => {
                         include, but is not limited to:</p>
                     <ul>
                         <li>
-                            <p>Email address</p>
+                            <p>Discord User Account Id</p>
                         </li>
                         <li>
                             <p>Usage Data</p>
+                        </li>
+                        <li>
+                            <p>Star Citizen Handler Name</p>
                         </li>
                     </ul>
                     <h4>Usage Data</h4>
@@ -132,7 +135,8 @@ const PrivacyAdvice = () => {
                     <p>Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies. Persistent Cookies remain
                         on Your personal computer or mobile device when You go offline, while Session Cookies are
                         deleted as soon as You close Your web browser. You can learn more about cookies on <a
-                            href="https://www.termsfeed.com/blog/cookies/#What_Are_Cookies" style={{color: 'white'}} rel="noreferrer noopener" target="_blank">TermsFeed
+                            href="https://www.termsfeed.com/blog/cookies/#What_Are_Cookies" style={{color: 'white'}}
+                            rel="noreferrer noopener" target="_blank">TermsFeed
                             website</a> article.</p>
                     <p>We use both Session and Persistent Cookies for the purposes set out below:</p>
                     <ul>
@@ -199,42 +203,33 @@ const PrivacyAdvice = () => {
                             <p><strong>To manage Your requests:</strong> To attend and manage Your requests to Us.</p>
                         </li>
                         <li>
-                            <p><strong>For business transfers:</strong> We may use Your information to evaluate or
-                                conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale
-                                or transfer of some or all of Our assets, whether as a going concern or as part of
-                                bankruptcy, liquidation, or similar proceeding, in which Personal Data held by Us about
-                                our Service users is among the assets transferred.</p>
-                        </li>
-                        <li>
                             <p><strong>For other purposes</strong>: We may use Your information for other purposes, such
                                 as data analysis, identifying usage trends, determining the effectiveness of our
                                 promotional campaigns and to evaluate and improve our Service, products, services,
                                 marketing and your experience.</p>
                         </li>
                     </ul>
-                    <p>We may share Your personal information in the following situations:</p>
+                    <p>We respect your privacy and we are committed to protecting it. We do not share your personal
+                        information with third parties except as described in this privacy policy. We may use your
+                        personal information only to provide and improve our service to you.</p>
+
                     <ul>
-                        <li><strong>With Service Providers:</strong> We may share Your personal information with Service
-                            Providers to monitor and analyze the use of our Service, to contact You.
+                        <li><strong>With Service Providers:</strong> We engage certain trusted third-parties to perform
+                            functions and provide services to us. We may share your personal data with these third
+                            parties, but only to the extent necessary to perform these functions and provide such
+                            services, and only pursuant to binding contractual obligations requiring such third parties
+                            to maintain the privacy and security of your data.
                         </li>
-                        <li><strong>For business transfers:</strong> We may share or transfer Your personal information
-                            in connection with, or during negotiations of, any merger, sale of Company assets,
-                            financing, or acquisition of all or a portion of Our business to another company.
+                        <br/>
+                        <li><strong>For business transfers:</strong> We may sell, transfer or otherwise share some or
+                            all of its business or assets, including your personal information in connection with a
+                            business deal (or potential business deal) such as a merger, consolidation, acquisition,
+                            reorganization or sale of assets or in the event of bankruptcy, in which case we will make
+                            reasonable efforts to require the recipient to honor this privacy policy.
                         </li>
-                        <li><strong>With Affiliates:</strong> We may share Your information with Our affiliates, in
-                            which case we will require those affiliates to honor this Privacy Policy. Affiliates include
-                            Our parent company and any other subsidiaries, joint venture partners or other companies
-                            that We control or that are under common control with Us.
-                        </li>
-                        <li><strong>With business partners:</strong> We may share Your information with Our business
-                            partners to offer You certain products, services or promotions.
-                        </li>
-                        <li><strong>With other users:</strong> when You share personal information or otherwise interact
-                            in the public areas with other users, such information may be viewed by all users and may be
-                            publicly distributed outside.
-                        </li>
-                        <li><strong>With Your consent</strong>: We may disclose Your personal information for any other
-                            purpose with Your consent.
+                        <br/>
+                        <li><strong>Your Consent:</strong> We may share or disclose your information at your direction,
+                            such as when you authorize a third-party web client or application to access your account.
                         </li>
                     </ul>
                     <h3>Retention of Your Personal Data</h3>
