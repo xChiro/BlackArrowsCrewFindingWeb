@@ -16,7 +16,7 @@ const authConfig: TAuthConfig = {
     autoLogin: false,
     clearURL: true,
     decodeToken: false,
-    storage: "session",
+    storage: "local",
     onRefreshTokenExpire: (event: TRefreshTokenExpiredEvent) => event.logIn(),
 }
 
