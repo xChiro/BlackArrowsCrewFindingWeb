@@ -14,7 +14,7 @@ const StyledFooter = styled.footer`
     padding: 1rem 0 1rem 0;
     gap: 1rem;
     margin-top: 1rem;
-    
+
     @media (max-width: 600px) {
         flex-direction: column;
         align-items: center;
@@ -52,10 +52,14 @@ const Footer = () => {
                 <StyledLink to="/">SC Crew Finding by Black Arrows</StyledLink>
             </LeftAlignedDiv>
             <CenterAlignedDiv>
-                <span style={{fontSize: ".8rem"}}>Not endorsed or affiliated with Cloud Imperium Games (CIG) or Star Citizen. All trademarks are property of their respective owners.</span>
+                <span style={{fontSize: ".8rem"}}>
+                    Star Citizen®, Roberts Space Industries® and Cloud Imperium® are trademarks of
+                    Cloud Imperium Rights LLC. This is a fan-site and not affiliated with CIG.
+                </span>
             </CenterAlignedDiv>
             <RightAlignedDiv>
-                <StyledLink to="/terms">Terms of Service</StyledLink> · <StyledLink to="/privacy">Privacy Policy</StyledLink>
+                <StyledLink to="/terms">Terms of Service</StyledLink> · <StyledLink to="/privacy">Privacy
+                Policy</StyledLink>
             </RightAlignedDiv>
         </StyledFooter>
     );
