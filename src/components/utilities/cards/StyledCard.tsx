@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {colors} from "../../../themes/Colors.ts";
 
-interface StyledCardProps {
+export interface StyledCardProps {
     $maxWidth?: string;
     $minWidth?: string;
     $minHeight?: string;
@@ -20,7 +20,7 @@ export const StyledCard = styled.div<StyledCardProps>`
     max-height: ${props => props.$maxHeight || '35rem'};
     flex-shrink: 0;
 
-    @media (min-width: 350px) {
+    @media (max-height: 750px) {
         min-width: 20rem;
     }
 
