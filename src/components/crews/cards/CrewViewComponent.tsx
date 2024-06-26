@@ -91,19 +91,16 @@ const CrewViewComponent = (props: CrewViewProps) => {
                 {props.Languages?.join(', ') ?? "Unknown"}
                 <span style={{marginTop: ".5rem"}}>Description:</span>
                 <StyledCardDescription>{props.description}</StyledCardDescription>
-                <>
-                    <span style={{marginBottom: ".5rem"}}>Members:</span>
-                    {members && members.length > 0 ? (
+                {members && members.length > 0 ? (
+                    <>
+                        <span style={{marginBottom: ".5rem"}}>Members:</span>
                         <MemberList
                             members={members}
                             isCaptain={isCaptain}
                             crewId={props.crewId}
                             captainId={props.captainId}
                             onKickMember={onKickMember}/>
-                    ) : (
-                        <span>No members yet.</span>
-                    )}
-                </>
+                    </> ) : null}
             </StyledBodyCard>
             {CrewButton}
         </StyledCard>
