@@ -12,8 +12,7 @@ const StyledRecentCrewCardContainer = styled.div`
     gap: .5rem;
     column-width: 25rem;
     justify-content: center;
-    align-items: center;
-    
+    align-items: start;    
     &:last-child {
         margin-right: -1rem;
     }
