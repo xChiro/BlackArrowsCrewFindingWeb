@@ -68,7 +68,7 @@ const CrewViewComponent = (props: CrewViewProps) => {
     const timeAgo = useTimeAgo(new Date(props.CreatedAt));
 
     return (
-        <StyledCard $minWidth={"25rem"}>
+        <StyledCard $minWidth={"25rem"} $maxWidth={"25rem"}>
             <ActivityCrewCardHeader activity={props.activity}>
             </ActivityCrewCardHeader>
             <StyledSection>
