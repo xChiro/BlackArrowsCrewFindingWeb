@@ -9,14 +9,15 @@ const StyledFooter = styled.footer`
     bottom: 0;
     left: 0;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     background-color: ${colors.primary};
-    padding: .6rem 0;
-    gap: .6rem;
+    padding: 1rem;
+    box-sizing: border-box;
 
     @media (max-width: 750px) {
+        display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
@@ -45,7 +46,6 @@ const SocialMediaDiv = styled.div`
 
 const LeftAlignedDiv = styled.div`
     text-align: left;
-    padding-left: 1rem;
     
     @media (max-width: 600px) {
         flex-direction: row;
@@ -61,7 +61,6 @@ const CenterAlignedDiv = styled.div`
 
 const RightAlignedDiv = styled.div`
     text-align: right;
-    padding-right: 1rem;
 `;
 
 const StyledLink = styled(Link)`
