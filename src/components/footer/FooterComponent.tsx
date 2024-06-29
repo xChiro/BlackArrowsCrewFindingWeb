@@ -16,7 +16,7 @@ const StyledFooter = styled.footer`
     padding: 1rem;
     box-sizing: border-box;
 
-    @media (max-width: 750px) {
+    @media (max-width: 775px) {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -38,7 +38,7 @@ const SocialMediaDiv = styled.div`
         font-size: .8rem;
     }
 
-    @media (max-width: 750px) {
+    @media (max-width: 775px) {
         justify-content: center;
         text-align: center;
     }
@@ -47,16 +47,18 @@ const SocialMediaDiv = styled.div`
 const LeftAlignedDiv = styled.div`
     text-align: left;
     
-    @media (max-width: 600px) {
+    @media (max-width: 775px) {
         flex-direction: row;
         align-items: center;
         text-align: center;
         align-content: center;
+        margin-bottom: 1rem;
     }
 `;
 
 const CenterAlignedDiv = styled.div`
     text-align: center;
+    margin-bottom: 1rem;
 `;
 
 const RightAlignedDiv = styled.div`

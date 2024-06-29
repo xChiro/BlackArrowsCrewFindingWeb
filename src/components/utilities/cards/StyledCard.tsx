@@ -20,7 +20,7 @@ export const StyledCard = styled.div<StyledCardProps>`
     max-height: ${props => props.$maxHeight || '35rem'};
     flex-shrink: 0;
 
-    @media (max-height: 750px) {
+    @media (max-height: 775px) {
         min-width: 20rem;
     }
 

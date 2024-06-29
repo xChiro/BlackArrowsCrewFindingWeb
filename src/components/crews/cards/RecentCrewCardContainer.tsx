@@ -13,6 +13,7 @@ const StyledRecentCrewCardContainer = styled.div`
     column-width: 25rem;
     justify-content: center;
     align-items: start;    
+    
     &:last-child {
         margin-right: -1rem;
     }
@@ -30,7 +31,7 @@ const StyledRecentCrewCardContainer = styled.div`
         background: #555;
     }
 
-    @media (max-width: 750px) {
+    @media (max-width: 775px) {
         display: flex;
         flex-direction: column;
         row-gap: 1rem;
