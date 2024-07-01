@@ -4,6 +4,7 @@ import {colors} from '../../themes/Colors.ts';
 import {useAuth} from '../../hooks/useAuth.tsx';
 import {usePlayer} from "../../hooks/usePlayerProfile.tsx";
 import {MenuButton} from "./MenuButton.tsx";
+import {useDeleteAccount} from "../../hooks/useDeleteAccount.tsx";
 
 const NavUserContainer = styled.div`
     position: relative;
@@ -42,6 +43,7 @@ export const NavUserComponent = () => {
     const {isLogged, logout, login} = useAuth();
     const {profile} = usePlayer();
     const navigate = useNavigate();
+    const {ModalComponent, deleteAccount} = useDeleteAccount();
 
     const handleLogout = () => {
         logout();
@@ -50,6 +52,10 @@ export const NavUserComponent = () => {
 
     const handlerChangeName = () => {
         navigate('/profile/update');
+    }
+
+    const handleRemoveAccount = () => {
+        deleteAccount();
     }
 
     return (
@@ -61,6 +67,7 @@ export const NavUserComponent = () => {
                     </MenuButton>
                     <SubMenu>
                         <a onClick={handlerChangeName}>Change Handler Name</a>
+                        <a style={{color: colors.redAlertColor}} onClick={handleRemoveAccount}>Remove Account</a>
                         <a style={{color: colors.redAlertColor}} onClick={handleLogout}>Log Out</a>
                     </SubMenu>
                 </NavUserContainer>
@@ -69,6 +76,7 @@ export const NavUserComponent = () => {
                     Sign in with Discord
                 </MenuButton>
             )}
+            <ModalComponent/>
         </>
     );
 };

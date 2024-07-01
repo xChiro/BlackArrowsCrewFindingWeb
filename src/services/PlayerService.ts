@@ -7,7 +7,7 @@ export interface ErrorMessageResponse {
     statusCode: number;
 }
 
-export default class CrewService extends BaseAPIService {
+export default class PlayerService extends BaseAPIService {
     public async getCurrenProfile(): Promise<PlayerProfile> {
         return await this.getRequest('/Profiles/Current/');
     }
@@ -18,5 +18,9 @@ export default class CrewService extends BaseAPIService {
 
     public async updateProfileName(newName: string): Promise<void> {
         return await this.putRequest('/Profiles/Current/Name', {UserName: newName});
+    }
+
+    public async deleteAccount(): Promise<void> {
+        return await this.deleteRequest('/Profiles/Current');
     }
 }
