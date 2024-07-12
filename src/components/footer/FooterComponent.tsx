@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {colors} from "../../themes/Colors.ts";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faDiscord, faReddit} from "@fortawesome/free-brands-svg-icons";
+import {faDiscord, faGithub, faReddit} from "@fortawesome/free-brands-svg-icons";
 
 const StyledFooter = styled.footer`
     position: fixed;
@@ -81,10 +81,13 @@ const Footer = () => {
                 <SocialMediaDiv>
                     <span>Join to us:</span>
                     <a href="https://www.reddit.com/r/StarCitizen_Crews/">
-                        <FontAwesomeIcon icon={faReddit} />
+                        <FontAwesomeIcon icon={faReddit}/>
                     </a>
                     <a href="https://discord.gg/K74phC2Kfh">
-                        <FontAwesomeIcon icon={faDiscord} />
+                        <FontAwesomeIcon icon={faDiscord}/>
+                    </a>
+                    <a href="https://github.com/xChiro/BlackArrowsCrewFinding">
+                        <FontAwesomeIcon icon={faGithub}/>
                     </a>
                 </SocialMediaDiv>
             </LeftAlignedDiv>
