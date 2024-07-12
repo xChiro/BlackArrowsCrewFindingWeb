@@ -79,7 +79,6 @@ const Footer = () => {
             <LeftAlignedDiv>
                 <StyledLink to="/">SC Crew Finding by Black Arrows</StyledLink>
                 <SocialMediaDiv>
-                    <span>Join to us:</span>
                     <a href="https://www.reddit.com/r/StarCitizen_Crews/">
                         <FontAwesomeIcon icon={faReddit}/>
                     </a>
