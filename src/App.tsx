@@ -10,6 +10,7 @@ import {createProfile} from "./stores/PlayerProfileSlice.ts";
 import styled from "styled-components";
 import Footer from "./components/footer/FooterComponent.tsx";
 import {ToastContainer} from "react-toastify";
+import useSignalR from "./hooks/useSignalR.tsx";
 
 const StyledContainer = styled.div`
     display: flex;
@@ -28,6 +29,8 @@ const App = () => {
     const {isLogged, loginInProgress, getAccessToken, login} = useAuth();
     const navigate = useNavigate();
     const { pathname } = useLocation();
+    const { connection } = useSignalR('');
+
 
     const dispatch = useDispatch();
 
@@ -42,6 +45,8 @@ const App = () => {
         playerServices.getCurrenProfile()
             .then(profile => {
                 dispatch(createProfile(profile));
+                if (connection != null && connection.state === "Disconnected")
+                    connection.start();
             })
             .catch(error => {
                 console.log(error);
