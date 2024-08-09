@@ -9,8 +9,9 @@ import {useDispatch} from "react-redux";
 import {createProfile} from "./stores/PlayerProfileSlice.ts";
 import styled from "styled-components";
 import Footer from "./components/footer/FooterComponent.tsx";
+import useSignalR from "./hooks/signalR/useSignalR.tsx";
+import {usePlayer} from "./hooks/usePlayerProfile.tsx";
 import {ToastContainer} from "react-toastify";
-import useSignalR from "./hooks/useSignalR.tsx";
 
 const StyledContainer = styled.div`
     display: flex;
@@ -18,7 +19,7 @@ const StyledContainer = styled.div`
     align-items: center;
     margin: 4rem 0 4rem 0;
     padding-bottom: 2rem;
-    
+
     @media (max-width: 750px) {
         margin: 4rem 0 2rem 0;
         padding-bottom: 10rem;
@@ -28,34 +29,39 @@ const StyledContainer = styled.div`
 const App = () => {
     const {isLogged, loginInProgress, getAccessToken, login} = useAuth();
     const navigate = useNavigate();
-    const { pathname } = useLocation();
-    const { connection } = useSignalR('');
-
+    const {pathname} = useLocation();
+    const {startConnection} = useSignalR();
+    const {profile} = usePlayer();
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (loginInProgress || !isLogged()) return;
+        if (profile.Id === "") return;
+            startConnection();
+    }, [profile.Id]);
+
+    useEffect(() => {
+        if (loginInProgress || !isLogged() || profile.Id !== "") {
+            return;
+        }
 
         const token = getAccessToken() ?? "";
         const playerServices = new PlayerService(token)
 
-        if(pathname === '/profile/create') return;
+        if (pathname === '/profile/create') return;
 
         playerServices.getCurrenProfile()
             .then(profile => {
                 dispatch(createProfile(profile));
-                if (connection != null && connection.state === "Disconnected")
-                    connection.start();
             })
             .catch(error => {
                 console.log(error);
-                if(error.message.includes("404"))
+                if (error.message.includes("404"))
                     navigate('/profile/create');
                 if (error.message.includes("401"))
                     login();
             });
-    }, [isLogged, loginInProgress, getAccessToken, dispatch, navigate, login, pathname]);
+    }, [loginInProgress]);
 
     return (
         <>

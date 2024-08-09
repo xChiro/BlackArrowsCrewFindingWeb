@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 
 const useJoinCrew = (crewId: string) => {
     const {getAccessToken} = useAuth();
-    const { joinCrew } = usePlayer();
+    const {joinCrew} = usePlayer();
     const navigate = useNavigate();
 
     return async () => {
@@ -13,8 +13,8 @@ const useJoinCrew = (crewId: string) => {
         const memberService = new CrewMemberService(token);
         await memberService.joinCrew(crewId);
 
-        navigate('/crews/' + crewId);
         joinCrew(crewId);
+        navigate('/crews/' + crewId);
     };
 };
 
