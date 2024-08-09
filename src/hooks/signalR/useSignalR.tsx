@@ -68,7 +68,7 @@ const useSignalR = (): {
 
         const newConnection = new signalR.HubConnectionBuilder()
             .withUrl(data.Url, {accessTokenFactory: () => data.AccessToken})
-            .withAutomaticReconnect([0, 2000, 10000, 30000])
+            .withAutomaticReconnect([1000, 10000, 30000, 600000])
             .configureLogging(signalR.LogLevel.Information)
             .build();
 
