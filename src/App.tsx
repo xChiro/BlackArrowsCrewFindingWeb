@@ -30,18 +30,17 @@ const App = () => {
     const {isLogged, loginInProgress, getAccessToken, login} = useAuth();
     const navigate = useNavigate();
     const {pathname} = useLocation();
-    const {startConnection, connection} = useSignalR();
+    const {startConnection, stopConnection} = useSignalR();
     const {profile, isInCrew} = usePlayer();
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (profile.Id === "" || !isInCrew()) {
-            connection?.stop();
-            return;
-        }
-        startConnection();
-    }, [profile.Id, isInCrew()]);
+        if (profile.Id === "" || !isInCrew())
+            stopConnection();
+        else
+            startConnection();
+    }, [profile.Id, profile.ActiveCrewId]);
 
     useEffect(() => {
         if (loginInProgress || !isLogged() || profile.Id !== "") {
