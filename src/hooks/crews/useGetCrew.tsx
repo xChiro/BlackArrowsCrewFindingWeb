@@ -27,7 +27,7 @@ const useGetCrew = (id: string) => {
             () => {
                 setLoading(false);
             });
-    }, [id]);
+    }, [id, dispatch, getAccessToken()]);
 
     return {crew, error, isLoading: loading};
 };

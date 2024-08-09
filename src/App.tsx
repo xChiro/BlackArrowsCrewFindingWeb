@@ -36,11 +36,11 @@ const App = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (profile.Id === "" || !isInCrew())
+        if (!isInCrew())
             stopConnection();
         else
             startConnection();
-    }, [profile.Id, profile.ActiveCrewId]);
+    }, [isInCrew()]);
 
     useEffect(() => {
         if (loginInProgress || !isLogged() || profile.Id !== "") {
@@ -63,7 +63,7 @@ const App = () => {
                 if (error.message.includes("401"))
                     login();
             });
-    }, [loginInProgress]);
+    }, [loginInProgress, isLogged(), getAccessToken(), dispatch, profile, navigate, pathname]);
 
     return (
         <>

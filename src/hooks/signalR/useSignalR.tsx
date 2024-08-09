@@ -24,7 +24,7 @@ const useSignalR = (): {
     const navigate = useNavigate();
     const showToast = useToast();
     const [connection, setConnection] = useState<signalR.HubConnection>();
-    const activeCrew = useSelector((state: ActiveCrew) => state);
+    const activeCrewId = useSelector((state: ActiveCrew) => state.Id);
     const dispatch = useDispatch();
 
     const startConnection = () => {
@@ -69,11 +69,11 @@ const useSignalR = (): {
         const newConnection = new signalR.HubConnectionBuilder()
             .withUrl(data.Url, {accessTokenFactory: () => data.AccessToken})
             .withAutomaticReconnect([0, 2000, 10000, 30000])
-            .configureLogging(signalR.LogLevel.Debug)
+            .configureLogging(signalR.LogLevel.Information)
             .build();
 
         newConnection.on('NotifyPlayerJoined', (message: { PlayerId: string, CitizenName: string }) => {
-            if (activeCrew.Id !== "") {
+            if (activeCrewId !== "") {
                 dispatch(addMemberToActiveCrew({
                     Id: message.PlayerId,
                     CitizenName: {
@@ -90,7 +90,7 @@ const useSignalR = (): {
         });
 
         newConnection.on('PlayerLeftCrew', (message: { PlayerId: string }) => {
-            if (activeCrew.Id !== "") {
+            if (activeCrewId !== "") {
                 dispatch(removeMemberToActiveCrew(message.PlayerId));
             }
 
@@ -102,11 +102,11 @@ const useSignalR = (): {
         });
 
         newConnection.on('CrewMemberKicked', (message: { PlayerId: string }) => {
-            if (activeCrew.Id !== "") {
+            if (activeCrewId !== "") {
                 dispatch(removeMemberToActiveCrew(message.PlayerId));
             }
 
-            if (!isCurrentUser(message) || isCaptain(activeCrew.Id, userId ?? '')) {
+            if (!isCurrentUser(message) || isCaptain(activeCrewId, userId ?? '')) {
                 return;
             }
 
