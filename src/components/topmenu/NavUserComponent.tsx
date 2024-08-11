@@ -1,43 +1,13 @@
 import {useNavigate} from 'react-router-dom';
-import styled from 'styled-components';
 import {colors} from '../../themes/Colors.ts';
 import {useAuth} from '../../hooks/useAuth.tsx';
 import {usePlayer} from "../../hooks/usePlayerProfile.tsx";
 import {MenuButton} from "./MenuButton.tsx";
 import {useDeleteAccount} from "../../hooks/useDeleteAccount.tsx";
-
-const NavUserContainer = styled.div`
-    position: relative;
-    display: inline-block;
-`;
-
-const SubMenu = styled.div`
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: ${colors.secondary};
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    width: max-content;
-    text-align: left;
-    cursor: pointer;
-    border-radius: .7rem;
-
-    & a {
-        color: white;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    & a:hover {
-        background-color: ${colors.primary};
-    }
-
-    ${NavUserContainer}:hover & {
-        display: block;
-    }
-`;
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUser} from "@fortawesome/free-solid-svg-icons";
+import {StyledTopMenuLabel} from "./StyledTopMenuLabel.tsx";
+import {NavUserContainer, StyledSubMenu} from "./StyledSubMenu.tsx";
 
 export const NavUserComponent = () => {
     const {isLogged, logout, login} = useAuth();
@@ -62,14 +32,15 @@ export const NavUserComponent = () => {
         <>
             {isLogged() ? (
                 <NavUserContainer>
-                    <MenuButton fontSize={"1rem"} minFontSize={".6rem"} backgroundColor={colors.darkcyan}>
-                        {profile?.CitizenName || "User"}
-                    </MenuButton>
-                    <SubMenu>
+                    <StyledTopMenuLabel style={{margin: "5 .5rem"}}>
+                        {profile?.CitizenName || "My User"}
+                    </StyledTopMenuLabel>
+                    <FontAwesomeIcon icon={faUser} />
+                    <StyledSubMenu>
                         <a onClick={handlerChangeName}>Change Handler Name</a>
                         <a style={{color: colors.redAlertColor}} onClick={handleRemoveAccount}>Remove Account</a>
                         <a style={{color: colors.redAlertColor}} onClick={handleLogout}>Log Out</a>
-                    </SubMenu>
+                    </StyledSubMenu>
                 </NavUserContainer>
             ) : (
                 <MenuButton fontSize={".8rem"} minFontSize={".6rem"} onClick={login} backgroundColor={colors.darkcyan}>

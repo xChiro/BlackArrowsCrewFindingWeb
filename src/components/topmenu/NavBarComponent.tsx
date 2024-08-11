@@ -3,6 +3,7 @@ import {NavUserComponent} from "./NavUserComponent.tsx";
 import {NavLogoComponent} from "./NavLogoComponent.tsx";
 import {CrewMenuButton} from "./CrewMenuButton.tsx";
 import {colors} from "../../themes/Colors.ts";
+import Notifications from "./notifications/NotificationsComponent.tsx";
 
 const StyledNavbar = styled.nav`
     position: fixed;
@@ -37,6 +38,8 @@ const CenterAlignedDiv = styled.div`
 const RightAlignedDiv = styled.div`
     width: 112px;
     text-align: right;
+    display: flex;
+    justify-content: space-around;
 `;
 
 const Navbar = () => {
@@ -50,6 +53,7 @@ const Navbar = () => {
             </CenterAlignedDiv>
             <RightAlignedDiv>
                 <NavUserComponent/>
+                <Notifications/>
             </RightAlignedDiv>
         </StyledNavbar>
     );

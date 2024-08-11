@@ -9,7 +9,7 @@ import {useDispatch} from "react-redux";
 import {createProfile} from "./stores/PlayerProfileSlice.ts";
 import styled from "styled-components";
 import Footer from "./components/footer/FooterComponent.tsx";
-import useSignalR from "./hooks/signalR/useSignalR.tsx";
+import useSignalR from "./hooks/events/useSignalR.tsx";
 import {usePlayer} from "./hooks/usePlayerProfile.tsx";
 import {ToastContainer} from "react-toastify";
 
