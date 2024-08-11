@@ -40,7 +40,7 @@ const App = () => {
             stopConnection();
         else
             startConnection();
-    }, [isInCrew]);
+    }, [isInCrew, startConnection, stopConnection]);
 
     useEffect(() => {
         if (!isLogged() || profile.Id !== "") {
@@ -63,7 +63,7 @@ const App = () => {
                 if (error.message.includes("401"))
                     login();
             });
-    }, [isLogged, getAccessToken, dispatch, profile, navigate, pathname]);
+    }, [isLogged, getAccessToken, dispatch, login, profile, navigate, pathname]);
 
     return (
         <>
