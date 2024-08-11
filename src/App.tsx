@@ -27,7 +27,7 @@ const StyledContainer = styled.div`
 `;
 
 const App = () => {
-    const {isLogged, loginInProgress, getAccessToken, login} = useAuth();
+    const {isLogged, getAccessToken, login} = useAuth();
     const navigate = useNavigate();
     const {pathname} = useLocation();
     const {startConnection, stopConnection} = useSignalR();
@@ -40,10 +40,10 @@ const App = () => {
             stopConnection();
         else
             startConnection();
-    }, [isInCrew()]);
+    }, [isInCrew]);
 
     useEffect(() => {
-        if (loginInProgress || !isLogged() || profile.Id !== "") {
+        if (!isLogged() || profile.Id !== "") {
             return;
         }
 
@@ -63,7 +63,7 @@ const App = () => {
                 if (error.message.includes("401"))
                     login();
             });
-    }, [loginInProgress, isLogged(), getAccessToken(), dispatch, profile, navigate, pathname]);
+    }, [isLogged, getAccessToken, dispatch, profile, navigate, pathname]);
 
     return (
         <>
