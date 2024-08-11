@@ -39,11 +39,10 @@ const App = () => {
             stopConnection();
         else if (isInCrew() && connection === undefined)
             startConnection();
-    }, [isInCrew]);
+    }, [isInCrew()]);
 
     useEffect(() => {
         if (!isLogged() || profile.Id !== "") {
-            return;
             return;
         }
 
