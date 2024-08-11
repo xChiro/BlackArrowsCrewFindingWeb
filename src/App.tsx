@@ -11,7 +11,6 @@ import Footer from "./components/footer/FooterComponent.tsx";
 import useSignalR from "./hooks/events/useSignalR.tsx";
 import {usePlayer} from "./hooks/usePlayerProfile.tsx";
 import {ToastContainer} from "react-toastify";
-import {HubConnectionState} from "@microsoft/signalr";
 
 const StyledContainer = styled.div`
     display: flex;
@@ -40,15 +39,11 @@ const App = () => {
             stopConnection();
         else if (isInCrew() && connection === undefined)
             startConnection();
-
-        return () => {
-            if (connection !== undefined && !isInCrew() && connection.state === HubConnectionState.Connected)
-                stopConnection();
-        }
-    }, [isInCrew, startConnection, stopConnection]);
+    }, [isInCrew]);
 
     useEffect(() => {
         if (!isLogged() || profile.Id !== "") {
+            return;
             return;
         }
 

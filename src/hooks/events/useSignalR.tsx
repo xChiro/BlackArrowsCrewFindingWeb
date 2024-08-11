@@ -44,8 +44,7 @@ const useSignalR = () => {
         if (connection) return connection;
 
         const token = getAccessToken();
-        const userId = getUserId();
-        const signalRService = new SignalRService(token ?? '', userId ?? '');
+        const signalRService = new SignalRService(token ?? '', getUserId() ?? '');
         const response = await signalRService.negotiate();
         const data: SignalRConnectionInfo = {
             Url: response.Url,
@@ -58,25 +57,23 @@ const useSignalR = () => {
             .configureLogging(signalR.LogLevel.Information)
             .build();
 
-        registerSignalREvents(newConnection, userId);
+        registerSignalREvents(newConnection);
 
         setConnection(newConnection);
         return newConnection;
     };
 
-    const registerSignalREvents = (newConnection: signalR.HubConnection, userId: string | undefined) => {
-        const isCurrentUser = (message: { PlayerId: string }) => userId === message.PlayerId;
-
+    const registerSignalREvents = (newConnection: signalR.HubConnection) => {
         newConnection.on('NotifyPlayerJoined', (message: { PlayerId: string, CitizenName: string }) => {
-            handlePlayerJoined(message, isCurrentUser(message));
+            handlePlayerJoined(message);
         });
 
         newConnection.on('PlayerLeftCrew', (message: { PlayerId: string }) => {
-            handlePlayerLeft(message, isCurrentUser(message));
+            handlePlayerLeft(message);
         });
 
         newConnection.on('CrewMemberKicked', (message: { PlayerId: string }) => {
-            handleCrewMemberKicked(message, isCurrentUser(message));
+            handleCrewMemberKicked(message);
         });
 
         newConnection.on('CrewDisbanded', () => {

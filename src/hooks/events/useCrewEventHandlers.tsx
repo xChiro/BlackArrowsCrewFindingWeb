@@ -21,7 +21,7 @@ const useCrewEventHandlers = () => {
     }, [leaveCrew, navigate]);
 
     const handlePlayerJoined = useCallback(
-        (message: { PlayerId: string, CitizenName: string }, isCurrentUser: boolean) => {
+        (message: { PlayerId: string, CitizenName: string }) => {
             if (activeCrewId) {
                 dispatch(addMemberToActiveCrew({
                     Id: message.PlayerId,
@@ -31,38 +31,31 @@ const useCrewEventHandlers = () => {
                 }));
             }
 
-            addNotification(`A player joined to your crew.`, `/crews/${profile.ActiveCrewId}`);
-
-            if (!isCurrentUser) {
-                showToast("A player joined to your crew.");
-            }
+            addNotification(`${message.CitizenName} joined your crew.`, `/crews/${profile.ActiveCrewId}`);
+            showToast(`${message.CitizenName} joined your crew.`);
         },
         [activeCrewId, dispatch, addNotification, showToast]
     );
 
     const handlePlayerLeft = useCallback(
-        (message: { PlayerId: string }, isCurrentUser: boolean) => {
+        (message: { PlayerId: string }) => {
+            addNotification(`A player ${activeCrewMembers.find(member => member.Id === message.PlayerId)?.CitizenName.Value ?? ""} left your crew.`, `/crews/${activeCrewId}`);
+
             if (activeCrewId) {
                 dispatch(removeMemberToActiveCrew(message.PlayerId));
-
             }
-
-            addNotification(`A player ${activeCrewMembers.find(member => member.Id === message.PlayerId)?.CitizenName.Value} left your crew.`, `/crews/${activeCrewId}`);
-
-            if (!isCurrentUser) {
-                showToast('A player left your crew.');
-            }
+            showToast('A player left your crew.');
         },
         [activeCrewId, activeCrewMembers, dispatch, addNotification, showToast]
     );
 
     const handleCrewMemberKicked = useCallback(
-        (message: { PlayerId: string }, isCurrentUser: boolean) => {
+        (message: { PlayerId: string }) => {
             if (activeCrewId) {
                 dispatch(removeMemberToActiveCrew(message.PlayerId));
             }
 
-            if (!isCurrentUser || isCaptain(activeCrewId, profile.Id ?? '')) {
+            if (isCaptain(activeCrewId, profile.Id ?? '')) {
                 return;
             }
 
