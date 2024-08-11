@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import {NavUserComponent} from "./NavUserComponent.tsx";
+import {ProfileNavComponent} from "./ProfileNavComponent.tsx";
 import {NavLogoComponent} from "./NavLogoComponent.tsx";
 import {CrewMenuButton} from "./CrewMenuButton.tsx";
 import {colors} from "../../themes/Colors.ts";
-import Notifications from "./notifications/NotificationsComponent.tsx";
 
 const StyledNavbar = styled.nav`
     position: fixed;
@@ -52,8 +51,7 @@ const Navbar = () => {
                 <NavLogoComponent/>
             </CenterAlignedDiv>
             <RightAlignedDiv>
-                <NavUserComponent/>
-                <Notifications/>
+                <ProfileNavComponent/>
             </RightAlignedDiv>
         </StyledNavbar>
     );

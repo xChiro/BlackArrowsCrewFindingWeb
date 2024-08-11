@@ -11,4 +11,5 @@ export const colors = {
     lightRed: '#af3939',
     darkcyan: 'darkcyan',
     lightcyan: 'lightcyan',
+    discordBackground: '#7289da',
 }

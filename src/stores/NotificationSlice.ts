@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 export type Notification = {
-    id: string;
+    timestamp: number;
     text: string;
     url: string
 };
@@ -15,9 +15,9 @@ const notificationSlice = createSlice({
         addNotification: (state, action: PayloadAction<Notification>) => {
             state.push(action.payload);
         },
-        removeNotification: (state, action: PayloadAction<string>) => {
+        removeNotification: (state, action: PayloadAction<number>) => {
             return state.filter(
-                (notification) => notification.id !== action.payload
+                (notification) => notification.timestamp !== action.payload
             );
         },
     },

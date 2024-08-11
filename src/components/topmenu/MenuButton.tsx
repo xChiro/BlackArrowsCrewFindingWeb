@@ -36,8 +36,8 @@ export interface MenuButtonProps {
 export const MenuButton = ({
                                onClick,
                                backgroundColor,
-                               fontSize = "1rem",
-                               minFontSize = ".8rem",
+                               fontSize = ".8rem",
+                               minFontSize = ".6rem",
                                children
                            }: MenuButtonProps) => (
     <StyledButton $canClick={true} $fontSize={fontSize} $minFontSize={minFontSize}

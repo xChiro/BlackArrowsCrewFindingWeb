@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import * as signalR from '@microsoft/signalr';
-import { useAuth } from "../useAuth.tsx";
+import {useAuth} from "../useAuth.tsx";
 import SignalRService from "../../services/SignalRService.ts";
 import useCrewEventHandlers from "./useCrewEventHandlers.tsx";
 
@@ -10,7 +10,7 @@ interface SignalRConnectionInfo {
 }
 
 const useSignalR = () => {
-    const { getAccessToken, getUserId } = useAuth();
+    const {getAccessToken, getUserId} = useAuth();
     const [connection, setConnection] = useState<signalR.HubConnection>();
 
     const {
@@ -21,17 +21,17 @@ const useSignalR = () => {
         handlePlayerJoined
     } = useCrewEventHandlers();
 
-    const startConnection = () => {
+    const startConnection = async () => {
         if (!connection) {
-            createAndStartConnection();
+            await createAndStartConnection();
         } else if (isDisconnected(connection)) {
-            connection.start();
+            await connection.start();
         }
     };
 
-    const stopConnection = () => {
+    const stopConnection = async () => {
         if (isConnected(connection)) {
-            connection?.stop();
+            await connection?.stop();
         }
     };
 
@@ -53,7 +53,7 @@ const useSignalR = () => {
         };
 
         const newConnection = new signalR.HubConnectionBuilder()
-            .withUrl(data.Url, { accessTokenFactory: () => data.AccessToken })
+            .withUrl(data.Url, {accessTokenFactory: () => data.AccessToken})
             .withAutomaticReconnect([1000, 10000, 30000, 600000])
             .configureLogging(signalR.LogLevel.Information)
             .build();
@@ -94,7 +94,7 @@ const useSignalR = () => {
     const isConnected = (connection: signalR.HubConnection | undefined) =>
         connection && (connection.state === signalR.HubConnectionState.Connected || connection.state === signalR.HubConnectionState.Connecting);
 
-    return { startConnection, connection, stopConnection };
+    return {startConnection, connection, stopConnection};
 };
 
 export default useSignalR;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBell} from '@fortawesome/free-solid-svg-icons';
-import {StyledSubMenu} from '../StyledSubMenu.tsx';
+import {HoverContainer, StyledSubMenu} from '../StyledSubMenu.tsx';
 import useNotifications from "../../../hooks/Notifications/useNotifications.tsx";
 import {Notification} from "./Notification.tsx";
 import {BellIcon} from "./BellIcon.tsx";
@@ -26,23 +26,23 @@ const Notifications: React.FC = () => {
     const {notifications, removeNotification} = useNotifications();
 
     return (
-        <BellIcon>
-            <div style={{position: 'relative'}}>
+        <HoverContainer>
+            <BellIcon>
                 <FontAwesomeIcon icon={faBell}/>
                 {notifications.length > 0 && <NotificationDot/>}
-            </div>
-            <StyledSubMenu>
-                {notifications.length > 0 ?
-                    notifications.map((notification) =>
-                        <Notification key={notification.id}
-                                      notification={notification}
-                                      removeNotification={removeNotification}/>
-                    )
-                    :
-                    <NoNotificationMessage>No notifications</NoNotificationMessage>
-                }
-            </StyledSubMenu>
-        </BellIcon>
+                <StyledSubMenu>
+                    {notifications.length > 0 ?
+                        notifications.map((notification, index) =>
+                            <Notification key={index}
+                                          notification={notification}
+                                          removeNotification={removeNotification}/>
+                        )
+                        :
+                        <NoNotificationMessage>No notifications</NoNotificationMessage>
+                    }
+                </StyledSubMenu>
+            </BellIcon>
+        </HoverContainer>
     );
 };
 

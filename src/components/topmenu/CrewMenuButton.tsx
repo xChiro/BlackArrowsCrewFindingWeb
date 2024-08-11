@@ -23,12 +23,11 @@ export const CrewMenuButton = () => {
     if (location.pathname.includes("profile/create") || !isLogged())
         return null;
 
-    return isInCrew()
+    return (isInCrew()
         ? <MenuButton backgroundColor={colors.lightBlueColor} onClick={handleViewCrewClick}>
             View My Crew
         </MenuButton>
         : <MenuButton backgroundColor={colors.greenColor} onClick={handleCreateCrewClick}>
             Create Crew
-        </MenuButton>;
-
+        </MenuButton>);
 };
