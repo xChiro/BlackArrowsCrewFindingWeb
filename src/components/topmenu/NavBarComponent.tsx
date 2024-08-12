@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {NavUserComponent} from "./NavUserComponent.tsx";
+import {ProfileNavComponent} from "./ProfileNavComponent.tsx";
 import {NavLogoComponent} from "./NavLogoComponent.tsx";
 import {CrewMenuButton} from "./CrewMenuButton.tsx";
 import {colors} from "../../themes/Colors.ts";
@@ -37,6 +37,8 @@ const CenterAlignedDiv = styled.div`
 const RightAlignedDiv = styled.div`
     width: 112px;
     text-align: right;
+    display: flex;
+    justify-content: space-around;
 `;
 
 const Navbar = () => {
@@ -49,7 +51,7 @@ const Navbar = () => {
                 <NavLogoComponent/>
             </CenterAlignedDiv>
             <RightAlignedDiv>
-                <NavUserComponent/>
+                <ProfileNavComponent/>
             </RightAlignedDiv>
         </StyledNavbar>
     );

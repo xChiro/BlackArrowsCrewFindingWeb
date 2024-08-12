@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import useRecentCrewData from "../../../hooks/crews/useRecentCrewData.tsx";
 import CrewViewComponent from "./CrewViewComponent.tsx";
 import NotCrewsAvailable from "./NotCrewsAvailable.tsx";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {colors} from "../../../themes/Colors.ts";
 import {StyledCard} from "../../utilities/cards/StyledCard.tsx";
+import {faRefresh} from "@fortawesome/free-solid-svg-icons";
+import RefreshIcon from "../../Icons/RefreshIcons.tsx";
 
 const StyledRecentCrewCardContainer = styled.div`
     display: grid;
@@ -12,12 +14,12 @@ const StyledRecentCrewCardContainer = styled.div`
     gap: .5rem;
     column-width: 25rem;
     justify-content: center;
-    align-items: start;    
-    
+    align-items: start;
+
     &:last-child {
         margin-right: -1rem;
     }
-    
+
     &::-webkit-scrollbar {
         height: 8px;
     }
@@ -35,7 +37,7 @@ const StyledRecentCrewCardContainer = styled.div`
         display: flex;
         flex-direction: column;
         row-gap: 1rem;
-        
+
         &:last-of-type {
             margin-right: 0;
         }
@@ -59,6 +61,7 @@ const StyledSelect = styled.select`
     font-size: 1rem;
     border-radius: .5rem;
     width: 80%;
+    margin: 0 .5rem 0 .3rem;
 
     option {
         color: black;
@@ -69,14 +72,27 @@ const StyledSelect = styled.select`
 const ACTIVITY_OPTIONS = ["Any", "Mining", "Trading", "Exploration", "Transportation", "Security", "Rescue", "Salvaging", "Piracy", "Other"];
 
 const RecentCrewCardContainer = () => {
-    const crewData = useRecentCrewData();
+    const {crewData, fetchCrewData} = useRecentCrewData();
     const [activityFilter, setActivityFilter] = useState('Any');
+    const [filteredCrewData, setFilteredCrewData] = useState(crewData);
+
+    useEffect(() => {
+        const newFilteredCrewData = activityFilter === 'Any' ? crewData : crewData.filter(crew => crew.activity === activityFilter);
+        setFilteredCrewData(newFilteredCrewData);
+    }, [crewData, activityFilter]);
 
     const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setActivityFilter(event.target.value);
     };
 
-    const filteredCrewData = activityFilter === 'Any' ? crewData : crewData.filter(crew => crew.activity === activityFilter);
+    const [buttonDisabled, setButtonDisabled] = useState(false);
+
+    const onRefresh = () => {
+        setButtonDisabled(true);
+        fetchCrewData().then(() =>
+            setTimeout(() => setButtonDisabled(false), 10000)
+        ).catch(() => setButtonDisabled(false));
+    };
 
     return (
         <StyledWrapper>
@@ -85,7 +101,7 @@ const RecentCrewCardContainer = () => {
                 flexDirection: "row",
                 alignItems: "center",
                 marginBottom: "1rem",
-                padding: ".4rem .4rem",
+                padding: ".4rem .8rem",
                 textAlign: "center",
             }}>
                 <p style={{fontSize: ".8rem", margin: "0", width: "30%"}}>Choose Activity</p>
@@ -94,6 +110,7 @@ const RecentCrewCardContainer = () => {
                         <option key={index} value={option}>{option}</option>
                     ))}
                 </StyledSelect>
+                <RefreshIcon icon={faRefresh} onClick={onRefresh} disabled={buttonDisabled}/>
             </StyledCard>
             {filteredCrewData.length === 0 && <NotCrewsAvailable/>}
             <StyledRecentCrewCardContainer>

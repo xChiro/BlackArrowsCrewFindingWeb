@@ -1,16 +1,12 @@
 export class BaseAPIService {
     protected readonly baseUrl: string;
     protected readonly token: string;
+    protected readonly userId: string;
 
-    constructor(token: string = "") {
+    constructor(token: string = "", userId: string = "") {
+        this.userId = userId;
         this.baseUrl = import.meta.env.VITE_APP_BASE_URL;
         this.token = token;
-    }
-
-    protected createHeaders(needsToken: boolean): Record<string, string> {
-        const headers: Record<string, string>  = { "Content-Type": "application/json" };
-        if (needsToken) headers["Authorization"] = `Bearer ${this.token}`;
-        return headers;
     }
 
     protected async sendRequest<T>(method: string, endpoint: string, needsToken: boolean = true, body: object | null = null): Promise<T> {
@@ -34,6 +30,13 @@ export class BaseAPIService {
         }
 
         return responseData;
+    }
+
+    protected createHeaders(needsToken: boolean): Record<string, string> {
+        const headers: Record<string, string>  = { "Content-Type": "application/json" };
+        if (needsToken) headers["Authorization"] = `Bearer ${this.token}`;
+        if (this.userId) headers["x-ms-client-principal-id"] = this.userId;
+        return headers;
     }
 
     protected async postRequest<T>(endpoint: string, body?: object): Promise<T> {

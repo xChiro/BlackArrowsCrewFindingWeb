@@ -9,8 +9,8 @@ export const StyledCardButton = styled.button<{ $buttonBackgroundColor: string; 
     border-radius: 0 0 1rem 1rem;
     cursor: ${({ $canClick }) => $canClick ? 'pointer' : 'not-allowed'};
     width: 100%;
-    min-height: 3rem;
-    font-size: ${({ $fontSize }) => $fontSize || '1.9rem'};
+    min-height: 2.3rem;
+    font-size: ${({ $fontSize }) => $fontSize || '1.5rem'};
     margin-top: auto;
     
     @media (max-width: 775px) {
