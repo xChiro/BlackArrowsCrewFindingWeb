@@ -49,7 +49,7 @@ const CrewJoinCardButton = (props: CardButtonProps) => {
             $buttonBackgroundColor={buttonInfo.color}
             $canClick={!props.isFull && !isInCrew() && isLogged()}
             onClick={onClick}
-            $fontSize={isLogged() ? "1.9rem" : "1.4rem"}
+            $fontSize={"1.4rem"}
         >
             {buttonInfo.text}
         </StyledCardButton>

@@ -23,19 +23,32 @@ const extractCrew = (crew: RecentCrew): CrewViewProps => {
 const useRecentCrewData = () => {
     const [crewData, setCrewData] = useState<CrewViewProps[]>([]);
     const {profile} = usePlayer();
+    let intervalId: NodeJS.Timeout; // Declare intervalId in scope outside useEffect.
+
+    const fetchCrewData = async () => {
+        if(intervalId) clearInterval(intervalId);
+
+        try {
+            const crewService = new CrewService();
+            const crews = await crewService.getRecentCrews();
+
+            const newCrewData = crews.Crews.map(crew => extractCrew(crew));
+            setCrewData(newCrewData);
+
+        } catch (error) {
+            console.error(error);
+        }
+
+        intervalId = setInterval(fetchCrewData, 300000);
+    };
 
     useEffect(() => {
-        const crewService = new CrewService();
-        crewService.getRecentCrews()
-            .then(crews => {
-                const crewData = crews.Crews.map(crew => extractCrew(crew));
-                setCrewData(crewData);
-            }).catch(error => {
-            console.error(error);
-        })
+        fetchCrewData();
+
+        return () => clearInterval(intervalId);
     }, [profile.ActiveCrewId, profile.Id]);
 
-    return crewData;
+    return { crewData, fetchCrewData };
 };
 
 export default useRecentCrewData;
