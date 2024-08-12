@@ -1,7 +1,7 @@
 import './App.css'
 import Navbar from "./components/topmenu/NavBarComponent.tsx";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import PlayerService from './services/PlayerService.ts';
 import {useAuth} from "./hooks/useAuth.tsx";
 import {useDispatch} from "react-redux";
@@ -11,6 +11,7 @@ import Footer from "./components/footer/FooterComponent.tsx";
 import useSignalR from "./hooks/events/useSignalR.tsx";
 import {usePlayer} from "./hooks/usePlayerProfile.tsx";
 import {ToastContainer} from "react-toastify";
+import {HubConnectionState} from "@microsoft/signalr";
 
 const StyledContainer = styled.div`
     display: flex;
@@ -31,14 +32,24 @@ const App = () => {
     const {pathname} = useLocation();
     const {startConnection, stopConnection, connection} = useSignalR();
     const {profile, isInCrew} = usePlayer();
+    const [waitingConnection, setWaitingConnection] = useState(false);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (!isInCrew() && connection !== undefined)
-            stopConnection();
-        else if (isInCrew() && connection === undefined)
-            startConnection();
+        if (waitingConnection) return;
+
+        if (!isInCrew() && connection !== undefined && connection.state === HubConnectionState.Connected) {
+            setWaitingConnection(true);
+            stopConnection().finally(() => {
+                setWaitingConnection(false);
+            });
+        } else if (isInCrew() && (connection === undefined || connection.state === HubConnectionState.Disconnected)) {
+            setWaitingConnection(true);
+            startConnection().finally(() => {
+                setWaitingConnection(false);
+            });
+        }
     }, [isInCrew()]);
 
     useEffect(() => {

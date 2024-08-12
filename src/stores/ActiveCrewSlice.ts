@@ -19,7 +19,7 @@ const activeCrewSlice = createSlice({
             return action.payload;
         },
         addMemberToActiveCrew: (state, action) => {
-            state.Members.push(action.payload);
+            state.Members = [...state.Members, action.payload];
         },
         removeMemberToActiveCrew: (state, action) => {
             state.Members = state.Members.filter(member => member.Id !== action.payload);

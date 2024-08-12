@@ -22,9 +22,9 @@ const activityImages: { [key: string]: string } = {
     other
 };
 
-const StyledActivityCrewCardHeader = styled.div<{ activity: string }>`
+const StyledActivityCrewCardHeader = styled.div<{$activity: string }>`
     height: 10rem;
-    background-image:  url(${(props) => activityImages[props.activity] || other});
+    background-image:  url(${(props) => activityImages[props.$activity] || other});
     background-size: cover;
     background-position: center; 
     border-radius: 1rem 1rem 0 0;
@@ -38,7 +38,7 @@ export interface ImageCardHeaderHeaderProps {
 
 const ActivityCrewCardHeader = (props: ImageCardHeaderHeaderProps) => {
     return (
-        <StyledActivityCrewCardHeader activity={props.activity.trim().toLowerCase()}>
+        <StyledActivityCrewCardHeader $activity={props.activity.trim().toLowerCase()}>
         </StyledActivityCrewCardHeader>
     );
 
