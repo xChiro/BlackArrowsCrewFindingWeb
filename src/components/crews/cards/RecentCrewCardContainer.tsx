@@ -60,8 +60,8 @@ const StyledSelect = styled.select`
     padding: 0.4rem;
     font-size: 1rem;
     border-radius: .5rem;
-    width: 80%;
     margin: 0 .5rem 0 .3rem;
+    width: 16rem;
 
     option {
         color: black;
@@ -96,15 +96,15 @@ const RecentCrewCardContainer = () => {
 
     return (
         <StyledWrapper>
-            <StyledCard $maxHeight={"2rem"} $minHeight={"2rem"} style={{
+            <StyledCard $maxHeight={"2rem"} $minHeight={"2rem"} $minWidth={"9rem"}  style={{
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
                 marginBottom: "1rem",
-                padding: ".4rem .8rem",
-                textAlign: "center",
+                padding: ".4rem .3rem",
+                justifyContent: "center",
             }}>
-                <p style={{fontSize: ".8rem", margin: "0", width: "30%"}}>Choose Activity</p>
+                <p style={{fontSize: ".8rem", margin: "0"}}>Choose Activity</p>
                 <StyledSelect value={activityFilter} onChange={handleFilterChange}>
                     {ACTIVITY_OPTIONS.map((option, index) => (
                         <option key={index} value={option}>{option}</option>
