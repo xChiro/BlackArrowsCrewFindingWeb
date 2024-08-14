@@ -1,15 +1,11 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell } from '@fortawesome/free-solid-svg-icons';
-import { HoverContainer, StyledSubMenu } from '../StyledSubMenu.tsx';
-import useNotifications from '../../../hooks/Notifications/useNotifications.tsx';
-import { Notification } from './Notification.tsx';
-import styled from 'styled-components';
+import React, {useState} from 'react';
+import IconMenu from "../IconMenu.tsx";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faBell} from '@fortawesome/free-solid-svg-icons';
+import styled from "styled-components";
+import useNotifications from "../../../hooks/Notifications/useNotifications.tsx";
+import Notification from "./Notification.tsx";
 
-const BellIconContainer = styled.div`
-    position: relative;
-    display: inline-block;
-`;
 
 const NotificationDot = styled.div`
     position: absolute;
@@ -28,29 +24,29 @@ const NoNotificationMessage = styled.div`
 `;
 
 const Notifications: React.FC = () => {
-    const { notifications, removeNotification } = useNotifications();
+    const {notifications, removeNotification} = useNotifications();
+    const [isOpen, setIsOpen] = useState(false);
 
-    return (
-        <HoverContainer>
-            <BellIconContainer>
-                <FontAwesomeIcon icon={faBell} size="lg" />
-                {notifications.length > 0 && <NotificationDot />}
-                <StyledSubMenu>
-                    {notifications.length > 0 ? (
-                        notifications.map((notification, index) => (
-                            <Notification
-                                key={index}
-                                notification={notification}
-                                removeNotification={removeNotification}
-                            />
-                        ))
-                    ) : (
-                        <NoNotificationMessage>No notifications</NoNotificationMessage>
-                    )}
-                </StyledSubMenu>
-            </BellIconContainer>
-        </HoverContainer>
-    );
+    const items = notifications.length > 0 ?
+        notifications.map((notification, index) => (
+            <Notification
+                key={index}
+                notification={notification}
+                removeNotification={removeNotification}
+                onClick={() => setIsOpen(false)}
+            />
+        )) : ([<NoNotificationMessage key={0} onClick={() => setIsOpen(false)}>No notifications</NoNotificationMessage>]);
+
+    const bellIcon = () => {
+        return (
+            <>
+                <FontAwesomeIcon icon={faBell} size="lg"/>
+                {notifications.length > 0 && <NotificationDot/>}
+            </>
+        );
+    }
+
+    return <IconMenu icon={bellIcon()} items={items} closeMenu={isOpen}/>;
 };
 
 export default Notifications;

@@ -7,16 +7,7 @@ import {StyledTopMenuLabel} from "./StyledTopMenuLabel.tsx";
 import Notifications from "./notifications/NotificationsComponent.tsx";
 import styled from "styled-components";
 import {UserIconMenu} from "./UserIconMenu.tsx";
-import {StyledSubMenu} from "./StyledSubMenu.tsx";
 
-export const NavUserContainer = styled.div`
-    color: white;
-    align-content: center;
-
-    &:hover ${StyledSubMenu} {
-        display: block;
-    }
-`;
 
 const StyledSeparator = styled.span`
     margin: 0 .3rem;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {StyledSubMenu} from "../StyledSubMenu.tsx";
+import {StyledSubMenu} from "../IconMenu.tsx";
 
 export const BellIcon = styled.div`
     color: white;

@@ -91,3 +91,5 @@ export const Notification: React.FC<NotificationProps> = ({ notification, remove
         </NotificationContainer>
     );
 };
+
+export default Notification;
