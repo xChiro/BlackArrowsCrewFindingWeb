@@ -8,7 +8,7 @@ interface SubMenuProps {
     closeMenu?: boolean;
 }
 
-const StyledSubMenu = styled.div<{ isOpen: boolean }>`
+export const StyledSubMenu = styled.div<{ isOpen: boolean }>`
     display: ${(props) => (props.isOpen ? 'block' : 'none')};
     position: absolute;
     top: 100%;
