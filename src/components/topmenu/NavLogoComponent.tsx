@@ -23,7 +23,7 @@ const StyledLink = styled(Link)`
 const StyledImage = styled.img`
     cursor: pointer;
     image: url(${logo});
-    height: 90%;
+    height: 2.7rem;
 `;
 
 export const NavLogoComponent = () => {
