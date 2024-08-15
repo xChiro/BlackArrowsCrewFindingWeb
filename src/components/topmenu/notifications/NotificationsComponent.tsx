@@ -6,7 +6,6 @@ import styled from "styled-components";
 import useNotifications from "../../../hooks/Notifications/useNotifications.tsx";
 import Notification from "./Notification.tsx";
 
-
 const NotificationDot = styled.div`
     position: absolute;
     top: 0;
