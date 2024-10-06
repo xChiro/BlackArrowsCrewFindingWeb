@@ -1,0 +1,244 @@
+/* Reseteo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 10px 2vw;
+    height: 60px;
+    position: fixed; /* Fija la barra al tope de la pantalla */
+    width: 100%;
+    top: 0;
+    z-index: 10; /* Asegura que esté encima de otras secciones */
+}
+
+
+.logo img {
+    height: 40px;
+}
+
+/* Botón de Go To App */
+.go-to-app-button {
+    background-color: #5865F2; /* Color azul tipo Discord */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.go-to-app-button:hover {
+    background-color: #4e58d4; /* Efecto hover para el botón */
+}
+
+
+.promo-section {
+    background: url('/src/assets/background.jpg') no-repeat fixed center center;
+    background-size: cover;
+    height: 90vh; /* Ajuste para cubrir el 80% de la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 2vw;
+    margin-top: 0; /* Para que quede pegada al navbar */
+    border-bottom: 2px solid darkred; /* Borde oscuro como divisor */
+}
+
+.promo-content {
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semi-transparente */
+    padding: 20px 20px 30px 20px;
+    border-radius: 10px;
+    max-width: 90vw; /* Asegura que el contenido no ocupe demasiado espacio en pantallas pequeñas */
+}
+
+/* Botón de la sección de promoción sigue igual */
+.promo-button {
+    background-color: #5865F2;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.promo-button:hover {
+    background-color: #4e58d4;
+}
+/* Sección "Cómo usar la app" */
+.how-to-use-section-separator {
+    min-height: 10vw;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    align-content: center;
+    border-bottom: 2px solid darkred; /* Borde oscuro como divisor */
+}
+
+.how-to-use-section {
+    position: relative;
+    padding: 50px 2vw;
+    background: url("/public/back_sections.jpg") no-repeat fixed center center;
+    background-size: cover;
+    color: white;
+    z-index: 1; /* Asegura que el contenido esté encima de la capa oscura */
+    border-bottom: 2px solid darkred; /* Borde oscuro como divisor */
+}
+
+/* Usamos ::before para agregar una capa oscura */
+.how-to-use-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Capa negra semitransparente para oscurecer la imagen */
+    z-index: -1; /* Para que la capa oscura esté detrás del contenido */
+}
+
+.step {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap; /* Para dispositivos más pequeños */
+}
+
+.step-text {
+    flex: 1;
+    padding: 20px;
+    max-width: 50%; /* Limita el tamaño del texto al 50% */
+}
+
+.step-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 50%; /* Limita el tamaño de la imagen al 50% */
+}
+
+.step-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+/* Alterna el orden de los elementos cuando se usa .reverse */
+.step.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Media Queries para adaptabilidad */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .go-to-app-button {
+        margin-top: 10px;
+    }
+
+    .step {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .step.reverse {
+        flex-direction: column;
+    }
+
+    .step-text, .step-image {
+        max-width: 100%;
+    }
+}
+
+/* Footer principal */
+.footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    content-align: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Permite que sea responsive */
+}
+
+/* Logo del footer */
+.footer-logo img {
+    height: 60px; /* Ajusta el tamaño del logo */
+}
+
+/* Navegación del footer */
+.footer-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footer-nav ul li a:hover {
+    color: #5865F2; /* Color tipo Discord al pasar el mouse */
+}
+
+/* Redes sociales */
+.footer-social a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.footer-social img {
+    height: 30px;
+    width: 30px;
+    transition: opacity 0.3s ease;
+}
+
+.footer-social a:hover img {
+    opacity: 0.7;
+}
+
+/* Sección inferior con derechos reservados */
+.footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 20px;
+    width: 100%;
+}
