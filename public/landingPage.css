@@ -176,13 +176,13 @@ body {
 
 @media (min-width: 1440px) {
     .step {
-        padding: 0 15vw;
+        padding: 0 13vw;
     }
 }
 
 @media (min-width: 2560px) {
     .step {
-        padding: 0 30vw;
+        padding: 0 25vw;
     }
 }
 
