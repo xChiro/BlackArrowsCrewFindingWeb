@@ -120,6 +120,7 @@ body {
     align-items: center;
     margin-bottom: 40px;
     flex-wrap: wrap; /* Para dispositivos más pequeños */
+    padding: 0 10vw;
 }
 
 .step-text {
@@ -161,6 +162,7 @@ body {
     .step {
         flex-direction: column;
         text-align: center;
+        padding: 0 2vw;
     }
 
     .step.reverse {
@@ -196,7 +198,7 @@ body {
 
 /* Logo del footer */
 .footer-logo img {
-    height: 60px; /* Ajusta el tamaño del logo */
+    height: 60px;
 }
 
 /* Navegación del footer */
