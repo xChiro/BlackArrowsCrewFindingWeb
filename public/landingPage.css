@@ -46,7 +46,7 @@ body {
 
 
 .promo-section {
-    background: url('../src/assets/background.jpg') no-repeat fixed center center;
+    background: url('background.jpg') no-repeat fixed center center;
     background-size: cover;
     height: 90vh; /* Ajuste para cubrir el 80% de la pantalla */
     display: flex;
