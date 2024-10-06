@@ -46,7 +46,7 @@ body {
 
 
 .promo-section {
-    background: url('/src/assets/background.jpg') no-repeat fixed center center;
+    background: url('../src/assets/background.jpg') no-repeat fixed center center;
     background-size: cover;
     height: 90vh; /* Ajuste para cubrir el 80% de la pantalla */
     display: flex;
@@ -95,7 +95,7 @@ body {
 .how-to-use-section {
     position: relative;
     padding: 50px 2vw;
-    background: url("/public/back_sections.jpg") no-repeat fixed center center;
+    background: url("back_sections.jpg") no-repeat fixed center center;
     background-size: cover;
     color: white;
     z-index: 1; /* Asegura que el contenido esté encima de la capa oscura */
